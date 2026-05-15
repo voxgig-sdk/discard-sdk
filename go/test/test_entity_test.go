@@ -1,0 +1,195 @@
+package sdktest
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"runtime"
+	"strings"
+	"testing"
+	"time"
+
+	sdk "github.com/voxgig-sdk/discard-sdk"
+	"github.com/voxgig-sdk/discard-sdk/core"
+
+	vs "github.com/voxgig/struct"
+)
+
+func TestTestEntity(t *testing.T) {
+	t.Run("instance", func(t *testing.T) {
+		testsdk := sdk.TestSDK(nil, nil)
+		ent := testsdk.Test(nil)
+		if ent == nil {
+			t.Fatal("expected non-nil TestEntity")
+		}
+	})
+
+	t.Run("basic", func(t *testing.T) {
+		setup := testBasicSetup(nil)
+		// Per-op sdk-test-control.json skip — basic test exercises a flow
+		// with multiple ops; skipping any op skips the whole flow.
+		_mode := "unit"
+		if setup.live {
+			_mode = "live"
+		}
+		for _, _op := range []string{"create", "update", "load", "remove"} {
+			if _shouldSkip, _reason := isControlSkipped("entityOp", "test." + _op, _mode); _shouldSkip {
+				if _reason == "" {
+					_reason = "skipped via sdk-test-control.json"
+				}
+				t.Skip(_reason)
+				return
+			}
+		}
+		// The basic flow consumes synthetic IDs from the fixture. In live mode
+		// without an *_ENTID env override, those IDs hit the live API and 4xx.
+		if setup.syntheticOnly {
+			t.Skip("live entity test uses synthetic IDs from fixture — set DISCARD_TEST_TEST_ENTID JSON to run live")
+			return
+		}
+		client := setup.client
+
+		// CREATE
+		testRef01Ent := client.Test(nil)
+		testRef01Data := core.ToMapAny(vs.GetProp(
+			vs.GetPath([]any{"new", "test"}, setup.data), "test_ref01"))
+
+		testRef01DataResult, err := testRef01Ent.Create(testRef01Data, nil)
+		if err != nil {
+			t.Fatalf("create failed: %v", err)
+		}
+		testRef01Data = core.ToMapAny(testRef01DataResult)
+		if testRef01Data == nil {
+			t.Fatal("expected create result to be a map")
+		}
+		if testRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
+
+		// UPDATE
+		testRef01DataUp0Up := map[string]any{
+			"id": testRef01Data["id"],
+		}
+
+		testRef01MarkdefUp0Name := "message"
+		testRef01MarkdefUp0Value := fmt.Sprintf("Mark01-test_ref01_%d", setup.now)
+		testRef01DataUp0Up[testRef01MarkdefUp0Name] = testRef01MarkdefUp0Value
+
+		testRef01ResdataUp0Result, err := testRef01Ent.Update(testRef01DataUp0Up, nil)
+		if err != nil {
+			t.Fatalf("update failed: %v", err)
+		}
+		testRef01ResdataUp0 := core.ToMapAny(testRef01ResdataUp0Result)
+		if testRef01ResdataUp0 == nil {
+			t.Fatal("expected update result to be a map")
+		}
+		if testRef01ResdataUp0["id"] != testRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
+		if testRef01ResdataUp0[testRef01MarkdefUp0Name] != testRef01MarkdefUp0Value {
+			t.Fatalf("expected %s to be updated, got %v", testRef01MarkdefUp0Name, testRef01ResdataUp0[testRef01MarkdefUp0Name])
+		}
+
+		// LOAD
+		testRef01MatchDt0 := map[string]any{
+			"id": testRef01Data["id"],
+		}
+		testRef01DataDt0Loaded, err := testRef01Ent.Load(testRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		testRef01DataDt0LoadResult := core.ToMapAny(testRef01DataDt0Loaded)
+		if testRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if testRef01DataDt0LoadResult["id"] != testRef01Data["id"] {
+			t.Fatal("expected load result id to match")
+		}
+
+		// REMOVE
+		testRef01MatchRm0 := map[string]any{
+			"id": testRef01Data["id"],
+		}
+		_, err = testRef01Ent.Remove(testRef01MatchRm0, nil)
+		if err != nil {
+			t.Fatalf("remove failed: %v", err)
+		}
+
+	})
+}
+
+func testBasicSetup(extra map[string]any) *entityTestSetup {
+	loadEnvLocal()
+
+	_, filename, _, _ := runtime.Caller(0)
+	dir := filepath.Dir(filename)
+
+	entityDataFile := filepath.Join(dir, "..", "..", ".sdk", "test", "entity", "test", "TestTestData.json")
+
+	entityDataSource, err := os.ReadFile(entityDataFile)
+	if err != nil {
+		panic("failed to read test test data: " + err.Error())
+	}
+
+	var entityData map[string]any
+	if err := json.Unmarshal(entityDataSource, &entityData); err != nil {
+		panic("failed to parse test test data: " + err.Error())
+	}
+
+	options := map[string]any{}
+	options["entity"] = entityData["existing"]
+
+	client := sdk.TestSDK(options, extra)
+
+	// Generate idmap via transform, matching TS pattern.
+	idmap := vs.Transform(
+		[]any{"test01", "test02", "test03"},
+		map[string]any{
+			"`$PACK`": []any{"", map[string]any{
+				"`$KEY`": "`$COPY`",
+				"`$VAL`": []any{"`$FORMAT`", "upper", "`$COPY`"},
+			}},
+		},
+	)
+
+	// Detect ENTID env override before envOverride consumes it. When live
+	// mode is on without a real override, the basic test runs against synthetic
+	// IDs from the fixture and 4xx's. Surface this so the test can skip.
+	entidEnvRaw := os.Getenv("DISCARD_TEST_TEST_ENTID")
+	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
+
+	env := envOverride(map[string]any{
+		"DISCARD_TEST_TEST_ENTID": idmap,
+		"DISCARD_TEST_LIVE":      "FALSE",
+		"DISCARD_TEST_EXPLAIN":   "FALSE",
+		"DISCARD_APIKEY":         "NONE",
+	})
+
+	idmapResolved := core.ToMapAny(env["DISCARD_TEST_TEST_ENTID"])
+	if idmapResolved == nil {
+		idmapResolved = core.ToMapAny(idmap)
+	}
+
+	if env["DISCARD_TEST_LIVE"] == "TRUE" {
+		mergedOpts := vs.Merge([]any{
+			map[string]any{
+				"apikey": env["DISCARD_APIKEY"],
+			},
+			extra,
+		})
+		client = sdk.NewDiscardSDK(core.ToMapAny(mergedOpts))
+	}
+
+	live := env["DISCARD_TEST_LIVE"] == "TRUE"
+	return &entityTestSetup{
+		client:        client,
+		data:          entityData,
+		idmap:         idmapResolved,
+		env:           env,
+		explain:       env["DISCARD_TEST_EXPLAIN"] == "TRUE",
+		live:          live,
+		syntheticOnly: live && !idmapOverridden,
+		now:           time.Now().UnixMilli(),
+	}
+}

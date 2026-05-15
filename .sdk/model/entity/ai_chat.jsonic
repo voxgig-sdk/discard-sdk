@@ -1,0 +1,58 @@
+# Entity: ai_chat
+
+main: kit: entity: ai_chat: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "context"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "message"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "response"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "timestamp"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "ai_chat"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/chat"
+          parts: [
+            "api"
+            "chat"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

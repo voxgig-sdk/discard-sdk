@@ -1,0 +1,18 @@
+# BasicAiChatFlow
+
+main: kit: flow: BasicAiChatFlow:
+{
+  entity: "ai_chat",
+  kind: "basic",
+  name: "BasicAiChatFlow",
+  step: [
+    {
+      input: {
+        ref: "ai_chat_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicAiChatFlow"
+}

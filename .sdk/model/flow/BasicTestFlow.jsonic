@@ -1,0 +1,64 @@
+# BasicTestFlow
+
+main: kit: flow: BasicTestFlow:
+{
+  entity: "test",
+  kind: "basic",
+  name: "BasicTestFlow",
+  step: [
+    {
+      input: {
+        ref: "test_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "test_ref01",
+        srcdatavar: "test_ref01_data",
+        suffix: "_up0",
+        textfield: "message"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-test_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "test_ref01",
+        srcdatavar: "test_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-test_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "test_ref01",
+        suffix: "_rm0"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicTestFlow"
+}

@@ -1,0 +1,33 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 4
+  metrics: count: method: 8
+
+  entity: ai_chat: {
+    path: "/api/chat": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: test: {
+    path: "/api/test": {
+      op: create: method: *POST
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: testing: {
+    path: "/api/analytics": {
+      op: load: method: *GET
+    }
+    path: "/api/upload": {
+      op: create: method: *POST
+    }
+  }
+
+}
