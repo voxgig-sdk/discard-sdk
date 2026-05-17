@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/discard-sdk/core"
+	"github.com/voxgig-sdk/discard-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/discard-sdk/go/utility/struct"
 )
 
 type TestingEntity struct {

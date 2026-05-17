@@ -6,21 +6,24 @@
         "message": "s33",
         "response": "s34",
         "status": "s35",
-        "timestamp": "s36"
+        "timestamp": "s36",
+        "id": "AI_CHAT00"
       },
       "AI_CHAT01": {
         "context": [],
         "message": "s65",
         "response": "s66",
         "status": "s67",
-        "timestamp": "s68"
+        "timestamp": "s68",
+        "id": "AI_CHAT01"
       },
       "AI_CHAT02": {
         "context": [],
         "message": "s97",
         "response": "s98",
         "status": "s99",
-        "timestamp": "s9a"
+        "timestamp": "s9a",
+        "id": "AI_CHAT02"
       }
     }
   },

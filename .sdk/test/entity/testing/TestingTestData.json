@@ -7,7 +7,8 @@
         "message": "s3e",
         "size": "s3f",
         "status": "s40",
-        "timestamp": "s41"
+        "timestamp": "s41",
+        "id": "TESTING00"
       },
       "TESTING01": {
         "data": {},
@@ -15,7 +16,8 @@
         "message": "s7a",
         "size": "s7b",
         "status": "s7c",
-        "timestamp": "s7d"
+        "timestamp": "s7d",
+        "id": "TESTING01"
       },
       "TESTING02": {
         "data": {},
@@ -23,7 +25,8 @@
         "message": "sb6",
         "size": "sb7",
         "status": "sb8",
-        "timestamp": "sb9"
+        "timestamp": "sb9",
+        "id": "TESTING02"
       }
     }
   },

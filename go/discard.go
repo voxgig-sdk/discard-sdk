@@ -1,10 +1,10 @@
 package voxgigdiscardsdk
 
 import (
-	"github.com/voxgig-sdk/discard-sdk/core"
-	"github.com/voxgig-sdk/discard-sdk/entity"
-	"github.com/voxgig-sdk/discard-sdk/feature"
-	_ "github.com/voxgig-sdk/discard-sdk/utility"
+	"github.com/voxgig-sdk/discard-sdk/go/core"
+	"github.com/voxgig-sdk/discard-sdk/go/entity"
+	"github.com/voxgig-sdk/discard-sdk/go/feature"
+	_ "github.com/voxgig-sdk/discard-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

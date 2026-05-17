@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/discard-sdk"
-	"github.com/voxgig-sdk/discard-sdk/core"
+	sdk "github.com/voxgig-sdk/discard-sdk/go"
+	"github.com/voxgig-sdk/discard-sdk/go/core"
 )
 
 func TestTestDirect(t *testing.T) {

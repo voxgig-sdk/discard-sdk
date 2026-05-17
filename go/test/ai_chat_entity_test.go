@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/discard-sdk"
-	"github.com/voxgig-sdk/discard-sdk/core"
+	sdk "github.com/voxgig-sdk/discard-sdk/go"
+	"github.com/voxgig-sdk/discard-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/discard-sdk/go/utility/struct"
 )
 
 func TestAiChatEntity(t *testing.T) {
