@@ -67,14 +67,12 @@ function test_direct_setup($mockres)
     $env = Runner::env_override([
         "DISCARD_TEST_TEST_ENTID" => [],
         "DISCARD_TEST_LIVE" => "FALSE",
-        "DISCARD_APIKEY" => "NONE",
     ]);
 
     $live = $env["DISCARD_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["DISCARD_APIKEY"],
         ];
         $client = new DiscardSDK($merged_opts);
         return [

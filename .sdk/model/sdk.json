@@ -17,7 +17,17 @@
           }
         ],
         "title": "DISCARD API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "REST API playground with LLM chat, image editing, news, search and download endpoints, built in Go",
+        "homepage": "https://discardapi.dpdns.org",
+        "docs_url": "https://discardapi.dpdns.org",
+        "about_md": "DISCARD API is a public REST API platform maintained by [GlobalTechInfo](https://github.com/GlobalTechInfo/discard-api). It is built in Go on top of the Fiber web framework and exposes a large catalogue of utility endpoints aimed at developers who want to experiment with HTTP requests, AI chat, and media tooling without standing up their own backend.\n\nWhat you get from the API:\n- A broad collection of REST endpoints covering LLM / AI chat, image editing (Ephoto 360), news aggregation, search, download and generation utilities\n- Support for the usual HTTP verbs (GET, POST, PUT, PATCH, DELETE) with parameter forms for quick testing\n- File uploads and JSON request bodies for endpoints that need them\n- Usage analytics and a changelog surfaced from the project's own dashboard\n\nOperational notes: the service is listed on [Free Public APIs](https://freepublicapis.com/discard-api), which reports it as healthy on daily checks. CORS is disabled, so browser-side calls from another origin will need a proxy. No authentication or published rate-limit policy is documented on the homepage or catalogue listing.",
+        "entity_desc": {
+          "ai_chat": "LLM-backed chat endpoints exposed by the platform's AI Chat category for sending prompts and receiving model responses.",
+          "test": "Generic HTTP test endpoints used to exercise GET/POST/PUT/PATCH/DELETE behaviour with parameter forms and JSON bodies.",
+          "testing": "Related testing and diagnostic endpoints surfaced alongside the platform's request-builder tooling."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "ai_chat": {
