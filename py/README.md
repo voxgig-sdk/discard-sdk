@@ -10,7 +10,7 @@ The Python SDK for the Discard API — an entity-oriented client following Pytho
 
 ## Install
 ```bash
-pip install discard-sdk
+pip install voxgig-sdk-discard
 ```
 
 Or install from source:

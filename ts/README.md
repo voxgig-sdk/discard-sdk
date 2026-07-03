@@ -10,7 +10,7 @@ The TypeScript SDK for the Discard API — a type-safe, entity-oriented client w
 
 ## Install
 ```bash
-npm install discard
+npm install @voxgig-sdk/discard
 ```
 ## Tutorial: your first API call
 

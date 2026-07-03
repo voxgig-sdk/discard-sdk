@@ -10,7 +10,7 @@ The PHP SDK for the Discard API — an entity-oriented client using PHP conventi
 
 ## Install
 ```bash
-composer require voxgig/discard-sdk
+composer require voxgig-sdk/discard
 ```
 
 

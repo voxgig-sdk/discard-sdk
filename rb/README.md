@@ -10,13 +10,13 @@ The Ruby SDK for the Discard API — an entity-oriented client using idiomatic R
 
 ## Install
 ```bash
-gem install discard-sdk
+gem install voxgig-sdk-discard
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "discard-sdk"
+gem "voxgig-sdk-discard"
 ```
 
 Then run:
