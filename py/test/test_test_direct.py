@@ -59,12 +59,14 @@ def _test_direct_setup(mockres):
     env = runner.env_override({
         "DISCARD_TEST_TEST_ENTID": {},
         "DISCARD_TEST_LIVE": "FALSE",
+        "DISCARD_APIKEY": "NONE",
     })
 
     live = env.get("DISCARD_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("DISCARD_APIKEY"),
         }
         client = DiscardSDK(merged_opts)
         return {

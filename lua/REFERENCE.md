@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -112,9 +112,9 @@ local ai_chat = client:AiChat(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:AiChat(nil):create({
+local result, err = client:AiChat():create({
   message = --[[ `$STRING` ]],
-}, nil)
+})
 ```
 
 ### Common Methods
@@ -172,8 +172,8 @@ local test = client:Test(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Test(nil):create({
-}, nil)
+local result, err = client:Test():create({
+})
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -181,7 +181,7 @@ local result, err = client:Test(nil):create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Test(nil):load({ id = "test_id" }, nil)
+local result, err = client:Test():load({ id = "test_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -189,7 +189,7 @@ local result, err = client:Test(nil):load({ id = "test_id" }, nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Test(nil):remove({ id = "test_id" }, nil)
+local result, err = client:Test():remove({ id = "test_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -197,10 +197,10 @@ local result, err = client:Test(nil):remove({ id = "test_id" }, nil)
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:Test(nil):update({
+local result, err = client:Test():update({
   id = "test_id",
   -- Fields to update
-}, nil)
+})
 ```
 
 ### Common Methods
@@ -257,8 +257,8 @@ local testing = client:Testing(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Testing(nil):create({
-}, nil)
+local result, err = client:Testing():create({
+})
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -266,7 +266,7 @@ local result, err = client:Testing(nil):create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Testing(nil):load({ id = "testing_id" }, nil)
+local result, err = client:Testing():load({ id = "testing_id" })
 ```
 
 ### Common Methods

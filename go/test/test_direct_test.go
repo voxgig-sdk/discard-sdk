@@ -99,12 +99,14 @@ func testDirectSetup(mockres any) *testDirectSetupResult {
 	env := envOverride(map[string]any{
 		"DISCARD_TEST_TEST_ENTID": map[string]any{},
 		"DISCARD_TEST_LIVE":    "FALSE",
+		"DISCARD_APIKEY":       "NONE",
 	})
 
 	live := env["DISCARD_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["DISCARD_APIKEY"],
 		}
 		client := sdk.NewDiscardSDK(mergedOpts)
 

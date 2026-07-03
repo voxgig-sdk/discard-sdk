@@ -62,12 +62,14 @@ function testing_direct_setup(mockres)
   local env = runner.env_override({
     ["DISCARD_TEST_TESTING_ENTID"] = {},
     ["DISCARD_TEST_LIVE"] = "FALSE",
+    ["DISCARD_APIKEY"] = "NONE",
   })
 
   local live = env["DISCARD_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["DISCARD_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

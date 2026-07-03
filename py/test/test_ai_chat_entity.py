@@ -87,6 +87,7 @@ def _ai_chat_basic_setup(extra):
         "DISCARD_TEST_AI_CHAT_ENTID": idmap,
         "DISCARD_TEST_LIVE": "FALSE",
         "DISCARD_TEST_EXPLAIN": "FALSE",
+        "DISCARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -97,6 +98,7 @@ def _ai_chat_basic_setup(extra):
     if env.get("DISCARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("DISCARD_APIKEY"),
             },
             extra or {},
         ])

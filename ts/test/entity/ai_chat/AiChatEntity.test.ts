@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'DISCARD_TEST_AI_CHAT_ENTID': idmap,
     'DISCARD_TEST_LIVE': 'FALSE',
     'DISCARD_TEST_EXPLAIN': 'FALSE',
+    'DISCARD_APIKEY': 'NONE',
   })
 
   idmap = env['DISCARD_TEST_AI_CHAT_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new DiscardSDK(merge([
       {
+        apikey: env.DISCARD_APIKEY,
       },
       extra
     ]))

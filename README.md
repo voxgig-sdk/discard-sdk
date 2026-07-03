@@ -1,20 +1,8 @@
 # Discard SDK
 
-REST API playground with LLM chat, image editing, news, search and download endpoints, built in Go
+DISCARD API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About DISCARD API
-
-DISCARD API is a public REST API platform maintained by [GlobalTechInfo](https://github.com/GlobalTechInfo/discard-api). It is built in Go on top of the Fiber web framework and exposes a large catalogue of utility endpoints aimed at developers who want to experiment with HTTP requests, AI chat, and media tooling without standing up their own backend.
-
-What you get from the API:
-- A broad collection of REST endpoints covering LLM / AI chat, image editing (Ephoto 360), news aggregation, search, download and generation utilities
-- Support for the usual HTTP verbs (GET, POST, PUT, PATCH, DELETE) with parameter forms for quick testing
-- File uploads and JSON request bodies for endpoints that need them
-- Usage analytics and a changelog surfaced from the project's own dashboard
-
-Operational notes: the service is listed on [Free Public APIs](https://freepublicapis.com/discard-api), which reports it as healthy on daily checks. CORS is disabled, so browser-side calls from another origin will need a proxy. No authentication or published rate-limit policy is documented on the homepage or catalogue listing.
 
 ## Try it
 
@@ -48,27 +36,28 @@ gem install discard-sdk
 luarocks install discard-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { DiscardSDK } from 'discard'
 
-const client = new DiscardSDK({})
+const client = new DiscardSDK({
+  apikey: process.env.DISCARD_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,9 +87,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **AiChat** | LLM-backed chat endpoints exposed by the platform's AI Chat category for sending prompts and receiving model responses. | `/api/chat` |
-| **Test** | Generic HTTP test endpoints used to exercise GET/POST/PUT/PATCH/DELETE behaviour with parameter forms and JSON bodies. | `/api/test` |
-| **Testing** | Related testing and diagnostic endpoints surfaced alongside the platform's request-builder tooling. | `/api/upload` |
+| **AiChat** |  | `/api/chat` |
+| **Test** |  | `/api/test` |
+| **Testing** |  | `/api/upload` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,9 +99,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from discard_sdk import DiscardSDK
 
-client = DiscardSDK({})
+client = DiscardSDK({
+    "apikey": os.environ.get("DISCARD_APIKEY"),
+})
 
 ```
 
@@ -122,7 +114,9 @@ client = DiscardSDK({})
 <?php
 require_once 'discard_sdk.php';
 
-$client = new DiscardSDK([]);
+$client = new DiscardSDK([
+    "apikey" => getenv("DISCARD_APIKEY"),
+]);
 
 ```
 
@@ -131,7 +125,9 @@ $client = new DiscardSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/discard-sdk/go"
 
-client := sdk.NewDiscardSDK(map[string]any{})
+client := sdk.NewDiscardSDK(map[string]any{
+    "apikey": os.Getenv("DISCARD_APIKEY"),
+})
 
 ```
 
@@ -140,7 +136,9 @@ client := sdk.NewDiscardSDK(map[string]any{})
 ```ruby
 require_relative "Discard_sdk"
 
-client = DiscardSDK.new({})
+client = DiscardSDK.new({
+  "apikey" => ENV["DISCARD_APIKEY"],
+})
 
 ```
 
@@ -149,7 +147,9 @@ client = DiscardSDK.new({})
 ```lua
 local sdk = require("discard_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("DISCARD_APIKEY"),
+})
 
 ```
 
@@ -169,25 +169,21 @@ const result = await client.AiChat().load({ id: 'test01' })
 ### Python
 
 ```python
-client = DiscardSDK.test(None, None)
-result, err = client.AiChat(None).load(
-    {"id": "test01"}, None
-)
+client = DiscardSDK.test()
+result, err = client.AiChat().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = DiscardSDK::test(null, null);
-[$result, $err] = $client->AiChat(null)->load(
-    ["id" => "test01"], null
-);
+$client = DiscardSDK::test();
+[$result, $err] = $client->AiChat()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.AiChat(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -196,19 +192,15 @@ result, err := client.AiChat(nil).Load(
 ### Ruby
 
 ```ruby
-client = DiscardSDK.test(nil, nil)
-result, err = client.AiChat(nil).load(
-  { "id" => "test01" }, nil
-)
+client = DiscardSDK.test
+result, err = client.AiChat().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:AiChat(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:AiChat():load({ id = "test01" })
 ```
 
 ## How it works
@@ -312,10 +304,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the DISCARD API
-
-- Upstream: [https://discardapi.dpdns.org](https://discardapi.dpdns.org)
 
 ---
 

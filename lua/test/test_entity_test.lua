@@ -120,6 +120,7 @@ function test_basic_setup(extra)
     ["DISCARD_TEST_TEST_ENTID"] = idmap,
     ["DISCARD_TEST_LIVE"] = "FALSE",
     ["DISCARD_TEST_EXPLAIN"] = "FALSE",
+    ["DISCARD_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -131,6 +132,7 @@ function test_basic_setup(extra)
   if env["DISCARD_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["DISCARD_APIKEY"],
       },
       extra or {},
     })
