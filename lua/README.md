@@ -35,7 +35,8 @@ local client = sdk.new()
 
 ```lua
 -- Create
-local created, _ = client:aichat():create({ name = "Example" })
+local created, err = client:AiChat():create({ name = "Example" })
+if err then error(err) end
 
 ```
 
@@ -82,8 +83,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:aichat():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:AiChat():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,7 +162,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `AiChat` | `(data) -> AiChatEntity` | Create a AiChat entity instance. |
+| `AiChat` | `(data) -> AiChatEntity` | Create an AiChat entity instance. |
 | `Test` | `(data) -> TestEntity` | Create a Test entity instance. |
 | `Testing` | `(data) -> TestingEntity` | Create a Testing entity instance. |
 
@@ -185,17 +186,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local ai_chat, err = client:AiChat():load({ id = "example_id" })
+    if err then error(err) end
+    -- ai_chat is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -251,7 +257,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `const ai_chat = client.ai_chat`
+Create an instance: `local ai_chat = client:AiChat(nil)`
 
 #### Operations
 
@@ -271,16 +277,16 @@ Create an instance: `const ai_chat = client.ai_chat`
 
 #### Example: Create
 
-```ts
-const ai_chat = await client.ai_chat.create({
-  message: /* `$STRING` */,
+```lua
+local ai_chat, err = client:AiChat():create({
+  message = nil, -- `$STRING`
 })
 ```
 
 
 ### Test
 
-Create an instance: `const test = client.test`
+Create an instance: `local test = client:Test(nil)`
 
 #### Operations
 
@@ -305,21 +311,21 @@ Create an instance: `const test = client.test`
 
 #### Example: Load
 
-```ts
-const test = await client.test.load({ id: 'test_id' })
+```lua
+local test, err = client:Test():load({ id = "test_id" })
 ```
 
 #### Example: Create
 
-```ts
-const test = await client.test.create({
+```lua
+local test, err = client:Test():create({
 })
 ```
 
 
 ### Testing
 
-Create an instance: `const testing = client.testing`
+Create an instance: `local testing = client:Testing(nil)`
 
 #### Operations
 
@@ -341,14 +347,14 @@ Create an instance: `const testing = client.testing`
 
 #### Example: Load
 
-```ts
-const testing = await client.testing.load({ id: 'testing_id' })
+```lua
+local testing, err = client:Testing():load({ id = "testing_id" })
 ```
 
 #### Example: Create
 
-```ts
-const testing = await client.testing.create({
+```lua
+local testing, err = client:Testing():create({
 })
 ```
 
@@ -424,7 +430,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local aichat = client:aichat()
+local aichat = client:AiChat()
 aichat:load({ id = "example_id" })
 
 -- aichat:data_get() now returns the loaded aichat data

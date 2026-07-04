@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## AiChatEntity
 
 ```ruby
-ai_chat = client.ai_chat
+ai_chat = client.AiChat
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ ai_chat = client.ai_chat
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.ai_chat.create({
+result = client.AiChat.create({
   "message" => # `$STRING`,
 })
 ```
@@ -152,7 +152,7 @@ Return the entity name.
 ## TestEntity
 
 ```ruby
-test = client.test
+test = client.Test
 ```
 
 ### Fields
@@ -174,7 +174,7 @@ test = client.test
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.test.create({
+result = client.Test.create({
 })
 ```
 
@@ -183,7 +183,7 @@ result = client.test.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.test.load({ "id" => "test_id" })
+result = client.Test.load({ "id" => "test_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -191,7 +191,7 @@ result = client.test.load({ "id" => "test_id" })
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.test.remove({ "id" => "test_id" })
+result = client.Test.remove({ "id" => "test_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -199,7 +199,7 @@ result = client.test.remove({ "id" => "test_id" })
 Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result = client.test.update({
+result = client.Test.update({
   "id" => "test_id",
   # Fields to update
 })
@@ -238,7 +238,7 @@ Return the entity name.
 ## TestingEntity
 
 ```ruby
-testing = client.testing
+testing = client.Testing
 ```
 
 ### Fields
@@ -259,7 +259,7 @@ testing = client.testing
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.testing.create({
+result = client.Testing.create({
 })
 ```
 
@@ -268,7 +268,7 @@ result = client.testing.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.testing.load({ "id" => "testing_id" })
+result = client.Testing.load({ "id" => "testing_id" })
 ```
 
 ### Common Methods

@@ -233,10 +233,10 @@ class DiscardSDK
 
     private $_ai_chat = null;
 
-    // Idiomatic facade: $client->ai_chat()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias AiChat() (PHP method
-    // names are case-insensitive).
-    public function ai_chat($data = null)
+    // Canonical facade: $client->AiChat()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ai_chat()
+    // resolves here too.
+    public function AiChat($data = null)
     {
         require_once __DIR__ . '/entity/ai_chat_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class DiscardSDK
 
     private $_test = null;
 
-    // Idiomatic facade: $client->test_()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Test() (PHP method
-    // names are case-insensitive).
-    public function test_($data = null)
+    // Canonical facade: $client->Test_()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->test()
+    // resolves here too.
+    public function Test_($data = null)
     {
         require_once __DIR__ . '/entity/test_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class DiscardSDK
 
     private $_testing = null;
 
-    // Idiomatic facade: $client->testing()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Testing() (PHP method
-    // names are case-insensitive).
-    public function testing($data = null)
+    // Canonical facade: $client->Testing()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->testing()
+    // resolves here too.
+    public function Testing($data = null)
     {
         require_once __DIR__ . '/entity/testing_entity.php';
         if ($data === null) {

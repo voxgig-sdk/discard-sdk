@@ -32,8 +32,8 @@ $client = new DiscardSDK();
 ### 4. Create, update, and remove
 
 ```php
-// Create
-$created = $client->aichat()->create(["name" => "Example"]);
+// create() returns the bare created AiChat record.
+$created = $client->AiChat()->create(["name" => "Example"]);
 
 ```
 
@@ -78,13 +78,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = DiscardSDK::test();
+$client = DiscardSDK::test([
+    "entity" => ["aichat" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->aichat()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$aichat = $client->AiChat()->load(["id" => "test01"]);
+print_r($aichat);
 ```
 
 ### Use a custom fetch function
@@ -163,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `AiChat` | `($data): AiChatEntity` | Create a AiChat entity instance. |
+| `AiChat` | `($data): AiChatEntity` | Create an AiChat entity instance. |
 | `Test` | `($data): TestEntity` | Create a Test entity instance. |
 | `Testing` | `($data): TestingEntity` | Create a Testing entity instance. |
 
@@ -257,7 +261,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `const ai_chat = client.ai_chat`
+Create an instance: `$ai_chat = $client->AiChat();`
 
 #### Operations
 
@@ -277,16 +281,16 @@ Create an instance: `const ai_chat = client.ai_chat`
 
 #### Example: Create
 
-```ts
-const ai_chat = await client.ai_chat.create({
-  message: /* `$STRING` */,
-})
+```php
+$ai_chat = $client->AiChat()->create([
+    "message" => null, // `$STRING`
+]);
 ```
 
 
 ### Test
 
-Create an instance: `const test = client.test`
+Create an instance: `$test = $client->Test();`
 
 #### Operations
 
@@ -311,21 +315,22 @@ Create an instance: `const test = client.test`
 
 #### Example: Load
 
-```ts
-const test = await client.test.load({ id: 'test_id' })
+```php
+// load() returns the bare Test record (throws on error).
+$test = $client->Test()->load(["id" => "test_id"]);
 ```
 
 #### Example: Create
 
-```ts
-const test = await client.test.create({
-})
+```php
+$test = $client->Test()->create([
+]);
 ```
 
 
 ### Testing
 
-Create an instance: `const testing = client.testing`
+Create an instance: `$testing = $client->Testing();`
 
 #### Operations
 
@@ -347,15 +352,16 @@ Create an instance: `const testing = client.testing`
 
 #### Example: Load
 
-```ts
-const testing = await client.testing.load({ id: 'testing_id' })
+```php
+// load() returns the bare Testing record (throws on error).
+$testing = $client->Testing()->load(["id" => "testing_id"]);
 ```
 
 #### Example: Create
 
-```ts
-const testing = await client.testing.create({
-})
+```php
+$testing = $client->Testing()->create([
+]);
 ```
 
 
@@ -430,7 +436,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$aichat = $client->aichat();
+$aichat = $client->AiChat();
 $aichat->load(["id" => "example_id"]);
 
 // $aichat->dataGet() now returns the loaded aichat data

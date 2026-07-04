@@ -208,39 +208,21 @@ class DiscardSDK
   end
 
 
-  # Idiomatic facade: client.ai_chat.list / client.ai_chat.load({ "id" => ... })
-  def ai_chat
-    require_relative 'entity/ai_chat_entity'
-    @ai_chat ||= AiChatEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ai_chat instead.
+  # Canonical facade: client.AiChat.list / client.AiChat.load({ "id" => ... })
   def AiChat(data = nil)
     require_relative 'entity/ai_chat_entity'
     AiChatEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.test.list / client.test.load({ "id" => ... })
-  def test
-    require_relative 'entity/test_entity'
-    @test ||= TestEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.test instead.
+  # Canonical facade: client.Test.list / client.Test.load({ "id" => ... })
   def Test(data = nil)
     require_relative 'entity/test_entity'
     TestEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.testing.list / client.testing.load({ "id" => ... })
-  def testing
-    require_relative 'entity/testing_entity'
-    @testing ||= TestingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.testing instead.
+  # Canonical facade: client.Testing.list / client.Testing.load({ "id" => ... })
   def Testing(data = nil)
     require_relative 'entity/testing_entity'
     TestingEntity.new(self, data)

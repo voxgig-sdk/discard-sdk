@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AiChatEntity
 
 ```python
-ai_chat = client.ai_chat
+ai_chat = client.AiChat()
 ```
 
 ### Fields
@@ -108,8 +108,8 @@ ai_chat = client.ai_chat
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.ai_chat.create({
-    "message": # `$STRING`,
+result = client.AiChat().create({
+    "message": ...,  # `$STRING`
 })
 ```
 
@@ -145,7 +145,7 @@ Return the entity name.
 ## TestEntity
 
 ```python
-test = client.test
+test = client.Test()
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ test = client.test
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.test.create({
+result = client.Test().create({
 })
 ```
 
@@ -176,7 +176,7 @@ result = client.test.create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.test.load({"id": "test_id"})
+result = client.Test().load({"id": "test_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -184,7 +184,7 @@ result = client.test.load({"id": "test_id"})
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.test.remove({"id": "test_id"})
+result = client.Test().remove({"id": "test_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -192,7 +192,7 @@ result = client.test.remove({"id": "test_id"})
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.test.update({
+result = client.Test().update({
     "id": "test_id",
     # Fields to update
 })
@@ -230,7 +230,7 @@ Return the entity name.
 ## TestingEntity
 
 ```python
-testing = client.testing
+testing = client.Testing()
 ```
 
 ### Fields
@@ -251,7 +251,7 @@ testing = client.testing
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.testing.create({
+result = client.Testing().create({
 })
 ```
 
@@ -260,7 +260,7 @@ result = client.testing.create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.testing.load({"id": "testing_id"})
+result = client.Testing().load({"id": "testing_id"})
 ```
 
 ### Common Methods

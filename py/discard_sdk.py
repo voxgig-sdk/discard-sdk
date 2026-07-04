@@ -220,57 +220,27 @@ class DiscardSDK:
         }
 
 
-    @property
-    def ai_chat(self):
-        """Idiomatic facade: client.ai_chat.list() / client.ai_chat.load({"id": ...})."""
-        from entity.ai_chat_entity import AiChatEntity
-        cached = getattr(self, "_ai_chat", None)
-        if cached is None:
-            cached = AiChatEntity(self, None)
-            self._ai_chat = cached
-        return cached
-
-    def AiChat(self, data=None):
-        # Deprecated: use client.ai_chat instead.
+    def AiChat(self, data=None) -> "AiChatEntity":
+        """Entity factory: client.AiChat().list({}) / client.AiChat().load({"id": ...})."""
         from entity.ai_chat_entity import AiChatEntity
         return AiChatEntity(self, data)
 
 
-    @property
-    def test(self):
-        """Idiomatic facade: client.test.list() / client.test.load({"id": ...})."""
-        from entity.test_entity import TestEntity
-        cached = getattr(self, "_test", None)
-        if cached is None:
-            cached = TestEntity(self, None)
-            self._test = cached
-        return cached
-
-    def Test(self, data=None):
-        # Deprecated: use client.test instead.
+    def Test(self, data=None) -> "TestEntity":
+        """Entity factory: client.Test().list({}) / client.Test().load({"id": ...})."""
         from entity.test_entity import TestEntity
         return TestEntity(self, data)
 
 
-    @property
-    def testing(self):
-        """Idiomatic facade: client.testing.list() / client.testing.load({"id": ...})."""
-        from entity.testing_entity import TestingEntity
-        cached = getattr(self, "_testing", None)
-        if cached is None:
-            cached = TestingEntity(self, None)
-            self._testing = cached
-        return cached
-
-    def Testing(self, data=None):
-        # Deprecated: use client.testing instead.
+    def Testing(self, data=None) -> "TestingEntity":
+        """Entity factory: client.Testing().list({}) / client.Testing().load({"id": ...})."""
         from entity.testing_entity import TestingEntity
         return TestingEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "DiscardSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class DiscardSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.ai_chat_entity import AiChatEntity
+    from entity.test_entity import TestEntity
+    from entity.testing_entity import TestingEntity

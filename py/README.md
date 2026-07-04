@@ -34,8 +34,8 @@ client = DiscardSDK()
 ### 4. Create, update, and remove
 
 ```python
-# Create
-created = client.aichat.create({"name": "Example"})
+# Create — returns the bare created record (a dict)
+created = client.AiChat().create({"name": "Example"})
 
 ```
 
@@ -82,8 +82,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DiscardSDK.test()
 
-result = client.aichat.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+aichat = client.AiChat().load({"id": "test01"})
+# aichat contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -159,7 +160,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `AiChat` | `(data) -> AiChatEntity` | Create a AiChat entity instance. |
+| `AiChat` | `(data) -> AiChatEntity` | Create an AiChat entity instance. |
 | `Test` | `(data) -> TestEntity` | Create a Test entity instance. |
 | `Testing` | `(data) -> TestingEntity` | Create a Testing entity instance. |
 
@@ -253,7 +254,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `const ai_chat = client.ai_chat`
+Create an instance: `ai_chat = client.AiChat()`
 
 #### Operations
 
@@ -273,16 +274,16 @@ Create an instance: `const ai_chat = client.ai_chat`
 
 #### Example: Create
 
-```ts
-const ai_chat = await client.ai_chat.create({
-  message: /* `$STRING` */,
+```python
+ai_chat = client.AiChat().create({
+    "message": ...,  # `$STRING`
 })
 ```
 
 
 ### Test
 
-Create an instance: `const test = client.test`
+Create an instance: `test = client.Test()`
 
 #### Operations
 
@@ -307,21 +308,21 @@ Create an instance: `const test = client.test`
 
 #### Example: Load
 
-```ts
-const test = await client.test.load({ id: 'test_id' })
+```python
+test = client.Test().load({"id": "test_id"})
 ```
 
 #### Example: Create
 
-```ts
-const test = await client.test.create({
+```python
+test = client.Test().create({
 })
 ```
 
 
 ### Testing
 
-Create an instance: `const testing = client.testing`
+Create an instance: `testing = client.Testing()`
 
 #### Operations
 
@@ -343,14 +344,14 @@ Create an instance: `const testing = client.testing`
 
 #### Example: Load
 
-```ts
-const testing = await client.testing.load({ id: 'testing_id' })
+```python
+testing = client.Testing().load({"id": "testing_id"})
 ```
 
 #### Example: Create
 
-```ts
-const testing = await client.testing.create({
+```python
+testing = client.Testing().create({
 })
 ```
 
@@ -425,7 +426,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-aichat = client.aichat
+aichat = client.AiChat()
 aichat.load({"id": "example_id"})
 
 # aichat.data_get() now returns the loaded aichat data

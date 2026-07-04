@@ -4,112 +4,109 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class AiChat:
+class AiChatRequired(TypedDict):
     message: str
-    context: Optional[list] = None
-    response: Optional[str] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
 
 
-@dataclass
-class AiChatCreateData:
-    context: Optional[list] = None
-    message: Optional[str] = None
-    response: Optional[str] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
+class AiChat(AiChatRequired, total=False):
+    context: list
+    response: str
+    status: str
+    timestamp: str
 
 
-@dataclass
-class Test:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    message: Optional[str] = None
-    received: Optional[dict] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
-    update: Optional[dict] = None
+class AiChatCreateData(TypedDict, total=False):
+    context: list
+    message: str
+    response: str
+    status: str
+    timestamp: str
 
 
-@dataclass
-class TestLoadMatch:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    message: Optional[str] = None
-    received: Optional[dict] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
-    update: Optional[dict] = None
+class Test(TypedDict, total=False):
+    data: dict
+    id: str
+    message: str
+    received: dict
+    status: str
+    timestamp: str
+    update: dict
 
 
-@dataclass
-class TestCreateData:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    message: Optional[str] = None
-    received: Optional[dict] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
-    update: Optional[dict] = None
+class TestLoadMatch(TypedDict, total=False):
+    data: dict
+    id: str
+    message: str
+    received: dict
+    status: str
+    timestamp: str
+    update: dict
 
 
-@dataclass
-class TestUpdateData:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    message: Optional[str] = None
-    received: Optional[dict] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
-    update: Optional[dict] = None
+class TestCreateData(TypedDict, total=False):
+    data: dict
+    id: str
+    message: str
+    received: dict
+    status: str
+    timestamp: str
+    update: dict
 
 
-@dataclass
-class TestRemoveMatch:
-    data: Optional[dict] = None
-    id: Optional[str] = None
-    message: Optional[str] = None
-    received: Optional[dict] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
-    update: Optional[dict] = None
+class TestUpdateData(TypedDict, total=False):
+    data: dict
+    id: str
+    message: str
+    received: dict
+    status: str
+    timestamp: str
+    update: dict
 
 
-@dataclass
-class Testing:
-    data: Optional[dict] = None
-    filename: Optional[str] = None
-    message: Optional[str] = None
-    size: Optional[int] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
+class TestRemoveMatch(TypedDict, total=False):
+    data: dict
+    id: str
+    message: str
+    received: dict
+    status: str
+    timestamp: str
+    update: dict
 
 
-@dataclass
-class TestingLoadMatch:
-    data: Optional[dict] = None
-    filename: Optional[str] = None
-    message: Optional[str] = None
-    size: Optional[int] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
+class Testing(TypedDict, total=False):
+    data: dict
+    filename: str
+    message: str
+    size: int
+    status: str
+    timestamp: str
 
 
-@dataclass
-class TestingCreateData:
-    data: Optional[dict] = None
-    filename: Optional[str] = None
-    message: Optional[str] = None
-    size: Optional[int] = None
-    status: Optional[str] = None
-    timestamp: Optional[str] = None
+class TestingLoadMatch(TypedDict, total=False):
+    data: dict
+    filename: str
+    message: str
+    size: int
+    status: str
+    timestamp: str
 
+
+class TestingCreateData(TypedDict, total=False):
+    data: dict
+    filename: str
+    message: str
+    size: int
+    status: str
+    timestamp: str

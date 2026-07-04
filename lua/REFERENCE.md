@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## AiChatEntity
 
 ```lua
-local ai_chat = client:ai_chat(nil)
+local ai_chat = client:AiChat(nil)
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ local ai_chat = client:ai_chat(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:ai_chat():create({
+local result, err = client:AiChat():create({
   message = --[[ `$STRING` ]],
 })
 ```
@@ -149,7 +149,7 @@ Return the entity name.
 ## TestEntity
 
 ```lua
-local test = client:test(nil)
+local test = client:Test(nil)
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ local test = client:test(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:test():create({
+local result, err = client:Test():create({
 })
 ```
 
@@ -180,7 +180,7 @@ local result, err = client:test():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:test():load({ id = "test_id" })
+local result, err = client:Test():load({ id = "test_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -188,7 +188,7 @@ local result, err = client:test():load({ id = "test_id" })
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:test():remove({ id = "test_id" })
+local result, err = client:Test():remove({ id = "test_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -196,7 +196,7 @@ local result, err = client:test():remove({ id = "test_id" })
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:test():update({
+local result, err = client:Test():update({
   id = "test_id",
   -- Fields to update
 })
@@ -235,7 +235,7 @@ Return the entity name.
 ## TestingEntity
 
 ```lua
-local testing = client:testing(nil)
+local testing = client:Testing(nil)
 ```
 
 ### Fields
@@ -256,7 +256,7 @@ local testing = client:testing(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:testing():create({
+local result, err = client:Testing():create({
 })
 ```
 
@@ -265,7 +265,7 @@ local result, err = client:testing():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:testing():load({ id = "testing_id" })
+local result, err = client:Testing():load({ id = "testing_id" })
 ```
 
 ### Common Methods

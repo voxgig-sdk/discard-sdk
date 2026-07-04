@@ -133,7 +133,7 @@ Alias for `DiscardSDK.test()`.
 ## AiChatEntity
 
 ```ts
-const ai_chat = client.ai_chat
+const ai_chat = client.AiChat()
 ```
 
 ### Fields
@@ -153,7 +153,7 @@ const ai_chat = client.ai_chat
 Create a new entity with the given data.
 
 ```ts
-const result = await client.ai_chat.create({
+const result = await client.AiChat().create({
   message: /* `$STRING` */,
 })
 ```
@@ -189,7 +189,7 @@ Return a copy of the entity options.
 ## TestEntity
 
 ```ts
-const test = client.test
+const test = client.Test()
 ```
 
 ### Fields
@@ -211,7 +211,7 @@ const test = client.test
 Create a new entity with the given data.
 
 ```ts
-const result = await client.test.create({
+const result = await client.Test().create({
 })
 ```
 
@@ -220,7 +220,7 @@ const result = await client.test.create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.test.load({ id: 'test_id' })
+const result = await client.Test().load({ id: 'test_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -228,7 +228,7 @@ const result = await client.test.load({ id: 'test_id' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.test.remove({ id: 'test_id' })
+const result = await client.Test().remove({ id: 'test_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -236,7 +236,7 @@ const result = await client.test.remove({ id: 'test_id' })
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.test.update({
+const result = await client.Test().update({
   id: 'test_id',
   // Fields to update
 })
@@ -273,7 +273,7 @@ Return a copy of the entity options.
 ## TestingEntity
 
 ```ts
-const testing = client.testing
+const testing = client.Testing()
 ```
 
 ### Fields
@@ -294,7 +294,7 @@ const testing = client.testing
 Create a new entity with the given data.
 
 ```ts
-const result = await client.testing.create({
+const result = await client.Testing().create({
 })
 ```
 
@@ -303,7 +303,7 @@ const result = await client.testing.create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.testing.load({ id: 'testing_id' })
+const result = await client.Testing().load({ id: 'testing_id' })
 ```
 
 ### Common Methods

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:ai_chat():list() / client:ai_chat():load({ id = ... })
-function DiscardSDK:ai_chat(data)
+-- Idiomatic facade: client:AiChat():list() / client:AiChat():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DiscardSDK:AiChat(data)
   local EntityMod = require("entity.ai_chat_entity")
   if data == nil then
     if self._ai_chat == nil then
@@ -256,15 +257,10 @@ function DiscardSDK:ai_chat(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:ai_chat() instead.
-function DiscardSDK:AiChat(data)
-  local EntityMod = require("entity.ai_chat_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:test():list() / client:test():load({ id = ... })
-function DiscardSDK:test(data)
+-- Idiomatic facade: client:Test():list() / client:Test():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DiscardSDK:Test(data)
   local EntityMod = require("entity.test_entity")
   if data == nil then
     if self._test == nil then
@@ -275,15 +271,10 @@ function DiscardSDK:test(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:test() instead.
-function DiscardSDK:Test(data)
-  local EntityMod = require("entity.test_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:testing():list() / client:testing():load({ id = ... })
-function DiscardSDK:testing(data)
+-- Idiomatic facade: client:Testing():list() / client:Testing():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DiscardSDK:Testing(data)
   local EntityMod = require("entity.testing_entity")
   if data == nil then
     if self._testing == nil then
@@ -291,12 +282,6 @@ function DiscardSDK:testing(data)
     end
     return self._testing
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:testing() instead.
-function DiscardSDK:Testing(data)
-  local EntityMod = require("entity.testing_entity")
   return EntityMod.new(self, data)
 end
 
