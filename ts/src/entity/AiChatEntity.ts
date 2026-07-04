@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  AiChat,
+  AiChatCreateData,
+} from '../DiscardTypes'
 
 // TODO: needs Entity superclass
-class AiChatEntity extends DiscardEntityBase {
+class AiChatEntity extends DiscardEntityBase<AiChat> {
 
   constructor(client: DiscardSDK, entopts: any) {
     super(client, entopts)
@@ -34,7 +38,7 @@ class AiChatEntity extends DiscardEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: AiChatCreateData, ctrl?: Control): Promise<AiChat> {
 
     const utility = this._utility
     const {
@@ -133,7 +137,9 @@ class AiChatEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<AiChat> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

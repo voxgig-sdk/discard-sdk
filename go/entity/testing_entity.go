@@ -85,6 +85,27 @@ func (e *TestingEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Testing; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *TestingEntity) DataTyped(data ...Testing) Testing {
+	if len(data) > 0 {
+		return typedFrom[Testing](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Testing](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Testing (all fields
+// optional at the wire level).
+func (e *TestingEntity) MatchTyped(match ...Testing) Testing {
+	if len(match) > 0 {
+		return typedFrom[Testing](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Testing](e.Match())
+}
+
 
 func (e *TestingEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *TestingEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// TestingLoadMatch and returns an Testing. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *TestingEntity) LoadTyped(reqmatch TestingLoadMatch, ctrl map[string]any) (Testing, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Testing{}, err
+	}
+	return typedFrom[Testing](res), nil
 }
 
 
@@ -139,6 +171,17 @@ func (e *TestingEntity) Create(reqdata map[string]any, ctrl map[string]any) (any
 			}
 		}
 	})
+}
+
+// CreateTyped is the statically-typed variant of Create: it takes an
+// TestingCreateData and returns an Testing. It delegates to the untyped
+// Create (identical runtime) and converts at the typed boundary.
+func (e *TestingEntity) CreateTyped(reqdata TestingCreateData, ctrl map[string]any) (Testing, error) {
+	res, err := e.Create(asMap(reqdata), ctrl)
+	if err != nil {
+		return Testing{}, err
+	}
+	return typedFrom[Testing](res), nil
 }
 
 

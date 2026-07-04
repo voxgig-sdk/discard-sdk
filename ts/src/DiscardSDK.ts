@@ -4,6 +4,8 @@ import { AiChatEntity } from './entity/AiChatEntity'
 import { TestEntity } from './entity/TestEntity'
 import { TestingEntity } from './entity/TestingEntity'
 
+export type * from './DiscardTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class DiscardSDK {
 
 
 
+  _ai_chat?: AiChatEntity
+
+  // Idiomatic facade: `client.ai_chat.list()` / `client.ai_chat.load({ id })`.
+  get ai_chat(): AiChatEntity {
+    return (this._ai_chat ??= new AiChatEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.ai_chat` instead. */
   AiChat(data?: any) {
     const self = this
     return new AiChatEntity(self,data)
   }
 
 
+  _test?: TestEntity
+
+  // Idiomatic facade: `client.test.list()` / `client.test.load({ id })`.
+  get test(): TestEntity {
+    return (this._test ??= new TestEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.test` instead. */
   Test(data?: any) {
     const self = this
     return new TestEntity(self,data)
   }
 
 
+  _testing?: TestingEntity
+
+  // Idiomatic facade: `client.testing.list()` / `client.testing.load({ id })`.
+  get testing(): TestingEntity {
+    return (this._testing ??= new TestingEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.testing` instead. */
   Testing(data?: any) {
     const self = this
     return new TestingEntity(self,data)

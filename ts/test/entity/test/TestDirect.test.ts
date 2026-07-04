@@ -74,14 +74,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'DISCARD_TEST_TEST_ENTID': {},
     'DISCARD_TEST_LIVE': 'FALSE',
-    'DISCARD_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.DISCARD_TEST_LIVE
 
   if (live) {
     const client = new DiscardSDK({
-      apikey: env.DISCARD_APIKEY,
     })
 
     let idmap: any = env['DISCARD_TEST_TEST_ENTID']

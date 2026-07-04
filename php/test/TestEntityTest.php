@@ -43,8 +43,7 @@ class TestEntityTest extends TestCase
         $test_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.test"), "test_ref01"));
 
-        [$test_ref01_data_result, $err] = $test_ref01_ent->create($test_ref01_data, null);
-        $this->assertNull($err);
+        $test_ref01_data_result = $test_ref01_ent->create($test_ref01_data, null);
         $test_ref01_data = Helpers::to_map($test_ref01_data_result);
         $this->assertNotNull($test_ref01_data);
         $this->assertNotNull($test_ref01_data["id"]);
@@ -58,8 +57,7 @@ class TestEntityTest extends TestCase
         $test_ref01_markdef_up0_value = "Mark01-test_ref01_" . $setup["now"];
         $test_ref01_data_up0_up[$test_ref01_markdef_up0_name] = $test_ref01_markdef_up0_value;
 
-        [$test_ref01_resdata_up0_result, $err] = $test_ref01_ent->update($test_ref01_data_up0_up, null);
-        $this->assertNull($err);
+        $test_ref01_resdata_up0_result = $test_ref01_ent->update($test_ref01_data_up0_up, null);
         $test_ref01_resdata_up0 = Helpers::to_map($test_ref01_resdata_up0_result);
         $this->assertNotNull($test_ref01_resdata_up0);
         $this->assertEquals($test_ref01_resdata_up0["id"], $test_ref01_data_up0_up["id"]);
@@ -69,8 +67,7 @@ class TestEntityTest extends TestCase
         $test_ref01_match_dt0 = [
             "id" => $test_ref01_data["id"],
         ];
-        [$test_ref01_data_dt0_loaded, $err] = $test_ref01_ent->load($test_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $test_ref01_data_dt0_loaded = $test_ref01_ent->load($test_ref01_match_dt0, null);
         $test_ref01_data_dt0_load_result = Helpers::to_map($test_ref01_data_dt0_loaded);
         $this->assertNotNull($test_ref01_data_dt0_load_result);
         $this->assertEquals($test_ref01_data_dt0_load_result["id"], $test_ref01_data["id"]);
@@ -79,8 +76,7 @@ class TestEntityTest extends TestCase
         $test_ref01_match_rm0 = [
             "id" => $test_ref01_data["id"],
         ];
-        [$_, $err] = $test_ref01_ent->remove($test_ref01_match_rm0, null);
-        $this->assertNull($err);
+        $test_ref01_ent->remove($test_ref01_match_rm0, null);
 
     }
 }
@@ -114,7 +110,6 @@ function test_basic_setup($extra)
         "DISCARD_TEST_TEST_ENTID" => $idmap,
         "DISCARD_TEST_LIVE" => "FALSE",
         "DISCARD_TEST_EXPLAIN" => "FALSE",
-        "DISCARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -126,7 +121,6 @@ function test_basic_setup($extra)
     if ($env["DISCARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["DISCARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

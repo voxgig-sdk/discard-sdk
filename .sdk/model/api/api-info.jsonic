@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "DISCARD API Documentation"
         url: "https://discardapi.dpdns.org"

@@ -9,9 +9,10 @@ The PHP SDK for the Discard API — an entity-oriented client using PHP conventi
 
 
 ## Install
-```bash
-composer require voxgig-sdk/discard
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/discard-sdk/releases](https://github.com/voxgig-sdk/discard-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,16 +26,14 @@ loading a specific record.
 <?php
 require_once 'discard_sdk.php';
 
-$client = new DiscardSDK([
-    "apikey" => getenv("DISCARD_APIKEY"),
-]);
+$client = new DiscardSDK();
 ```
 
 ### 4. Create, update, and remove
 
 ```php
 // Create
-[$created, $_] = $client->AiChat()->create(["name" => "Example"]);
+$created = $client->aichat()->create(["name" => "Example"]);
 
 ```
 
@@ -46,28 +45,31 @@ $client = new DiscardSDK([
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +83,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = DiscardSDK::test();
 
-[$result, $err] = $client->Discard()->load(["id" => "test01"]);
+$result = $client->aichat()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -116,7 +118,6 @@ Create a `.env.local` file at the project root:
 
 ```
 DISCARD_TEST_LIVE=TRUE
-DISCARD_APIKEY=<your-key>
 ```
 
 Then run:
@@ -139,7 +140,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -187,8 +187,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -253,7 +257,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `const ai_chat = client.AiChat()`
+Create an instance: `const ai_chat = client.ai_chat`
 
 #### Operations
 
@@ -274,7 +278,7 @@ Create an instance: `const ai_chat = client.AiChat()`
 #### Example: Create
 
 ```ts
-const ai_chat = await client.AiChat().create({
+const ai_chat = await client.ai_chat.create({
   message: /* `$STRING` */,
 })
 ```
@@ -282,7 +286,7 @@ const ai_chat = await client.AiChat().create({
 
 ### Test
 
-Create an instance: `const test = client.Test()`
+Create an instance: `const test = client.test`
 
 #### Operations
 
@@ -308,20 +312,20 @@ Create an instance: `const test = client.Test()`
 #### Example: Load
 
 ```ts
-const test = await client.Test().load({ id: 'test_id' })
+const test = await client.test.load({ id: 'test_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const test = await client.Test().create({
+const test = await client.test.create({
 })
 ```
 
 
 ### Testing
 
-Create an instance: `const testing = client.Testing()`
+Create an instance: `const testing = client.testing`
 
 #### Operations
 
@@ -344,13 +348,13 @@ Create an instance: `const testing = client.Testing()`
 #### Example: Load
 
 ```ts
-const testing = await client.Testing().load({ id: 'testing_id' })
+const testing = await client.testing.load({ id: 'testing_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const testing = await client.Testing().create({
+const testing = await client.testing.create({
 })
 ```
 
@@ -426,11 +430,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$aichat = $client->aichat();
+$aichat->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $aichat->dataGet() now returns the loaded aichat data
+// $aichat->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

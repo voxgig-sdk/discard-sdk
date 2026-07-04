@@ -44,9 +44,7 @@ class TestAiChatEntity:
         ai_chat_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.ai_chat"), "ai_chat_ref01"))
 
-        ai_chat_ref01_data_result, err = ai_chat_ref01_ent.create(ai_chat_ref01_data, None)
-        assert err is None
-        ai_chat_ref01_data = helpers.to_map(ai_chat_ref01_data_result)
+        ai_chat_ref01_data = helpers.to_map(ai_chat_ref01_ent.create(ai_chat_ref01_data, None))
         assert ai_chat_ref01_data is not None
 
 
@@ -87,7 +85,6 @@ def _ai_chat_basic_setup(extra):
         "DISCARD_TEST_AI_CHAT_ENTID": idmap,
         "DISCARD_TEST_LIVE": "FALSE",
         "DISCARD_TEST_EXPLAIN": "FALSE",
-        "DISCARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +95,6 @@ def _ai_chat_basic_setup(extra):
     if env.get("DISCARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DISCARD_APIKEY"),
             },
             extra or {},
         ])

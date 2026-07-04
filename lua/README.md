@@ -9,12 +9,9 @@ The Lua SDK for the Discard API — an entity-oriented client using Lua conventi
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-discard
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/discard-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,16 +28,14 @@ loading a specific record.
 ```lua
 local sdk = require("discard_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("DISCARD_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 4. Create, update, and remove
 
 ```lua
 -- Create
-local created, _ = client:AiChat():create({ name = "Example" })
+local created, _ = client:aichat():create({ name = "Example" })
 
 ```
 
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Discard():load({ id = "test01" })
+local result, err = client:aichat():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -121,7 +116,6 @@ Create a `.env.local` file at the project root:
 
 ```
 DISCARD_TEST_LIVE=TRUE
-DISCARD_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -258,7 +251,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `const ai_chat = client.AiChat()`
+Create an instance: `const ai_chat = client.ai_chat`
 
 #### Operations
 
@@ -279,7 +272,7 @@ Create an instance: `const ai_chat = client.AiChat()`
 #### Example: Create
 
 ```ts
-const ai_chat = await client.AiChat().create({
+const ai_chat = await client.ai_chat.create({
   message: /* `$STRING` */,
 })
 ```
@@ -287,7 +280,7 @@ const ai_chat = await client.AiChat().create({
 
 ### Test
 
-Create an instance: `const test = client.Test()`
+Create an instance: `const test = client.test`
 
 #### Operations
 
@@ -313,20 +306,20 @@ Create an instance: `const test = client.Test()`
 #### Example: Load
 
 ```ts
-const test = await client.Test().load({ id: 'test_id' })
+const test = await client.test.load({ id: 'test_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const test = await client.Test().create({
+const test = await client.test.create({
 })
 ```
 
 
 ### Testing
 
-Create an instance: `const testing = client.Testing()`
+Create an instance: `const testing = client.testing`
 
 #### Operations
 
@@ -349,13 +342,13 @@ Create an instance: `const testing = client.Testing()`
 #### Example: Load
 
 ```ts
-const testing = await client.Testing().load({ id: 'testing_id' })
+const testing = await client.testing.load({ id: 'testing_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const testing = await client.Testing().create({
+const testing = await client.testing.create({
 })
 ```
 
@@ -431,11 +424,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local aichat = client:aichat()
+aichat:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- aichat:data_get() now returns the loaded aichat data
+-- aichat:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

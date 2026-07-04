@@ -14,9 +14,16 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Test,
+  TestLoadMatch,
+  TestCreateData,
+  TestUpdateData,
+  TestRemoveMatch,
+} from '../DiscardTypes'
 
 // TODO: needs Entity superclass
-class TestEntity extends DiscardEntityBase {
+class TestEntity extends DiscardEntityBase<Test> {
 
   constructor(client: DiscardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +39,7 @@ class TestEntity extends DiscardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: TestLoadMatch, ctrl?: Control): Promise<Test> {
 
     const utility = this._utility
 
@@ -136,7 +143,9 @@ class TestEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Test> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
@@ -144,7 +153,7 @@ class TestEntity extends DiscardEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: TestCreateData, ctrl?: Control): Promise<Test> {
 
     const utility = this._utility
     const {
@@ -243,14 +252,16 @@ class TestEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Test> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async update(this: any, reqdata?: any, ctrl?: Control) {
+  async update(this: any, reqdata?: TestUpdateData, ctrl?: Control): Promise<Test> {
 
     const utility = this._utility
 
@@ -355,14 +366,16 @@ class TestEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Test> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async remove(this: any, reqmatch?: any, ctrl?: Control) {
+  async remove(this: any, reqmatch?: TestRemoveMatch, ctrl?: Control): Promise<Test> {
 
     const utility = this._utility
 
@@ -467,7 +480,9 @@ class TestEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Test> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

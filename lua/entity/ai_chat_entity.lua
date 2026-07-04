@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata AiChatCreateData
+---@param ctrl? table
+---@return AiChat
+---@return string? err
 function AiChatEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

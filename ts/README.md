@@ -9,9 +9,12 @@ The TypeScript SDK for the Discard API — a type-safe, entity-oriented client w
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/discard
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/discard-sdk/releases](https://github.com/voxgig-sdk/discard-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,18 +23,16 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { DiscardSDK } from 'discard'
+import { DiscardSDK } from '@voxgig-sdk/discard'
 
-const client = new DiscardSDK({
-  apikey: process.env.DISCARD_APIKEY,
-})
+const client = new DiscardSDK()
 ```
 
 ### 4. Create, update, and remove
 
 ```ts
 // Create
-const created = await client.AiChat().create({
+const created = await client.aichat.create({
   name: 'Example',
 })
 
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DiscardSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.aichat.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new DiscardSDK({ apikey: '...' })
+const client = new DiscardSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.aichat
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new DiscardSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -134,7 +134,6 @@ Create a `.env.local` file at the project root:
 
 ```
 DISCARD_TEST_LIVE=TRUE
-DISCARD_APIKEY=<your-key>
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new DiscardSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new DiscardSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -303,7 +300,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `const ai_chat = client.AiChat()`
+Create an instance: `const ai_chat = client.ai_chat`
 
 #### Operations
 
@@ -324,7 +321,7 @@ Create an instance: `const ai_chat = client.AiChat()`
 #### Example: Create
 
 ```ts
-const ai_chat = await client.AiChat().create({
+const ai_chat = await client.ai_chat.create({
   message: /* `$STRING` */,
 })
 ```
@@ -332,7 +329,7 @@ const ai_chat = await client.AiChat().create({
 
 ### Test
 
-Create an instance: `const test = client.Test()`
+Create an instance: `const test = client.test`
 
 #### Operations
 
@@ -358,20 +355,20 @@ Create an instance: `const test = client.Test()`
 #### Example: Load
 
 ```ts
-const test = await client.Test().load({ id: 'test_id' })
+const test = await client.test.load({ id: 'test_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const test = await client.Test().create({
+const test = await client.test.create({
 })
 ```
 
 
 ### Testing
 
-Create an instance: `const testing = client.Testing()`
+Create an instance: `const testing = client.testing`
 
 #### Operations
 
@@ -394,13 +391,13 @@ Create an instance: `const testing = client.Testing()`
 #### Example: Load
 
 ```ts
-const testing = await client.Testing().load({ id: 'testing_id' })
+const testing = await client.testing.load({ id: 'testing_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const testing = await client.Testing().create({
+const testing = await client.testing.create({
 })
 ```
 
@@ -462,7 +459,7 @@ discard/
 Import the SDK from the package root:
 
 ```ts
-import { DiscardSDK } from 'discard'
+import { DiscardSDK } from '@voxgig-sdk/discard'
 ```
 
 ### Entity state
@@ -472,11 +469,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const aichat = client.aichat
+await aichat.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// aichat.data() now returns the loaded aichat data
+// aichat.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

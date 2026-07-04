@@ -1,0 +1,127 @@
+<?php
+declare(strict_types=1);
+
+// Typed models for the Discard SDK.
+//
+// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+// params (op.<name>.points[].args.params[]). Field/param types come from the
+// canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+// @voxgig/apidef VALID_CANON). Do not edit by hand.
+//
+// These are documentation-grade value objects (PHP 8 typed properties),
+// registered on the composer classmap autoload. The SDK boundary exchanges
+// assoc-arrays; these classes name the shapes for tooling and typed callers.
+
+/** AiChat entity data model. */
+class AiChat
+{
+    public ?array $context = null;
+    public string $message;
+    public ?string $response = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+}
+
+/** Match filter for AiChat#create (any subset of AiChat fields). */
+class AiChatCreateData
+{
+    public ?array $context = null;
+    public ?string $message = null;
+    public ?string $response = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+}
+
+/** Test entity data model. */
+class Test
+{
+    public ?array $data = null;
+    public ?string $id = null;
+    public ?string $message = null;
+    public ?array $received = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+    public ?array $update = null;
+}
+
+/** Match filter for Test#load (any subset of Test fields). */
+class TestLoadMatch
+{
+    public ?array $data = null;
+    public ?string $id = null;
+    public ?string $message = null;
+    public ?array $received = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+    public ?array $update = null;
+}
+
+/** Match filter for Test#create (any subset of Test fields). */
+class TestCreateData
+{
+    public ?array $data = null;
+    public ?string $id = null;
+    public ?string $message = null;
+    public ?array $received = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+    public ?array $update = null;
+}
+
+/** Match filter for Test#update (any subset of Test fields). */
+class TestUpdateData
+{
+    public ?array $data = null;
+    public ?string $id = null;
+    public ?string $message = null;
+    public ?array $received = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+    public ?array $update = null;
+}
+
+/** Match filter for Test#remove (any subset of Test fields). */
+class TestRemoveMatch
+{
+    public ?array $data = null;
+    public ?string $id = null;
+    public ?string $message = null;
+    public ?array $received = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+    public ?array $update = null;
+}
+
+/** Testing entity data model. */
+class Testing
+{
+    public ?array $data = null;
+    public ?string $filename = null;
+    public ?string $message = null;
+    public ?int $size = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+}
+
+/** Match filter for Testing#load (any subset of Testing fields). */
+class TestingLoadMatch
+{
+    public ?array $data = null;
+    public ?string $filename = null;
+    public ?string $message = null;
+    public ?int $size = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+}
+
+/** Match filter for Testing#create (any subset of Testing fields). */
+class TestingCreateData
+{
+    public ?array $data = null;
+    public ?string $filename = null;
+    public ?string $message = null;
+    public ?int $size = null;
+    public ?string $status = null;
+    public ?string $timestamp = null;
+}
+

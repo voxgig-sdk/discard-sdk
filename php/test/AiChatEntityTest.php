@@ -43,8 +43,7 @@ class AiChatEntityTest extends TestCase
         $ai_chat_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.ai_chat"), "ai_chat_ref01"));
 
-        [$ai_chat_ref01_data_result, $err] = $ai_chat_ref01_ent->create($ai_chat_ref01_data, null);
-        $this->assertNull($err);
+        $ai_chat_ref01_data_result = $ai_chat_ref01_ent->create($ai_chat_ref01_data, null);
         $ai_chat_ref01_data = Helpers::to_map($ai_chat_ref01_data_result);
         $this->assertNotNull($ai_chat_ref01_data);
 
@@ -80,7 +79,6 @@ function ai_chat_basic_setup($extra)
         "DISCARD_TEST_AI_CHAT_ENTID" => $idmap,
         "DISCARD_TEST_LIVE" => "FALSE",
         "DISCARD_TEST_EXPLAIN" => "FALSE",
-        "DISCARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -92,7 +90,6 @@ function ai_chat_basic_setup($extra)
     if ($env["DISCARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["DISCARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

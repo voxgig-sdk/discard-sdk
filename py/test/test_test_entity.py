@@ -44,9 +44,7 @@ class TestTestEntity:
         test_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.test"), "test_ref01"))
 
-        test_ref01_data_result, err = test_ref01_ent.create(test_ref01_data, None)
-        assert err is None
-        test_ref01_data = helpers.to_map(test_ref01_data_result)
+        test_ref01_data = helpers.to_map(test_ref01_ent.create(test_ref01_data, None))
         assert test_ref01_data is not None
         assert test_ref01_data["id"] is not None
 
@@ -59,9 +57,7 @@ class TestTestEntity:
         test_ref01_markdef_up0_value = "Mark01-test_ref01_" + str(setup["now"])
         test_ref01_data_up0_up[test_ref01_markdef_up0_name] = test_ref01_markdef_up0_value
 
-        test_ref01_resdata_up0_result, err = test_ref01_ent.update(test_ref01_data_up0_up, None)
-        assert err is None
-        test_ref01_resdata_up0 = helpers.to_map(test_ref01_resdata_up0_result)
+        test_ref01_resdata_up0 = helpers.to_map(test_ref01_ent.update(test_ref01_data_up0_up, None))
         assert test_ref01_resdata_up0 is not None
         assert test_ref01_resdata_up0["id"] == test_ref01_data_up0_up["id"]
         assert test_ref01_resdata_up0[test_ref01_markdef_up0_name] == test_ref01_markdef_up0_value
@@ -70,8 +66,7 @@ class TestTestEntity:
         test_ref01_match_dt0 = {
             "id": test_ref01_data["id"],
         }
-        test_ref01_data_dt0_loaded, err = test_ref01_ent.load(test_ref01_match_dt0, None)
-        assert err is None
+        test_ref01_data_dt0_loaded = test_ref01_ent.load(test_ref01_match_dt0, None)
         test_ref01_data_dt0_load_result = helpers.to_map(test_ref01_data_dt0_loaded)
         assert test_ref01_data_dt0_load_result is not None
         assert test_ref01_data_dt0_load_result["id"] == test_ref01_data["id"]
@@ -80,8 +75,7 @@ class TestTestEntity:
         test_ref01_match_rm0 = {
             "id": test_ref01_data["id"],
         }
-        _, err = test_ref01_ent.remove(test_ref01_match_rm0, None)
-        assert err is None
+        test_ref01_ent.remove(test_ref01_match_rm0, None)
 
 
 
@@ -121,7 +115,6 @@ def _test_basic_setup(extra):
         "DISCARD_TEST_TEST_ENTID": idmap,
         "DISCARD_TEST_LIVE": "FALSE",
         "DISCARD_TEST_EXPLAIN": "FALSE",
-        "DISCARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -132,7 +125,6 @@ def _test_basic_setup(extra):
     if env.get("DISCARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DISCARD_APIKEY"),
             },
             extra or {},
         ])

@@ -144,16 +144,23 @@ class DiscardSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class DiscardSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class DiscardSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def ai_chat(self):
+        """Idiomatic facade: client.ai_chat.list() / client.ai_chat.load({"id": ...})."""
+        from entity.ai_chat_entity import AiChatEntity
+        cached = getattr(self, "_ai_chat", None)
+        if cached is None:
+            cached = AiChatEntity(self, None)
+            self._ai_chat = cached
+        return cached
 
     def AiChat(self, data=None):
+        # Deprecated: use client.ai_chat instead.
         from entity.ai_chat_entity import AiChatEntity
         return AiChatEntity(self, data)
 
 
+    @property
+    def test(self):
+        """Idiomatic facade: client.test.list() / client.test.load({"id": ...})."""
+        from entity.test_entity import TestEntity
+        cached = getattr(self, "_test", None)
+        if cached is None:
+            cached = TestEntity(self, None)
+            self._test = cached
+        return cached
+
     def Test(self, data=None):
+        # Deprecated: use client.test instead.
         from entity.test_entity import TestEntity
         return TestEntity(self, data)
 
 
+    @property
+    def testing(self):
+        """Idiomatic facade: client.testing.list() / client.testing.load({"id": ...})."""
+        from entity.testing_entity import TestingEntity
+        cached = getattr(self, "_testing", None)
+        if cached is None:
+            cached = TestingEntity(self, None)
+            self._testing = cached
+        return cached
+
     def Testing(self, data=None):
+        # Deprecated: use client.testing instead.
         from entity.testing_entity import TestingEntity
         return TestingEntity(self, data)
 

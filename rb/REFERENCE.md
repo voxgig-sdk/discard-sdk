@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -62,9 +61,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -78,14 +79,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -93,7 +94,7 @@ same parameters as `direct()`.
 ## AiChatEntity
 
 ```ruby
-ai_chat = client.AiChat
+ai_chat = client.ai_chat
 ```
 
 ### Fields
@@ -108,12 +109,12 @@ ai_chat = client.AiChat
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.AiChat.create({
+result = client.ai_chat.create({
   "message" => # `$STRING`,
 })
 ```
@@ -151,7 +152,7 @@ Return the entity name.
 ## TestEntity
 
 ```ruby
-test = client.Test
+test = client.test
 ```
 
 ### Fields
@@ -168,37 +169,37 @@ test = client.Test
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.Test.create({
+result = client.test.create({
 })
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Test.load({ "id" => "test_id" })
+result = client.test.load({ "id" => "test_id" })
 ```
 
-#### `remove(reqmatch, ctrl = nil) -> result, err`
+#### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Test.remove({ "id" => "test_id" })
+result = client.test.remove({ "id" => "test_id" })
 ```
 
-#### `update(reqdata, ctrl = nil) -> result, err`
+#### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result, err = client.Test.update({
+result = client.test.update({
   "id" => "test_id",
   # Fields to update
 })
@@ -237,7 +238,7 @@ Return the entity name.
 ## TestingEntity
 
 ```ruby
-testing = client.Testing
+testing = client.testing
 ```
 
 ### Fields
@@ -253,21 +254,21 @@ testing = client.Testing
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.Testing.create({
+result = client.testing.create({
 })
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Testing.load({ "id" => "testing_id" })
+result = client.testing.load({ "id" => "testing_id" })
 ```
 
 ### Common Methods

@@ -245,16 +245,25 @@ func (sdk *DiscardSDK) Direct(fetchargs map[string]any) (map[string]any, error) 
 }
 
 
+// AiChat returns a AiChat entity bound to this client.
+// Idiomatic usage: client.AiChat(nil).List(nil, nil) or
+// client.AiChat(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DiscardSDK) AiChat(data map[string]any) DiscardEntity {
 	return NewAiChatEntityFunc(sdk, data)
 }
 
 
+// Test returns a Test entity bound to this client.
+// Idiomatic usage: client.Test(nil).List(nil, nil) or
+// client.Test(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DiscardSDK) Test(data map[string]any) DiscardEntity {
 	return NewTestEntityFunc(sdk, data)
 }
 
 
+// Testing returns a Testing entity bound to this client.
+// Idiomatic usage: client.Testing(nil).List(nil, nil) or
+// client.Testing(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DiscardSDK) Testing(data map[string]any) DiscardEntity {
 	return NewTestingEntityFunc(sdk, data)
 }

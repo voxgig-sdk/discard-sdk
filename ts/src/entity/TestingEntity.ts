@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Testing,
+  TestingLoadMatch,
+  TestingCreateData,
+} from '../DiscardTypes'
 
 // TODO: needs Entity superclass
-class TestingEntity extends DiscardEntityBase {
+class TestingEntity extends DiscardEntityBase<Testing> {
 
   constructor(client: DiscardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class TestingEntity extends DiscardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: TestingLoadMatch, ctrl?: Control): Promise<Testing> {
 
     const utility = this._utility
 
@@ -136,7 +141,9 @@ class TestingEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Testing> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
@@ -144,7 +151,7 @@ class TestingEntity extends DiscardEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: TestingCreateData, ctrl?: Control): Promise<Testing> {
 
     const utility = this._utility
     const {
@@ -243,7 +250,9 @@ class TestingEntity extends DiscardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Testing> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

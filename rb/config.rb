@@ -15,9 +15,6 @@ module DiscardConfig
       },
       "options" => {
         "base" => "https://discardapi.dpdns.org",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

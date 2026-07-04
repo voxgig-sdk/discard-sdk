@@ -55,6 +55,9 @@ class TestEntity
         return new TestEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Test|array $args Test data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class TestEntity
         }
     }
 
+    /**
+     * @return Test|array The current Test data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Test fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class TestEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Test fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class TestEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Test.
+     *
+     * @param TestLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed TestLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Test|array The loaded Test as an assoc-array at the
+     *   SDK boundary; throws DiscardError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -112,7 +133,16 @@ class TestEntity
     
 
     
-    public function create($reqdata, $ctrl = null): array
+    /**
+     * Create a new Test.
+     *
+     * @param TestCreateData|array|null $reqdata Body data as an assoc-array;
+     *   a typed TestCreateData names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Test|array The created Test as an assoc-array at the
+     *   SDK boundary; throws DiscardError on failure (item-5 convention).
+     */
+    public function create(?array $reqdata = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -135,7 +165,16 @@ class TestEntity
 
 
     
-    public function update($reqdata, $ctrl = null): array
+    /**
+     * Update an existing Test.
+     *
+     * @param TestUpdateData|array|null $reqdata Body data as an assoc-array;
+     *   a typed TestUpdateData names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Test|array The updated Test as an assoc-array at the
+     *   SDK boundary; throws DiscardError on failure (item-5 convention).
+     */
+    public function update(?array $reqdata = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -161,7 +200,16 @@ class TestEntity
 
 
     
-    public function remove($reqmatch, $ctrl = null): array
+    /**
+     * Remove an Test matching the given criteria.
+     *
+     * @param TestRemoveMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; TestRemoveMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Test|array The removed Test as an assoc-array at the
+     *   SDK boundary; throws DiscardError on failure (item-5 convention).
+     */
+    public function remove(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -186,7 +234,7 @@ class TestEntity
 
 
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

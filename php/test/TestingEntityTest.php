@@ -43,15 +43,13 @@ class TestingEntityTest extends TestCase
         $testing_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.testing"), "testing_ref01"));
 
-        [$testing_ref01_data_result, $err] = $testing_ref01_ent->create($testing_ref01_data, null);
-        $this->assertNull($err);
+        $testing_ref01_data_result = $testing_ref01_ent->create($testing_ref01_data, null);
         $testing_ref01_data = Helpers::to_map($testing_ref01_data_result);
         $this->assertNotNull($testing_ref01_data);
 
         // LOAD
         $testing_ref01_match_dt0 = [];
-        [$testing_ref01_data_dt0_loaded, $err] = $testing_ref01_ent->load($testing_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $testing_ref01_data_dt0_loaded = $testing_ref01_ent->load($testing_ref01_match_dt0, null);
         $this->assertNotNull($testing_ref01_data_dt0_loaded);
 
     }
@@ -86,7 +84,6 @@ function testing_basic_setup($extra)
         "DISCARD_TEST_TESTING_ENTID" => $idmap,
         "DISCARD_TEST_LIVE" => "FALSE",
         "DISCARD_TEST_EXPLAIN" => "FALSE",
-        "DISCARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +95,6 @@ function testing_basic_setup($extra)
     if ($env["DISCARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["DISCARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

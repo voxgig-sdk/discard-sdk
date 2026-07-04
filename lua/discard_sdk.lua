@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:ai_chat():list() / client:ai_chat():load({ id = ... })
+function DiscardSDK:ai_chat(data)
+  local EntityMod = require("entity.ai_chat_entity")
+  if data == nil then
+    if self._ai_chat == nil then
+      self._ai_chat = EntityMod.new(self, nil)
+    end
+    return self._ai_chat
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:ai_chat() instead.
 function DiscardSDK:AiChat(data)
   local EntityMod = require("entity.ai_chat_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:test():list() / client:test():load({ id = ... })
+function DiscardSDK:test(data)
+  local EntityMod = require("entity.test_entity")
+  if data == nil then
+    if self._test == nil then
+      self._test = EntityMod.new(self, nil)
+    end
+    return self._test
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:test() instead.
 function DiscardSDK:Test(data)
   local EntityMod = require("entity.test_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:testing():list() / client:testing():load({ id = ... })
+function DiscardSDK:testing(data)
+  local EntityMod = require("entity.testing_entity")
+  if data == nil then
+    if self._testing == nil then
+      self._testing = EntityMod.new(self, nil)
+    end
+    return self._testing
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:testing() instead.
 function DiscardSDK:Testing(data)
   local EntityMod = require("entity.testing_entity")
   return EntityMod.new(self, data)

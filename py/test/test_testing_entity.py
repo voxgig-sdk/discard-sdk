@@ -44,15 +44,12 @@ class TestTestingEntity:
         testing_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.testing"), "testing_ref01"))
 
-        testing_ref01_data_result, err = testing_ref01_ent.create(testing_ref01_data, None)
-        assert err is None
-        testing_ref01_data = helpers.to_map(testing_ref01_data_result)
+        testing_ref01_data = helpers.to_map(testing_ref01_ent.create(testing_ref01_data, None))
         assert testing_ref01_data is not None
 
         # LOAD
         testing_ref01_match_dt0 = {}
-        testing_ref01_data_dt0_loaded, err = testing_ref01_ent.load(testing_ref01_match_dt0, None)
-        assert err is None
+        testing_ref01_data_dt0_loaded = testing_ref01_ent.load(testing_ref01_match_dt0, None)
         assert testing_ref01_data_dt0_loaded is not None
 
 
@@ -93,7 +90,6 @@ def _testing_basic_setup(extra):
         "DISCARD_TEST_TESTING_ENTID": idmap,
         "DISCARD_TEST_LIVE": "FALSE",
         "DISCARD_TEST_EXPLAIN": "FALSE",
-        "DISCARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -104,7 +100,6 @@ def _testing_basic_setup(extra):
     if env.get("DISCARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DISCARD_APIKEY"),
             },
             extra or {},
         ])
