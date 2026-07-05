@@ -16,9 +16,6 @@ go build -o discard-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./discard-cli list ai_chat
-./discard-cli load 1 ai_chat
-./discard-cli load '{id:1}' ai_chat
 
 # REPL
 ./discard-cli
@@ -28,7 +25,6 @@ go build -o discard-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
 | `update` | `[entity]` · `[query entity]`                | Update a record            |
 

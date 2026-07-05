@@ -95,11 +95,11 @@ ai_chat = client.AiChat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$ARRAY`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
-| `response` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `context` | `list` | No |  |
+| `message` | `str` | Yes |  |
+| `response` | `str` | No |  |
+| `status` | `str` | No |  |
+| `timestamp` | `str` | No |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.AiChat().create({
-    "message": ...,  # `$STRING`
+    "message": "example",  # str
 })
 ```
 
@@ -152,13 +152,13 @@ test = client.Test()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `received` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `update` | ``$OBJECT`` | No |  |
+| `data` | `dict` | No |  |
+| `id` | `str` | No |  |
+| `message` | `str` | No |  |
+| `received` | `dict` | No |  |
+| `status` | `str` | No |  |
+| `timestamp` | `str` | No |  |
+| `update` | `dict` | No |  |
 
 ### Operations
 
@@ -237,12 +237,12 @@ testing = client.Testing()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `size` | ``$INTEGER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `data` | `dict` | No |  |
+| `filename` | `str` | No |  |
+| `message` | `str` | No |  |
+| `size` | `int` | No |  |
+| `status` | `str` | No |  |
+| `timestamp` | `str` | No |  |
 
 ### Operations
 
@@ -260,7 +260,7 @@ result = client.Testing().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Testing().load({"id": "testing_id"})
+result = client.Testing().load()
 ```
 
 ### Common Methods

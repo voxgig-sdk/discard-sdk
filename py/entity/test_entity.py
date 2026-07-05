@@ -67,8 +67,13 @@ class TestEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: TestLoadMatch, ctrl=None) -> Test:
+    def load(self, reqmatch=None, ctrl=None) -> Test:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Test().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -133,8 +138,13 @@ class TestEntity:
 
 
     
-    def remove(self, reqmatch: TestRemoveMatch, ctrl=None) -> Test:
+    def remove(self, reqmatch=None, ctrl=None) -> Test:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key removes with no
+        # match. Treat None as an empty match so client.Test().remove()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "remove",
             "ctrl": ctrl,

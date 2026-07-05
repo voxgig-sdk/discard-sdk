@@ -13,7 +13,13 @@ export interface AiChat {
   timestamp?: string
 }
 
-export type AiChatCreateData = Partial<AiChat>
+export interface AiChatCreateData {
+  context?: any[]
+  message: string
+  response?: string
+  status?: string
+  timestamp?: string
+}
 
 export interface Test {
   data?: Record<string, any>
@@ -25,13 +31,45 @@ export interface Test {
   update?: Record<string, any>
 }
 
-export type TestLoadMatch = Partial<Test>
+export interface TestLoadMatch {
+  data?: Record<string, any>
+  id: string
+  message?: string
+  received?: Record<string, any>
+  status?: string
+  timestamp?: string
+  update?: Record<string, any>
+}
 
-export type TestCreateData = Partial<Test>
+export interface TestCreateData {
+  data?: Record<string, any>
+  id?: string
+  message?: string
+  received?: Record<string, any>
+  status?: string
+  timestamp?: string
+  update?: Record<string, any>
+}
 
-export type TestUpdateData = Partial<Test>
+export interface TestUpdateData {
+  data?: Record<string, any>
+  id?: string
+  message?: string
+  received?: Record<string, any>
+  status?: string
+  timestamp?: string
+  update?: Record<string, any>
+}
 
-export type TestRemoveMatch = Partial<Test>
+export interface TestRemoveMatch {
+  data?: Record<string, any>
+  id: string
+  message?: string
+  received?: Record<string, any>
+  status?: string
+  timestamp?: string
+  update?: Record<string, any>
+}
 
 export interface Testing {
   data?: Record<string, any>
@@ -42,7 +80,21 @@ export interface Testing {
   timestamp?: string
 }
 
-export type TestingLoadMatch = Partial<Testing>
+export interface TestingLoadMatch {
+  data?: Record<string, any>
+  filename?: string
+  message?: string
+  size?: number
+  status?: string
+  timestamp?: string
+}
 
-export type TestingCreateData = Partial<Testing>
+export interface TestingCreateData {
+  data?: Record<string, any>
+  filename?: string
+  message?: string
+  size?: number
+  status?: string
+  timestamp?: string
+}
 

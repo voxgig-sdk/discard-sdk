@@ -98,11 +98,11 @@ local ai_chat = client:AiChat(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$ARRAY`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
-| `response` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `context` | `table` | No |  |
+| `message` | `string` | Yes |  |
+| `response` | `string` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -112,7 +112,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:AiChat():create({
-  message = --[[ `$STRING` ]],
+  message = --[[ string ]],
 })
 ```
 
@@ -156,13 +156,13 @@ local test = client:Test(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `received` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `update` | ``$OBJECT`` | No |  |
+| `data` | `table` | No |  |
+| `id` | `string` | No |  |
+| `message` | `string` | No |  |
+| `received` | `table` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
+| `update` | `table` | No |  |
 
 ### Operations
 
@@ -242,12 +242,12 @@ local testing = client:Testing(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `size` | ``$INTEGER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `data` | `table` | No |  |
+| `filename` | `string` | No |  |
+| `message` | `string` | No |  |
+| `size` | `number` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -265,7 +265,7 @@ local result, err = client:Testing():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Testing():load({ id = "testing_id" })
+local result, err = client:Testing():load()
 ```
 
 ### Common Methods

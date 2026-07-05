@@ -53,11 +53,11 @@ Create a new `TestEntity` instance. Pass `null` for no initial data.
 
 Create a new `TestingEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): DiscardUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,11 +100,11 @@ $ai_chat = $client->AiChat();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$ARRAY`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
-| `response` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `context` | `array` | No |  |
+| `message` | `string` | Yes |  |
+| `response` | `string` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -114,25 +114,25 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->AiChat()->create([
-  "message" => /* `$STRING` */,
+  "message" => null, // string
 ]);
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -141,7 +141,7 @@ Set the entity match criteria.
 Create a new `AiChatEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -158,13 +158,13 @@ $test = $client->Test();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `received` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `update` | ``$OBJECT`` | No |  |
+| `data` | `array` | No |  |
+| `id` | `string` | No |  |
+| `message` | `string` | No |  |
+| `received` | `array` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
+| `update` | `array` | No |  |
 
 ### Operations
 
@@ -206,19 +206,19 @@ $result = $client->Test()->update([
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -227,7 +227,7 @@ Set the entity match criteria.
 Create a new `TestEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -244,12 +244,12 @@ $testing = $client->Testing();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `size` | ``$INTEGER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `data` | `array` | No |  |
+| `filename` | `string` | No |  |
+| `message` | `string` | No |  |
+| `size` | `int` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -267,24 +267,24 @@ $result = $client->Testing()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Testing()->load(["id" => "testing_id"]);
+$result = $client->Testing()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -293,7 +293,7 @@ Set the entity match criteria.
 Create a new `TestingEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

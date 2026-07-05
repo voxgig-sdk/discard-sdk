@@ -105,11 +105,11 @@ ai_chat := client.AiChat(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$ARRAY`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
-| `response` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `context` | `[]any` | No |  |
+| `message` | `string` | Yes |  |
+| `response` | `string` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -119,7 +119,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.AiChat(nil).Create(map[string]any{
-    "message": /* `$STRING` */,
+    "message": /* string */,
 }, nil)
 ```
 
@@ -157,13 +157,13 @@ test := client.Test(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `received` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `update` | ``$OBJECT`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
+| `message` | `string` | No |  |
+| `received` | `map[string]any` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
+| `update` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -237,12 +237,12 @@ testing := client.Testing(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `size` | ``$INTEGER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `filename` | `string` | No |  |
+| `message` | `string` | No |  |
+| `size` | `int` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -260,7 +260,7 @@ result, err := client.Testing(nil).Create(map[string]any{
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Testing(nil).Load(map[string]any{"id": "testing_id"}, nil)
+result, err := client.Testing(nil).Load(nil, nil)
 ```
 
 ### Common Methods

@@ -8,7 +8,7 @@ Complete API reference for the Discard Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'discard_sdk'
+require_relative 'Discard_sdk'
 
 client = DiscardSDK.new(options)
 ```
@@ -101,11 +101,11 @@ ai_chat = client.AiChat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$ARRAY`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
-| `response` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `context` | `Array` | No |  |
+| `message` | `String` | Yes |  |
+| `response` | `String` | No |  |
+| `status` | `String` | No |  |
+| `timestamp` | `String` | No |  |
 
 ### Operations
 
@@ -115,7 +115,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.AiChat.create({
-  "message" => # `$STRING`,
+  "message" => "example", # String
 })
 ```
 
@@ -159,13 +159,13 @@ test = client.Test
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `received` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `update` | ``$OBJECT`` | No |  |
+| `data` | `Hash` | No |  |
+| `id` | `String` | No |  |
+| `message` | `String` | No |  |
+| `received` | `Hash` | No |  |
+| `status` | `String` | No |  |
+| `timestamp` | `String` | No |  |
+| `update` | `Hash` | No |  |
 
 ### Operations
 
@@ -245,12 +245,12 @@ testing = client.Testing
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `size` | ``$INTEGER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `data` | `Hash` | No |  |
+| `filename` | `String` | No |  |
+| `message` | `String` | No |  |
+| `size` | `Integer` | No |  |
+| `status` | `String` | No |  |
+| `timestamp` | `String` | No |  |
 
 ### Operations
 
@@ -268,7 +268,7 @@ result = client.Testing.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Testing.load({ "id" => "testing_id" })
+result = client.Testing.load()
 ```
 
 ### Common Methods

@@ -27,9 +27,12 @@ class AiChat(AiChatRequired, total=False):
     timestamp: str
 
 
-class AiChatCreateData(TypedDict, total=False):
-    context: list
+class AiChatCreateDataRequired(TypedDict):
     message: str
+
+
+class AiChatCreateData(AiChatCreateDataRequired, total=False):
+    context: list
     response: str
     status: str
     timestamp: str
@@ -45,9 +48,12 @@ class Test(TypedDict, total=False):
     update: dict
 
 
-class TestLoadMatch(TypedDict, total=False):
-    data: dict
+class TestLoadMatchRequired(TypedDict):
     id: str
+
+
+class TestLoadMatch(TestLoadMatchRequired, total=False):
+    data: dict
     message: str
     received: dict
     status: str
@@ -75,9 +81,12 @@ class TestUpdateData(TypedDict, total=False):
     update: dict
 
 
-class TestRemoveMatch(TypedDict, total=False):
-    data: dict
+class TestRemoveMatchRequired(TypedDict):
     id: str
+
+
+class TestRemoveMatch(TestRemoveMatchRequired, total=False):
+    data: dict
     message: str
     received: dict
     status: str

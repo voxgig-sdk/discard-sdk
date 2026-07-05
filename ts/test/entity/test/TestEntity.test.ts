@@ -71,12 +71,12 @@ describe('TestEntity', async () => {
     test_ref01_data_up0.id = test_ref01_data.id
 
     const test_ref01_markdef_up0 = { name: 'message', value: 'Mark01-test_ref01_' + setup.now }
-    test_ref01_data_up0 [test_ref01_markdef_up0.name] = test_ref01_markdef_up0.value
+    ;(test_ref01_data_up0 as any)[test_ref01_markdef_up0.name] = test_ref01_markdef_up0.value
 
     const test_ref01_resdata_up0 = await test_ref01_ent.update(test_ref01_data_up0)
     assert(test_ref01_resdata_up0.id === test_ref01_data_up0.id)
 
-    assert(test_ref01_resdata_up0[test_ref01_markdef_up0.name] === test_ref01_markdef_up0.value)
+    assert((test_ref01_resdata_up0 as any)[test_ref01_markdef_up0.name] === test_ref01_markdef_up0.value)
 
 
     // LOAD

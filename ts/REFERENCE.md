@@ -140,11 +140,11 @@ const ai_chat = client.AiChat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$ARRAY`` | No |  |
-| `message` | ``$STRING`` | Yes |  |
-| `response` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `context` | `any[]` | No |  |
+| `message` | `string` | Yes |  |
+| `response` | `string` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -154,7 +154,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.AiChat().create({
-  message: /* `$STRING` */,
+  message: /* string */,
 })
 ```
 
@@ -196,13 +196,13 @@ const test = client.Test()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `received` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `update` | ``$OBJECT`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
+| `message` | `string` | No |  |
+| `received` | `Record<string, any>` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
+| `update` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -280,12 +280,12 @@ const testing = client.Testing()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `filename` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `size` | ``$INTEGER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `filename` | `string` | No |  |
+| `message` | `string` | No |  |
+| `size` | `number` | No |  |
+| `status` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -303,7 +303,7 @@ const result = await client.Testing().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Testing().load({ id: 'testing_id' })
+const result = await client.Testing().load()
 ```
 
 ### Common Methods

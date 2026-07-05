@@ -221,19 +221,19 @@ class DiscardSDK:
 
 
     def AiChat(self, data=None) -> "AiChatEntity":
-        """Entity factory: client.AiChat().list({}) / client.AiChat().load({"id": ...})."""
+        """Entity factory: client.AiChat().list() / client.AiChat().load({"id": ...})."""
         from entity.ai_chat_entity import AiChatEntity
         return AiChatEntity(self, data)
 
 
     def Test(self, data=None) -> "TestEntity":
-        """Entity factory: client.Test().list({}) / client.Test().load({"id": ...})."""
+        """Entity factory: client.Test().list() / client.Test().load({"id": ...})."""
         from entity.test_entity import TestEntity
         return TestEntity(self, data)
 
 
     def Testing(self, data=None) -> "TestingEntity":
-        """Entity factory: client.Testing().list({}) / client.Testing().load({"id": ...})."""
+        """Entity factory: client.Testing().list() / client.Testing().load({"id": ...})."""
         from entity.testing_entity import TestingEntity
         return TestingEntity(self, data)
 

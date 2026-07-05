@@ -17,11 +17,10 @@ type AiChat struct {
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
-// AiChatCreateData mirrors the ai_chat fields as an all-optional match
-// filter (Go analog of Partial<AiChat>).
+// AiChatCreateData is the typed request payload for AiChat.CreateTyped.
 type AiChatCreateData struct {
 	Context *[]any `json:"context,omitempty"`
-	Message *string `json:"message,omitempty"`
+	Message string `json:"message"`
 	Response *string `json:"response,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
@@ -38,11 +37,10 @@ type Test struct {
 	Update *map[string]any `json:"update,omitempty"`
 }
 
-// TestLoadMatch mirrors the test fields as an all-optional match
-// filter (Go analog of Partial<Test>).
+// TestLoadMatch is the typed request payload for Test.LoadTyped.
 type TestLoadMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	Message *string `json:"message,omitempty"`
 	Received *map[string]any `json:"received,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -50,8 +48,7 @@ type TestLoadMatch struct {
 	Update *map[string]any `json:"update,omitempty"`
 }
 
-// TestCreateData mirrors the test fields as an all-optional match
-// filter (Go analog of Partial<Test>).
+// TestCreateData is the typed request payload for Test.CreateTyped.
 type TestCreateData struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -62,8 +59,7 @@ type TestCreateData struct {
 	Update *map[string]any `json:"update,omitempty"`
 }
 
-// TestUpdateData mirrors the test fields as an all-optional match
-// filter (Go analog of Partial<Test>).
+// TestUpdateData is the typed request payload for Test.UpdateTyped.
 type TestUpdateData struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -74,11 +70,10 @@ type TestUpdateData struct {
 	Update *map[string]any `json:"update,omitempty"`
 }
 
-// TestRemoveMatch mirrors the test fields as an all-optional match
-// filter (Go analog of Partial<Test>).
+// TestRemoveMatch is the typed request payload for Test.RemoveTyped.
 type TestRemoveMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	Message *string `json:"message,omitempty"`
 	Received *map[string]any `json:"received,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -96,8 +91,7 @@ type Testing struct {
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
-// TestingLoadMatch mirrors the testing fields as an all-optional match
-// filter (Go analog of Partial<Testing>).
+// TestingLoadMatch is the typed request payload for Testing.LoadTyped.
 type TestingLoadMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Filename *string `json:"filename,omitempty"`
@@ -107,8 +101,7 @@ type TestingLoadMatch struct {
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
-// TestingCreateData mirrors the testing fields as an all-optional match
-// filter (Go analog of Partial<Testing>).
+// TestingCreateData is the typed request payload for Testing.CreateTyped.
 type TestingCreateData struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Filename *string `json:"filename,omitempty"`

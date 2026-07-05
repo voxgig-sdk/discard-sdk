@@ -33,13 +33,13 @@ AiChat = Struct.new(
   keyword_init: true
 )
 
-# Match filter for AiChat#create (any subset of AiChat fields).
+# Request payload for AiChat#create.
 #
 # @!attribute [rw] context
 #   @return [Array, nil]
 #
 # @!attribute [rw] message
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] response
 #   @return [String, nil]
@@ -91,13 +91,13 @@ Test = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Test#load (any subset of Test fields).
+# Request payload for Test#load.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
@@ -124,7 +124,7 @@ TestLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Test#create (any subset of Test fields).
+# Request payload for Test#create.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
@@ -157,7 +157,7 @@ TestCreateData = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Test#update (any subset of Test fields).
+# Request payload for Test#update.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
@@ -190,13 +190,13 @@ TestUpdateData = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Test#remove (any subset of Test fields).
+# Request payload for Test#remove.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
@@ -252,7 +252,7 @@ Testing = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Testing#load (any subset of Testing fields).
+# Request payload for Testing#load.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
@@ -281,7 +281,7 @@ TestingLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Testing#create (any subset of Testing fields).
+# Request payload for Testing#create.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]

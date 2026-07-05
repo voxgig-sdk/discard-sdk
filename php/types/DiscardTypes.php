@@ -22,11 +22,11 @@ class AiChat
     public ?string $timestamp = null;
 }
 
-/** Match filter for AiChat#create (any subset of AiChat fields). */
+/** Request payload for AiChat#create. */
 class AiChatCreateData
 {
     public ?array $context = null;
-    public ?string $message = null;
+    public string $message;
     public ?string $response = null;
     public ?string $status = null;
     public ?string $timestamp = null;
@@ -44,11 +44,11 @@ class Test
     public ?array $update = null;
 }
 
-/** Match filter for Test#load (any subset of Test fields). */
+/** Request payload for Test#load. */
 class TestLoadMatch
 {
     public ?array $data = null;
-    public ?string $id = null;
+    public string $id;
     public ?string $message = null;
     public ?array $received = null;
     public ?string $status = null;
@@ -56,7 +56,7 @@ class TestLoadMatch
     public ?array $update = null;
 }
 
-/** Match filter for Test#create (any subset of Test fields). */
+/** Request payload for Test#create. */
 class TestCreateData
 {
     public ?array $data = null;
@@ -68,7 +68,7 @@ class TestCreateData
     public ?array $update = null;
 }
 
-/** Match filter for Test#update (any subset of Test fields). */
+/** Request payload for Test#update. */
 class TestUpdateData
 {
     public ?array $data = null;
@@ -80,11 +80,11 @@ class TestUpdateData
     public ?array $update = null;
 }
 
-/** Match filter for Test#remove (any subset of Test fields). */
+/** Request payload for Test#remove. */
 class TestRemoveMatch
 {
     public ?array $data = null;
-    public ?string $id = null;
+    public string $id;
     public ?string $message = null;
     public ?array $received = null;
     public ?string $status = null;
@@ -103,7 +103,7 @@ class Testing
     public ?string $timestamp = null;
 }
 
-/** Match filter for Testing#load (any subset of Testing fields). */
+/** Request payload for Testing#load. */
 class TestingLoadMatch
 {
     public ?array $data = null;
@@ -114,7 +114,7 @@ class TestingLoadMatch
     public ?string $timestamp = null;
 }
 
-/** Match filter for Testing#create (any subset of Testing fields). */
+/** Request payload for Testing#create. */
 class TestingCreateData
 {
     public ?array $data = null;
