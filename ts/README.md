@@ -50,10 +50,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const aichat = await client.AiChat().create({ message: "example" })
-  console.log(aichat)
+  const test = await client.Test().load({ id: "example_id" })
+  console.log(test)
 } catch (err) {
-  console.error('create failed:', err)
+  console.error('load failed:', err)
 }
 ```
 
@@ -117,9 +117,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DiscardSDK.test()
 
-const aichat = await client.AiChat().create({ message: 'example_message' })
-// aichat is a bare entity populated with mock response data
-console.log(aichat)
+const test = await client.Test().load({ id: 'test01' })
+// test is a bare entity populated with mock response data
+console.log(test)
 ```
 
 You can also use the instance method:
@@ -134,14 +134,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.AiChat()
+const entity = client.Test()
 
 // First call runs the operation and stores its result
-await entity.create({ message: 'example_message' })
+await entity.load({ id: 'example' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -357,7 +357,7 @@ Create an instance: `const ai_chat = client.AiChat()`
 
 ```ts
 const ai_chat = await client.AiChat().create({
-  message: /* string */,
+  message: 'example_message',
 })
 ```
 
@@ -501,16 +501,16 @@ import { DiscardSDK } from '@voxgig-sdk/discard'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `create`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const aichat = client.AiChat()
-await aichat.create({ message: "example" })
+const test = client.Test()
+await test.load({ id: "example_id" })
 
-// aichat.data() now returns the aichat data from the last `create`
-// aichat.match() returns the last match criteria
+// test.data() now returns the test data from the last `load`
+// test.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

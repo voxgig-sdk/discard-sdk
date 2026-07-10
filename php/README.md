@@ -35,7 +35,7 @@ $client = new DiscardSDK();
 
 ```php
 // create() returns the bare created AiChat record.
-$created = $client->AiChat()->create(["message" => "example"]);
+$created = $client->AiChat()->create(["message" => "example_message"]);
 
 ```
 
@@ -47,7 +47,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $aichat = $client->AiChat()->create(["message" => "example"]);
+    $test = $client->Test()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -114,14 +114,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = DiscardSDK::test();
+$client = DiscardSDK::test([
+    "entity" => ["test" => ["test01" => ["id" => "test01"]]],
+]);
 
 // Entity ops return the bare mock record (throws on error).
-$aichat = $client->AiChat()->create(["message" => "example"]);
-print_r($aichat);
+$test = $client->Test()->load(["id" => "test01"]);
+print_r($test);
 ```
 
 ### Use a custom fetch function
@@ -469,15 +472,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `create`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$aichat = $client->AiChat();
-$aichat->create(["message" => "example"]);
+$test = $client->Test();
+$test->load(["id" => "example_id"]);
 
-// $aichat->data_get() now returns the aichat data from the last create
-// $aichat->match_get() returns the last match criteria
+// $test->data_get() now returns the test data from the last load
+// $test->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

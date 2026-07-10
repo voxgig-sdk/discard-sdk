@@ -16,9 +16,9 @@ main: {
           url: "https://discardapi.dpdns.org"
         }
       ]
+      summary: "DISCARD API is a fast and reliable REST API platform built with Go, designed to facilitate seamless interactions for developers."
       title: "DISCARD API"
       version: "1.0.0"
+      website: "https://discardapi.dpdns.org"
     }
   }
-}
-

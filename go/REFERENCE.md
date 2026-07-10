@@ -98,7 +98,8 @@ same parameters as `Direct()`.
 ## AiChatEntity
 
 ```go
-ai_chat := client.AiChat(nil)
+aiChat := client.AiChat(nil)
+fmt.Println(aiChat.GetName()) // "ai_chat"
 ```
 
 ### Fields
@@ -119,8 +120,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.AiChat(nil).Create(map[string]any{
-    "message": /* string */,
+    "message": "example_message",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -151,6 +156,7 @@ Return the entity name.
 
 ```go
 test := client.Test(nil)
+fmt.Println(test.GetName()) // "test"
 ```
 
 ### Fields
@@ -167,6 +173,18 @@ test := client.Test(nil)
 
 ### Operations
 
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.Test(nil).Load(map[string]any{"id": "test_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
 
 Create a new entity with the given data.
@@ -174,22 +192,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.Test(nil).Create(map[string]any{
 }, nil)
-```
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.Test(nil).Load(map[string]any{"id": "test_id"}, nil)
-```
-
-#### `Remove(reqmatch, ctrl map[string]any) (any, error)`
-
-Remove the entity matching the given criteria.
-
-```go
-result, err := client.Test(nil).Remove(map[string]any{"id": "test_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 #### `Update(reqdata, ctrl map[string]any) (any, error)`
@@ -201,6 +207,22 @@ result, err := client.Test(nil).Update(map[string]any{
     "id": "test_id",
     // Fields to update
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+#### `Remove(reqmatch, ctrl map[string]any) (any, error)`
+
+Remove the entity matching the given criteria.
+
+```go
+result, err := client.Test(nil).Remove(map[string]any{"id": "test_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -231,6 +253,7 @@ Return the entity name.
 
 ```go
 testing := client.Testing(nil)
+fmt.Println(testing.GetName()) // "testing"
 ```
 
 ### Fields
@@ -246,6 +269,18 @@ testing := client.Testing(nil)
 
 ### Operations
 
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.Testing(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
 
 Create a new entity with the given data.
@@ -253,14 +288,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.Testing(nil).Create(map[string]any{
 }, nil)
-```
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.Testing(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

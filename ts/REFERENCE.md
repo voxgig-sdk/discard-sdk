@@ -154,7 +154,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.AiChat().create({
-  message: /* string */,
+  message: 'example_message',
 })
 ```
 

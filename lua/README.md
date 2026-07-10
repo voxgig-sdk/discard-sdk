@@ -37,7 +37,7 @@ local client = sdk.new()
 
 ```lua
 -- Create
-local created, err = client:AiChat():create({ message = "example" })
+local created, err = client:AiChat():create({ message = "example_message" })
 if err then error(err) end
 
 ```
@@ -49,7 +49,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local aichat, err = client:AiChat():create({ message = "example" })
+local test, err = client:Test():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -107,7 +107,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:AiChat():create({ message = "example" })
+local result, err = client:Test():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -301,7 +301,7 @@ Create an instance: `local ai_chat = client:AiChat(nil)`
 
 ```lua
 local ai_chat, err = client:AiChat():create({
-  message = nil, -- string
+  message = "example_message", -- string
 })
 ```
 
@@ -453,15 +453,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `create`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local aichat = client:AiChat()
-aichat:create({ message = "example" })
+local test = client:Test()
+test:load({ id = "example_id" })
 
--- aichat:data_get() now returns the aichat data from the last create
--- aichat:match_get() returns the last match criteria
+-- test:data_get() now returns the test data from the last load
+-- test:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

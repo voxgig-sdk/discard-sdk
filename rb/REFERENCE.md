@@ -115,7 +115,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.AiChat.create({
-  "message" => "example", # String
+  "message" => "example_message", # String
 })
 ```
 

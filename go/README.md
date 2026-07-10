@@ -50,8 +50,8 @@ import (
 func main() {
     client := sdk.New()
 
-    // Create a aichat.
-    created, err := client.AiChat(nil).Create(map[string]any{"message": "example"}, nil)
+    // Create a aiChat.
+    created, err := client.AiChat(nil).Create(map[string]any{"message": "example_message"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-aichat, err := client.AiChat(nil).Create(map[string]any{"message": "example"}, nil)
+test, err := client.Test(nil).Load(map[string]any{"id": "example_id"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = aichat
+_ = test
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-aichat, err := client.AiChat(nil).Create(
-    map[string]any{"message": "example"}, nil,
+test, err := client.Test(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(aichat) // the returned mock data
+fmt.Println(test) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -250,9 +250,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    aichat, err := client.AiChat(nil).Create(map[string]any{/* fields */}, nil)
+    aiChat, err := client.AiChat(nil).Create(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // aichat is the returned record
+    // aiChat is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -311,7 +311,7 @@ API path: `/api/upload`
 
 ### AiChat
 
-Create an instance: `ai_chat := client.AiChat(nil)`
+Create an instance: `aiChat := client.AiChat(nil)`
 
 #### Operations
 
@@ -333,8 +333,12 @@ Create an instance: `ai_chat := client.AiChat(nil)`
 
 ```go
 result, err := client.AiChat(nil).Create(map[string]any{
-    "message": /* string */,
+    "message": "example_message",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
@@ -346,10 +350,10 @@ Create an instance: `test := client.Test(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Remove(match, ctrl)` | Remove the matching entity. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
 
@@ -378,6 +382,10 @@ fmt.Println(test) // the loaded record
 ```go
 result, err := client.Test(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
@@ -389,8 +397,8 @@ Create an instance: `testing := client.Testing(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
@@ -418,6 +426,10 @@ fmt.Println(testing) // the loaded record
 ```go
 result, err := client.Testing(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
@@ -490,15 +502,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Create`, the entity
+Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-aichat := client.AiChat(nil)
-aichat.Create(map[string]any{"message": "example"}, nil)
+test := client.Test(nil)
+test.Load(map[string]any{"id": "example_id"}, nil)
 
-// aichat.Data() now returns the aichat data from the last create
-// aichat.Match() returns the last match criteria
+// test.Data() now returns the test data from the last load
+// test.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

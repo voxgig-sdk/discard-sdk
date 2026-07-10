@@ -109,7 +109,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.AiChat().create({
-    "message": "example",  # str
+    "message": "example_message",  # str
 })
 ```
 

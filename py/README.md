@@ -40,7 +40,7 @@ client = DiscardSDK()
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.AiChat().create({"message": "example"})
+created = client.AiChat().create({"message": "example_message"})
 
 ```
 
@@ -51,10 +51,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    aichat = client.AiChat().create({ "message": "example" })
-    print(aichat)
+    test = client.Test().load({"id": "example_id"})
+    print(test)
 except Exception as err:
-    print(f"create failed: {err}")
+    print(f"load failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -119,8 +119,8 @@ Create a mock client for unit testing — no server required:
 client = DiscardSDK.test()
 
 # Entity ops return the bare record and raise on error.
-aichat = client.AiChat().create({"message": "example"})
-# aichat contains the mock response record
+test = client.Test().load({"id": "test01"})
+# test contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -311,7 +311,7 @@ Create an instance: `ai_chat = client.AiChat()`
 
 ```python
 ai_chat = client.AiChat().create({
-    "message": "example",  # str
+    "message": "example_message",  # str
 })
 ```
 
@@ -462,15 +462,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `create`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-aichat = client.AiChat()
-aichat.create({ "message": "example" })
+test = client.Test()
+test.load({"id": "example_id"})
 
-# aichat.data_get() now returns the aichat data from the last create
-# aichat.match_get() returns the last match criteria
+# test.data_get() now returns the test data from the last load
+# test.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
