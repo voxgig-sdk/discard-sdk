@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Discard SDK exists test
 
 local sdk = require("discard_sdk")
 
