@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from discard_sdk.utility.voxgig_struct import voxgig_struct as vs
 from discard_sdk import DiscardSDK
-from core import helpers
+from discard_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -44,7 +44,7 @@ class TestAiChatEntity:
         ai_chat_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.ai_chat"), "ai_chat_ref01"))
 
-        ai_chat_ref01_data = helpers.to_map(ai_chat_ref01_ent.create(ai_chat_ref01_data, None))
+        ai_chat_ref01_data = helpers.to_map(runner.entity_data(ai_chat_ref01_ent.create(ai_chat_ref01_data, None)))
         assert ai_chat_ref01_data is not None
 
 

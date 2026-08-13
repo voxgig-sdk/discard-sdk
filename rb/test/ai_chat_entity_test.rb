@@ -37,7 +37,7 @@ class AiChatEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.ai_chat"), "ai_chat_ref01"))
 
     ai_chat_ref01_data_result = ai_chat_ref01_ent.create(ai_chat_ref01_data, nil)
-    ai_chat_ref01_data = Helpers.to_map(ai_chat_ref01_data_result)
+    ai_chat_ref01_data = Helpers.to_map(ai_chat_ref01_data_result.respond_to?(:data_get) ? ai_chat_ref01_data_result.data_get : ai_chat_ref01_data_result)
     assert !ai_chat_ref01_data.nil?
 
   end

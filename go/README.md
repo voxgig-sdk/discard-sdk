@@ -280,10 +280,9 @@ API path: `/api/chat`
 | `"data"` |  |
 | `"id"` |  |
 | `"message"` |  |
-| `"received"` |  |
 | `"status"` |  |
 | `"timestamp"` |  |
-| `"update"` |  |
+| `"updates"` |  |
 
 Operations: Create, Load, Patch, Remove, Update.
 
@@ -293,12 +292,15 @@ API path: `/api/test`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
+| `"active_endpoints"` |  |
 | `"filename"` |  |
+| `"inactive_endpoints"` |  |
 | `"message"` |  |
+| `"period"` |  |
 | `"size"` |  |
 | `"status"` |  |
 | `"timestamp"` |  |
+| `"total_requests"` |  |
 
 Operations: Create, Load.
 
@@ -362,10 +364,9 @@ Create an instance: `test := client.Test(nil)`
 | `data` | `map[string]any` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `received` | `map[string]any` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
-| `update` | `map[string]any` |  |
+| `updates` | `map[string]any` |  |
 
 #### Example: Load
 
@@ -404,12 +405,15 @@ Create an instance: `testing := client.Testing(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
+| `active_endpoints` | `int` |  |
 | `filename` | `string` |  |
+| `inactive_endpoints` | `int` |  |
 | `message` | `string` |  |
+| `period` | `string` |  |
 | `size` | `int` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
+| `total_requests` | `int` |  |
 
 #### Example: Load
 

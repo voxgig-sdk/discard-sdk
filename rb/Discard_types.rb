@@ -69,25 +69,21 @@ AiChatCreateData = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] received
-#   @return [Hash, nil]
-#
 # @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] update
+# @!attribute [rw] updates
 #   @return [Hash, nil]
 Test = Struct.new(
   :data,
   :id,
   :message,
-  :received,
   :status,
   :timestamp,
-  :update,
+  :updates,
   keyword_init: true
 )
 
@@ -102,25 +98,21 @@ Test = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] received
-#   @return [Hash, nil]
-#
 # @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] update
+# @!attribute [rw] updates
 #   @return [Hash, nil]
 TestLoadMatch = Struct.new(
   :data,
   :id,
   :message,
-  :received,
   :status,
   :timestamp,
-  :update,
+  :updates,
   keyword_init: true
 )
 
@@ -135,25 +127,21 @@ TestLoadMatch = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] received
-#   @return [Hash, nil]
-#
 # @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] update
+# @!attribute [rw] updates
 #   @return [Hash, nil]
 TestCreateData = Struct.new(
   :data,
   :id,
   :message,
-  :received,
   :status,
   :timestamp,
-  :update,
+  :updates,
   keyword_init: true
 )
 
@@ -168,25 +156,21 @@ TestCreateData = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] received
-#   @return [Hash, nil]
-#
 # @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] update
+# @!attribute [rw] updates
 #   @return [Hash, nil]
 TestUpdateData = Struct.new(
   :data,
   :id,
   :message,
-  :received,
   :status,
   :timestamp,
-  :update,
+  :updates,
   keyword_init: true
 )
 
@@ -201,37 +185,39 @@ TestUpdateData = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] received
-#   @return [Hash, nil]
-#
 # @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] update
+# @!attribute [rw] updates
 #   @return [Hash, nil]
 TestRemoveMatch = Struct.new(
   :data,
   :id,
   :message,
-  :received,
   :status,
   :timestamp,
-  :update,
+  :updates,
   keyword_init: true
 )
 
 # Testing entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] active_endpoints
+#   @return [Integer, nil]
 #
 # @!attribute [rw] filename
 #   @return [String, nil]
 #
+# @!attribute [rw] inactive_endpoints
+#   @return [Integer, nil]
+#
 # @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] period
 #   @return [String, nil]
 #
 # @!attribute [rw] size
@@ -242,25 +228,37 @@ TestRemoveMatch = Struct.new(
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
+#
+# @!attribute [rw] total_requests
+#   @return [Integer, nil]
 Testing = Struct.new(
-  :data,
+  :active_endpoints,
   :filename,
+  :inactive_endpoints,
   :message,
+  :period,
   :size,
   :status,
   :timestamp,
+  :total_requests,
   keyword_init: true
 )
 
 # Request payload for Testing#load.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] active_endpoints
+#   @return [Integer, nil]
 #
 # @!attribute [rw] filename
 #   @return [String, nil]
 #
+# @!attribute [rw] inactive_endpoints
+#   @return [Integer, nil]
+#
 # @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] period
 #   @return [String, nil]
 #
 # @!attribute [rw] size
@@ -271,25 +269,37 @@ Testing = Struct.new(
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
+#
+# @!attribute [rw] total_requests
+#   @return [Integer, nil]
 TestingLoadMatch = Struct.new(
-  :data,
+  :active_endpoints,
   :filename,
+  :inactive_endpoints,
   :message,
+  :period,
   :size,
   :status,
   :timestamp,
+  :total_requests,
   keyword_init: true
 )
 
 # Request payload for Testing#create.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] active_endpoints
+#   @return [Integer, nil]
 #
 # @!attribute [rw] filename
 #   @return [String, nil]
 #
+# @!attribute [rw] inactive_endpoints
+#   @return [Integer, nil]
+#
 # @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] period
 #   @return [String, nil]
 #
 # @!attribute [rw] size
@@ -300,13 +310,19 @@ TestingLoadMatch = Struct.new(
 #
 # @!attribute [rw] timestamp
 #   @return [String, nil]
+#
+# @!attribute [rw] total_requests
+#   @return [Integer, nil]
 TestingCreateData = Struct.new(
-  :data,
+  :active_endpoints,
   :filename,
+  :inactive_endpoints,
   :message,
+  :period,
   :size,
   :status,
   :timestamp,
+  :total_requests,
   keyword_init: true
 )
 

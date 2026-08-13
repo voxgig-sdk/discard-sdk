@@ -62,13 +62,13 @@ describe('TestingEntity', async () => {
     const testing_ref01_ent = client.Testing()
     let testing_ref01_data = setup.data.new.testing['testing_ref01']
 
-    testing_ref01_data = await testing_ref01_ent.create(testing_ref01_data)
+    testing_ref01_data = (await testing_ref01_ent.create(testing_ref01_data)).data()
     assert(null != testing_ref01_data)
 
 
     // LOAD
     const testing_ref01_match_dt0: any = {}
-    const testing_ref01_data_dt0 = await testing_ref01_ent.load(testing_ref01_match_dt0)
+    const testing_ref01_data_dt0 = (await testing_ref01_ent.load(testing_ref01_match_dt0)).data()
     assert(null != testing_ref01_data_dt0)
 
 

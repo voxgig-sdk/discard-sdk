@@ -151,7 +151,7 @@ Return the entity name.
 ## TestEntity
 
 ```php
-$test = $client->Test();
+$test = $client->Test_();
 ```
 
 ### Fields
@@ -161,10 +161,9 @@ $test = $client->Test();
 | `data` | `array` | No |  |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `received` | `array` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
-| `update` | `array` | No |  |
+| `updates` | `array` | No |  |
 
 ### Operations
 
@@ -173,7 +172,7 @@ $test = $client->Test();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->Test()->create([
+$result = $client->Test_()->create([
 ]);
 ```
 
@@ -182,7 +181,7 @@ $result = $client->Test()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Test()->load(["id" => "test_id"]);
+$result = $client->Test_()->load(["id" => "test_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -190,7 +189,7 @@ $result = $client->Test()->load(["id" => "test_id"]);
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Test()->remove(["id" => "test_id"]);
+$result = $client->Test_()->remove(["id" => "test_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -198,7 +197,7 @@ $result = $client->Test()->remove(["id" => "test_id"]);
 Update an existing entity. The data must include the entity `id`. Throws on error.
 
 ```php
-$result = $client->Test()->update([
+$result = $client->Test_()->update([
   "id" => "test_id",
   // Fields to update
 ]);
@@ -244,12 +243,15 @@ $testing = $client->Testing();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
+| `active_endpoints` | `int` | No |  |
 | `filename` | `string` | No |  |
+| `inactive_endpoints` | `int` | No |  |
 | `message` | `string` | No |  |
+| `period` | `string` | No |  |
 | `size` | `int` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
+| `total_requests` | `int` | No |  |
 
 ### Operations
 

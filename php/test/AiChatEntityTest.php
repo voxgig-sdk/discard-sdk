@@ -44,7 +44,7 @@ class AiChatEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.ai_chat"), "ai_chat_ref01"));
 
         $ai_chat_ref01_data_result = $ai_chat_ref01_ent->create($ai_chat_ref01_data, null);
-        $ai_chat_ref01_data = Helpers::to_map($ai_chat_ref01_data_result);
+        $ai_chat_ref01_data = Helpers::to_map(is_object($ai_chat_ref01_data_result) && method_exists($ai_chat_ref01_data_result, 'data_get') ? $ai_chat_ref01_data_result->data_get() : $ai_chat_ref01_data_result);
         $this->assertNotNull($ai_chat_ref01_data);
 
     }

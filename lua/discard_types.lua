@@ -24,70 +24,74 @@
 ---@field data? table
 ---@field id? string
 ---@field message? string
----@field received? table
 ---@field status? string
 ---@field timestamp? string
----@field update? table
+---@field updates? table
 
 ---@class TestLoadMatch
 ---@field data? table
 ---@field id string
 ---@field message? string
----@field received? table
 ---@field status? string
 ---@field timestamp? string
----@field update? table
+---@field updates? table
 
 ---@class TestCreateData
 ---@field data? table
 ---@field id? string
 ---@field message? string
----@field received? table
 ---@field status? string
 ---@field timestamp? string
----@field update? table
+---@field updates? table
 
 ---@class TestUpdateData
 ---@field data? table
 ---@field id? string
 ---@field message? string
----@field received? table
 ---@field status? string
 ---@field timestamp? string
----@field update? table
+---@field updates? table
 
 ---@class TestRemoveMatch
 ---@field data? table
 ---@field id string
 ---@field message? string
----@field received? table
 ---@field status? string
 ---@field timestamp? string
----@field update? table
+---@field updates? table
 
 ---@class Testing
----@field data? table
+---@field active_endpoints? number
 ---@field filename? string
+---@field inactive_endpoints? number
 ---@field message? string
+---@field period? string
 ---@field size? number
 ---@field status? string
 ---@field timestamp? string
+---@field total_requests? number
 
 ---@class TestingLoadMatch
----@field data? table
+---@field active_endpoints? number
 ---@field filename? string
+---@field inactive_endpoints? number
 ---@field message? string
+---@field period? string
 ---@field size? number
 ---@field status? string
 ---@field timestamp? string
+---@field total_requests? number
 
 ---@class TestingCreateData
----@field data? table
+---@field active_endpoints? number
 ---@field filename? string
+---@field inactive_endpoints? number
 ---@field message? string
+---@field period? string
 ---@field size? number
 ---@field status? string
 ---@field timestamp? string
+---@field total_requests? number
 
 local M = {}
 

@@ -41,7 +41,7 @@ describe("AiChatEntity", function()
 
     local ai_chat_ref01_data_result, err = ai_chat_ref01_ent:create(ai_chat_ref01_data, nil)
     assert.is_nil(err)
-    ai_chat_ref01_data = helpers.to_map(ai_chat_ref01_data_result)
+    ai_chat_ref01_data = helpers.to_map(type(ai_chat_ref01_data_result) == 'table' and ai_chat_ref01_data_result.data_get and ai_chat_ref01_data_result:data_get() or ai_chat_ref01_data_result)
     assert.is_not_nil(ai_chat_ref01_data)
 
   end)

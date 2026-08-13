@@ -25,76 +25,80 @@ export interface Test {
   data?: Record<string, any>
   id?: string
   message?: string
-  received?: Record<string, any>
   status?: string
   timestamp?: string
-  update?: Record<string, any>
+  updates?: Record<string, any>
 }
 
 export interface TestLoadMatch {
   data?: Record<string, any>
   id: string
   message?: string
-  received?: Record<string, any>
   status?: string
   timestamp?: string
-  update?: Record<string, any>
+  updates?: Record<string, any>
 }
 
 export interface TestCreateData {
   data?: Record<string, any>
   id?: string
   message?: string
-  received?: Record<string, any>
   status?: string
   timestamp?: string
-  update?: Record<string, any>
+  updates?: Record<string, any>
 }
 
 export interface TestUpdateData {
   data?: Record<string, any>
   id?: string
   message?: string
-  received?: Record<string, any>
   status?: string
   timestamp?: string
-  update?: Record<string, any>
+  updates?: Record<string, any>
 }
 
 export interface TestRemoveMatch {
   data?: Record<string, any>
   id: string
   message?: string
-  received?: Record<string, any>
   status?: string
   timestamp?: string
-  update?: Record<string, any>
+  updates?: Record<string, any>
 }
 
 export interface Testing {
-  data?: Record<string, any>
+  active_endpoints?: number
   filename?: string
+  inactive_endpoints?: number
   message?: string
+  period?: string
   size?: number
   status?: string
   timestamp?: string
+  total_requests?: number
 }
 
 export interface TestingLoadMatch {
-  data?: Record<string, any>
+  active_endpoints?: number
   filename?: string
+  inactive_endpoints?: number
   message?: string
+  period?: string
   size?: number
   status?: string
   timestamp?: string
+  total_requests?: number
 }
 
 export interface TestingCreateData {
-  data?: Record<string, any>
+  active_endpoints?: number
   filename?: string
+  inactive_endpoints?: number
   message?: string
+  period?: string
   size?: number
   status?: string
   timestamp?: string
+  total_requests?: number
 }
 

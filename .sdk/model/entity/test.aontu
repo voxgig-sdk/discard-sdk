@@ -21,11 +21,6 @@ main: kit: entity: test: {
       type: "`$STRING`"
     }
     {
-      name: "received"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
       name: "status"
       req: false
       type: "`$STRING`"
@@ -36,7 +31,7 @@ main: kit: entity: test: {
       type: "`$STRING`"
     }
     {
-      name: "update"
+      name: "updates"
       req: false
       type: "`$OBJECT`"
     }
@@ -61,7 +56,7 @@ main: kit: entity: test: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.received`"
           }
         }
       ]

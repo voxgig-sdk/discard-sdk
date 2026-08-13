@@ -62,7 +62,7 @@ describe('AiChatEntity', async () => {
     const ai_chat_ref01_ent = client.AiChat()
     let ai_chat_ref01_data = setup.data.new.ai_chat['ai_chat_ref01']
 
-    ai_chat_ref01_data = await ai_chat_ref01_ent.create(ai_chat_ref01_data)
+    ai_chat_ref01_data = (await ai_chat_ref01_ent.create(ai_chat_ref01_data)).data()
     assert(null != ai_chat_ref01_data)
 
 

@@ -36,7 +36,7 @@ const client = new DiscardSDK()
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created AiChat
+// Create — returns the created AiChat ENTITY (.data() for the record)
 const created = await client.AiChat().create({
   message: 'example_message',
 })
@@ -118,7 +118,8 @@ Create a mock client for unit testing — no server required:
 const client = DiscardSDK.test()
 
 const test = await client.Test().load({ id: 'test01' })
-// test is a bare entity populated with mock response data
+// test is the entity, populated with mock response data
+// — call test.data() for the record itself
 console.log(test)
 ```
 
@@ -304,10 +305,9 @@ API path: `/api/chat`
 | `data` |  |
 | `id` |  |
 | `message` |  |
-| `received` |  |
 | `status` |  |
 | `timestamp` |  |
-| `update` |  |
+| `updates` |  |
 
 Operations: create, load, patch, remove, update.
 
@@ -317,12 +317,15 @@ API path: `/api/test`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `active_endpoints` |  |
 | `filename` |  |
+| `inactive_endpoints` |  |
 | `message` |  |
+| `period` |  |
 | `size` |  |
 | `status` |  |
 | `timestamp` |  |
+| `total_requests` |  |
 
 Operations: create, load.
 
@@ -382,10 +385,9 @@ Create an instance: `const test = client.Test()`
 | `data` | `Record<string, any>` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `received` | `Record<string, any>` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
-| `update` | `Record<string, any>` |  |
+| `updates` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -416,12 +418,15 @@ Create an instance: `const testing = client.Testing()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
+| `active_endpoints` | `number` |  |
 | `filename` | `string` |  |
+| `inactive_endpoints` | `number` |  |
 | `message` | `string` |  |
+| `period` | `string` |  |
 | `size` | `number` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
+| `total_requests` | `number` |  |
 
 #### Example: Load
 

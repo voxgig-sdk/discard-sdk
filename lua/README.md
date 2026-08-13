@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local ai_chat, err = client:AiChat():load()
+    local test, err = client:Test():load({ id = "example_id" })
     if err then error(err) end
-    -- ai_chat is the loaded record
+    -- test is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -248,10 +248,9 @@ API path: `/api/chat`
 | `data` |  |
 | `id` |  |
 | `message` |  |
-| `received` |  |
 | `status` |  |
 | `timestamp` |  |
-| `update` |  |
+| `updates` |  |
 
 Operations: Create, Load, Patch, Remove, Update.
 
@@ -261,12 +260,15 @@ API path: `/api/test`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `active_endpoints` |  |
 | `filename` |  |
+| `inactive_endpoints` |  |
 | `message` |  |
+| `period` |  |
 | `size` |  |
 | `status` |  |
 | `timestamp` |  |
+| `total_requests` |  |
 
 Operations: Create, Load.
 
@@ -326,10 +328,9 @@ Create an instance: `local test = client:Test(nil)`
 | `data` | `table` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `received` | `table` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
-| `update` | `table` |  |
+| `updates` | `table` |  |
 
 #### Example: Load
 
@@ -360,12 +361,15 @@ Create an instance: `local testing = client:Testing(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
+| `active_endpoints` | `number` |  |
 | `filename` | `string` |  |
+| `inactive_endpoints` | `number` |  |
 | `message` | `string` |  |
+| `period` | `string` |  |
 | `size` | `number` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
+| `total_requests` | `number` |  |
 
 #### Example: Load
 

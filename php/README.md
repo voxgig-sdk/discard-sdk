@@ -34,7 +34,7 @@ $client = new DiscardSDK();
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created AiChat record.
+// create() returns the ENTITY — call data_get() for the created AiChat record.
 $created = $client->AiChat()->create(["message" => "example_message"]);
 
 ```
@@ -47,7 +47,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $test = $client->Test()->load(["id" => "example_id"]);
+    $test = $client->Test_()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -122,8 +122,9 @@ $client = DiscardSDK::test([
     "entity" => ["test" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$test = $client->Test()->load(["id" => "test01"]);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$test = $client->Test_()->load(["id" => "test01"]);
 print_r($test);
 ```
 
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -265,10 +266,9 @@ API path: `/api/chat`
 | `data` |  |
 | `id` |  |
 | `message` |  |
-| `received` |  |
 | `status` |  |
 | `timestamp` |  |
-| `update` |  |
+| `updates` |  |
 
 Operations: Create, Load, Patch, Remove, Update.
 
@@ -278,12 +278,15 @@ API path: `/api/test`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `active_endpoints` |  |
 | `filename` |  |
+| `inactive_endpoints` |  |
 | `message` |  |
+| `period` |  |
 | `size` |  |
 | `status` |  |
 | `timestamp` |  |
+| `total_requests` |  |
 
 Operations: Create, Load.
 
@@ -325,7 +328,7 @@ $ai_chat = $client->AiChat()->create([
 
 ### Test
 
-Create an instance: `$test = $client->Test();`
+Create an instance: `$test = $client->Test_();`
 
 #### Operations
 
@@ -343,22 +346,21 @@ Create an instance: `$test = $client->Test();`
 | `data` | `array` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `received` | `array` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
-| `update` | `array` |  |
+| `updates` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Test record (throws on error).
-$test = $client->Test()->load(["id" => "test_id"]);
+// load() returns the ENTITY — call data_get() for the Test record (throws on error).
+$test = $client->Test_()->load(["id" => "test_id"]);
 ```
 
 #### Example: Create
 
 ```php
-$test = $client->Test()->create([
+$test = $client->Test_()->create([
 ]);
 ```
 
@@ -378,17 +380,20 @@ Create an instance: `$testing = $client->Testing();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
+| `active_endpoints` | `int` |  |
 | `filename` | `string` |  |
+| `inactive_endpoints` | `int` |  |
 | `message` | `string` |  |
+| `period` | `string` |  |
 | `size` | `int` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
+| `total_requests` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Testing record (throws on error).
+// load() returns the ENTITY — call data_get() for the Testing record (throws on error).
 $testing = $client->Testing()->load();
 ```
 
@@ -476,7 +481,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$test = $client->Test();
+$test = $client->Test_();
 $test->load(["id" => "example_id"]);
 
 // $test->data_get() now returns the test data from the last load

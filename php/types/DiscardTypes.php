@@ -38,10 +38,9 @@ class Test
     public ?array $data = null;
     public ?string $id = null;
     public ?string $message = null;
-    public ?array $received = null;
     public ?string $status = null;
     public ?string $timestamp = null;
-    public ?array $update = null;
+    public ?array $updates = null;
 }
 
 /** Request payload for Test#load. */
@@ -50,10 +49,9 @@ class TestLoadMatch
     public ?array $data = null;
     public string $id;
     public ?string $message = null;
-    public ?array $received = null;
     public ?string $status = null;
     public ?string $timestamp = null;
-    public ?array $update = null;
+    public ?array $updates = null;
 }
 
 /** Request payload for Test#create. */
@@ -62,10 +60,9 @@ class TestCreateData
     public ?array $data = null;
     public ?string $id = null;
     public ?string $message = null;
-    public ?array $received = null;
     public ?string $status = null;
     public ?string $timestamp = null;
-    public ?array $update = null;
+    public ?array $updates = null;
 }
 
 /** Request payload for Test#update. */
@@ -74,10 +71,9 @@ class TestUpdateData
     public ?array $data = null;
     public ?string $id = null;
     public ?string $message = null;
-    public ?array $received = null;
     public ?string $status = null;
     public ?string $timestamp = null;
-    public ?array $update = null;
+    public ?array $updates = null;
 }
 
 /** Request payload for Test#remove. */
@@ -86,42 +82,50 @@ class TestRemoveMatch
     public ?array $data = null;
     public string $id;
     public ?string $message = null;
-    public ?array $received = null;
     public ?string $status = null;
     public ?string $timestamp = null;
-    public ?array $update = null;
+    public ?array $updates = null;
 }
 
 /** Testing entity data model. */
 class Testing
 {
-    public ?array $data = null;
+    public ?int $active_endpoints = null;
     public ?string $filename = null;
+    public ?int $inactive_endpoints = null;
     public ?string $message = null;
+    public ?string $period = null;
     public ?int $size = null;
     public ?string $status = null;
     public ?string $timestamp = null;
+    public ?int $total_requests = null;
 }
 
 /** Request payload for Testing#load. */
 class TestingLoadMatch
 {
-    public ?array $data = null;
+    public ?int $active_endpoints = null;
     public ?string $filename = null;
+    public ?int $inactive_endpoints = null;
     public ?string $message = null;
+    public ?string $period = null;
     public ?int $size = null;
     public ?string $status = null;
     public ?string $timestamp = null;
+    public ?int $total_requests = null;
 }
 
 /** Request payload for Testing#create. */
 class TestingCreateData
 {
-    public ?array $data = null;
+    public ?int $active_endpoints = null;
     public ?string $filename = null;
+    public ?int $inactive_endpoints = null;
     public ?string $message = null;
+    public ?string $period = null;
     public ?int $size = null;
     public ?string $status = null;
     public ?string $timestamp = null;
+    public ?int $total_requests = null;
 }
 

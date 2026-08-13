@@ -2,30 +2,39 @@
   "existing": {
     "testing": {
       "TESTING00": {
-        "data": {},
-        "filename": "s3d",
-        "message": "s3e",
-        "size": "s3f",
-        "status": "s40",
-        "timestamp": "s41",
+        "active_endpoints": "s5a",
+        "filename": "s5b",
+        "inactive_endpoints": "s5c",
+        "message": "s5d",
+        "period": "s5e",
+        "size": "s5f",
+        "status": "s60",
+        "timestamp": "s61",
+        "total_requests": "s62",
         "id": "TESTING00"
       },
       "TESTING01": {
-        "data": {},
-        "filename": "s79",
-        "message": "s7a",
-        "size": "s7b",
-        "status": "s7c",
-        "timestamp": "s7d",
+        "active_endpoints": "sb4",
+        "filename": "sb5",
+        "inactive_endpoints": "sb6",
+        "message": "sb7",
+        "period": "sb8",
+        "size": "sb9",
+        "status": "sba",
+        "timestamp": "sbb",
+        "total_requests": "sbc",
         "id": "TESTING01"
       },
       "TESTING02": {
-        "data": {},
-        "filename": "sb5",
-        "message": "sb6",
-        "size": "sb7",
-        "status": "sb8",
-        "timestamp": "sb9",
+        "active_endpoints": "s10e",
+        "filename": "s10f",
+        "inactive_endpoints": "s110",
+        "message": "s111",
+        "period": "s112",
+        "size": "s113",
+        "status": "s114",
+        "timestamp": "s115",
+        "total_requests": "s116",
         "id": "TESTING02"
       }
     }
@@ -33,12 +42,15 @@
   "new": {
     "testing": {
       "testing_ref01": {
-        "data": {},
-        "filename": "sf1",
-        "message": "sf2",
-        "size": "sf3",
-        "status": "sf4",
-        "timestamp": "sf5"
+        "active_endpoints": "s168",
+        "filename": "s169",
+        "inactive_endpoints": "s16a",
+        "message": "s16b",
+        "period": "s16c",
+        "size": "s16d",
+        "status": "s16e",
+        "timestamp": "s16f",
+        "total_requests": "s170"
       }
     }
   }

@@ -39,7 +39,7 @@ client = DiscardSDK()
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
+# Create — returns the ENTITY (call data_get() for the record)
 created = client.AiChat().create({"message": "example_message"})
 
 ```
@@ -118,7 +118,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DiscardSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 test = client.Test().load({"id": "test01"})
 # test contains the mock response record
 ```
@@ -219,7 +220,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -258,10 +259,9 @@ API path: `/api/chat`
 | `data` |  |
 | `id` |  |
 | `message` |  |
-| `received` |  |
 | `status` |  |
 | `timestamp` |  |
-| `update` |  |
+| `updates` |  |
 
 Operations: Create, Load, Patch, Remove, Update.
 
@@ -271,12 +271,15 @@ API path: `/api/test`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `active_endpoints` |  |
 | `filename` |  |
+| `inactive_endpoints` |  |
 | `message` |  |
+| `period` |  |
 | `size` |  |
 | `status` |  |
 | `timestamp` |  |
+| `total_requests` |  |
 
 Operations: Create, Load.
 
@@ -336,10 +339,9 @@ Create an instance: `test = client.Test()`
 | `data` | `dict` |  |
 | `id` | `str` |  |
 | `message` | `str` |  |
-| `received` | `dict` |  |
 | `status` | `str` |  |
 | `timestamp` | `str` |  |
-| `update` | `dict` |  |
+| `updates` | `dict` |  |
 
 #### Example: Load
 
@@ -370,12 +372,15 @@ Create an instance: `testing = client.Testing()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
+| `active_endpoints` | `int` |  |
 | `filename` | `str` |  |
+| `inactive_endpoints` | `int` |  |
 | `message` | `str` |  |
+| `period` | `str` |  |
 | `size` | `int` |  |
 | `status` | `str` |  |
 | `timestamp` | `str` |  |
+| `total_requests` | `int` |  |
 
 #### Example: Load
 

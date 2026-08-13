@@ -40,9 +40,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = DiscardSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = DiscardSDK.test({
+  entity: {
+    test: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const test = await client.Test().load({ id: 'test01' })
-// test is a bare Test populated with mock data
+// test is the Test entity, populated with mock data
+// — call test.data() for the record itself
 console.log(test)
 ```
 
@@ -61,7 +70,7 @@ print(test)
 $client = DiscardSDK::test([
     "entity" => ["test" => ["test01" => ["id" => "test01"]]],
 ]);
-$test = $client->Test()->load(["id" => "test01"]);
+$test = $client->Test_()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -154,7 +163,7 @@ The API exposes 3 entities:
 | --- | --- | --- |
 | **AiChat** | The AiChat entity (create). | `/api/chat` |
 | **Test** | The Test entity (create, load, patch, remove, update). | `/api/test` |
-| **Testing** | The Testing entity (create, load). | `/api/upload` |
+| **Testing** | The Testing entity (create, load). | `/api/analytics` |
 
 The operations available across these entities are **load**, **create**, **update**, **remove** — see each entity's
 own list above for exactly which it supports.
@@ -323,6 +332,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://discardapi.dpdns.org](https://discardapi.dpdns.org)
 

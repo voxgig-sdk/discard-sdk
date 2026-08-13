@@ -58,7 +58,7 @@ func TestAiChatEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		aiChatRef01Data = core.ToMapAny(aiChatRef01DataResult)
+		aiChatRef01Data = core.ToMapAny(entityData(aiChatRef01DataResult))
 		if aiChatRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/chat",
 								"parts": []any{
@@ -85,7 +86,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{
@@ -117,31 +117,24 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "received",
-						"req": false,
-						"type": "`$OBJECT`",
-						"index$": 3,
-					},
-					map[string]any{
-						"active": true,
 						"name": "status",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 4,
+						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
 						"name": "timestamp",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 5,
+						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "update",
+						"name": "updates",
 						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 6,
+						"index$": 5,
 					},
 				},
 				"name": "test",
@@ -153,6 +146,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/test",
 								"parts": []any{
@@ -162,12 +156,11 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.received`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -176,6 +169,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/test",
 								"parts": []any{
@@ -190,7 +184,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 					"patch": map[string]any{
 						"input": "data",
@@ -199,6 +192,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "PATCH",
 								"orig": "/api/test",
 								"parts": []any{
@@ -210,10 +204,8 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
-						"key$": "patch",
 					},
 					"remove": map[string]any{
 						"input": "data",
@@ -233,6 +225,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "DELETE",
 								"orig": "/api/test",
 								"parts": []any{
@@ -251,7 +244,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "remove",
 					},
 					"update": map[string]any{
 						"input": "data",
@@ -260,6 +252,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "PUT",
 								"orig": "/api/test",
 								"parts": []any{
@@ -274,7 +267,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "update",
 					},
 				},
 				"relations": map[string]any{
@@ -285,9 +277,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "data",
+						"name": "active_endpoints",
 						"req": false,
-						"type": "`$OBJECT`",
+						"type": "`$INTEGER`",
 						"index$": 0,
 					},
 					map[string]any{
@@ -299,31 +291,52 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "message",
+						"name": "inactive_endpoints",
 						"req": false,
-						"type": "`$STRING`",
+						"type": "`$INTEGER`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "size",
+						"name": "message",
 						"req": false,
-						"type": "`$INTEGER`",
+						"type": "`$STRING`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "status",
+						"name": "period",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
+						"name": "size",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 5,
+					},
+					map[string]any{
+						"active": true,
+						"name": "status",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 6,
+					},
+					map[string]any{
+						"active": true,
 						"name": "timestamp",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 5,
+						"index$": 7,
+					},
+					map[string]any{
+						"active": true,
+						"name": "total_requests",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 8,
 					},
 				},
 				"name": "testing",
@@ -335,6 +348,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/upload",
 								"parts": []any{
@@ -349,7 +363,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -370,6 +383,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/analytics",
 								"parts": []any{
@@ -383,12 +397,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.data`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

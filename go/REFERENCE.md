@@ -166,10 +166,9 @@ fmt.Println(test.GetName()) // "test"
 | `data` | `map[string]any` | No |  |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `received` | `map[string]any` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
-| `update` | `map[string]any` | No |  |
+| `updates` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -260,12 +259,15 @@ fmt.Println(testing.GetName()) // "testing"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
+| `active_endpoints` | `int` | No |  |
 | `filename` | `string` | No |  |
+| `inactive_endpoints` | `int` | No |  |
 | `message` | `string` | No |  |
+| `period` | `string` | No |  |
 | `size` | `int` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
+| `total_requests` | `int` | No |  |
 
 ### Operations
 

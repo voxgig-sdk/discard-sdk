@@ -62,7 +62,7 @@ describe('TestEntity', async () => {
     const test_ref01_ent = client.Test()
     let test_ref01_data = setup.data.new.test['test_ref01']
 
-    test_ref01_data = await test_ref01_ent.create(test_ref01_data)
+    test_ref01_data = (await test_ref01_ent.create(test_ref01_data)).data()
     assert(null != test_ref01_data.id)
 
 
@@ -73,7 +73,7 @@ describe('TestEntity', async () => {
     const test_ref01_markdef_up0 = { name: 'message', value: 'Mark01-test_ref01_' + setup.now }
     ;(test_ref01_data_up0 as any)[test_ref01_markdef_up0.name] = test_ref01_markdef_up0.value
 
-    const test_ref01_resdata_up0 = await test_ref01_ent.update(test_ref01_data_up0)
+    const test_ref01_resdata_up0 = (await test_ref01_ent.update(test_ref01_data_up0)).data()
     assert(test_ref01_resdata_up0.id === test_ref01_data_up0.id)
 
     assert((test_ref01_resdata_up0 as any)[test_ref01_markdef_up0.name] === test_ref01_markdef_up0.value)
@@ -82,7 +82,7 @@ describe('TestEntity', async () => {
     // LOAD
     const test_ref01_match_dt0: any = {}
     test_ref01_match_dt0.id = test_ref01_data.id
-    const test_ref01_data_dt0 = await test_ref01_ent.load(test_ref01_match_dt0)
+    const test_ref01_data_dt0 = (await test_ref01_ent.load(test_ref01_match_dt0)).data()
     assert(test_ref01_data_dt0.id === test_ref01_data.id)
 
 

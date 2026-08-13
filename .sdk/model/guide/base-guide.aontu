@@ -14,6 +14,7 @@ guide: {
   entity: test: {
     path: "/api/test": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.received`")|top
       op: load: method: *GET
       op: patch: method: *PATCH
       op: remove: method: *DELETE
@@ -24,6 +25,7 @@ guide: {
   entity: testing: {
     path: "/api/analytics": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
     path: "/api/upload": {
       op: create: method: *POST

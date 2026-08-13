@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from discard_sdk.utility.voxgig_struct import voxgig_struct as vs
 from discard_sdk import DiscardSDK
-from core import helpers
+from discard_sdk.core import helpers
 from test import runner
 
 

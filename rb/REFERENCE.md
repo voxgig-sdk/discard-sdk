@@ -162,10 +162,9 @@ test = client.Test
 | `data` | `Hash` | No |  |
 | `id` | `String` | No |  |
 | `message` | `String` | No |  |
-| `received` | `Hash` | No |  |
 | `status` | `String` | No |  |
 | `timestamp` | `String` | No |  |
-| `update` | `Hash` | No |  |
+| `updates` | `Hash` | No |  |
 
 ### Operations
 
@@ -245,12 +244,15 @@ testing = client.Testing
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Hash` | No |  |
+| `active_endpoints` | `Integer` | No |  |
 | `filename` | `String` | No |  |
+| `inactive_endpoints` | `Integer` | No |  |
 | `message` | `String` | No |  |
+| `period` | `String` | No |  |
 | `size` | `Integer` | No |  |
 | `status` | `String` | No |  |
 | `timestamp` | `String` | No |  |
+| `total_requests` | `Integer` | No |  |
 
 ### Operations
 

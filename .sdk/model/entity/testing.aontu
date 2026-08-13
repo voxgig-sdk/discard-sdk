@@ -6,9 +6,9 @@ main: kit: entity: testing: {
 
   fields: [
     {
-      name: "data"
+      name: "active_endpoints"
       req: false
-      type: "`$OBJECT`"
+      type: "`$INTEGER`"
     }
     {
       name: "filename"
@@ -16,7 +16,17 @@ main: kit: entity: testing: {
       type: "`$STRING`"
     }
     {
+      name: "inactive_endpoints"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
       name: "message"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "period"
       req: false
       type: "`$STRING`"
     }
@@ -34,6 +44,11 @@ main: kit: entity: testing: {
       name: "timestamp"
       req: false
       type: "`$STRING`"
+    }
+    {
+      name: "total_requests"
+      req: false
+      type: "`$INTEGER`"
     }
   ]
 
@@ -85,7 +100,7 @@ main: kit: entity: testing: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

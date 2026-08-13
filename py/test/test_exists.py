@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Discard SDK exists test
 
 import pytest
 from discard_sdk import DiscardSDK

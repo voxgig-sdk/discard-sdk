@@ -44,7 +44,7 @@ class TestingEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.testing"), "testing_ref01"));
 
         $testing_ref01_data_result = $testing_ref01_ent->create($testing_ref01_data, null);
-        $testing_ref01_data = Helpers::to_map($testing_ref01_data_result);
+        $testing_ref01_data = Helpers::to_map(is_object($testing_ref01_data_result) && method_exists($testing_ref01_data_result, 'data_get') ? $testing_ref01_data_result->data_get() : $testing_ref01_data_result);
         $this->assertNotNull($testing_ref01_data);
 
         // LOAD

@@ -199,10 +199,9 @@ const test = client.Test()
 | `data` | `Record<string, any>` | No |  |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `received` | `Record<string, any>` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
-| `update` | `Record<string, any>` | No |  |
+| `updates` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -280,12 +279,15 @@ const testing = client.Testing()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Record<string, any>` | No |  |
+| `active_endpoints` | `number` | No |  |
 | `filename` | `string` | No |  |
+| `inactive_endpoints` | `number` | No |  |
 | `message` | `string` | No |  |
+| `period` | `string` | No |  |
 | `size` | `number` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
+| `total_requests` | `number` | No |  |
 
 ### Operations
 

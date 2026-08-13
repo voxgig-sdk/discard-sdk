@@ -37,7 +37,7 @@ class TestEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.test"), "test_ref01"))
 
     test_ref01_data_result = test_ref01_ent.create(test_ref01_data, nil)
-    test_ref01_data = Helpers.to_map(test_ref01_data_result)
+    test_ref01_data = Helpers.to_map(test_ref01_data_result.respond_to?(:data_get) ? test_ref01_data_result.data_get : test_ref01_data_result)
     assert !test_ref01_data.nil?
     assert !test_ref01_data["id"].nil?
 
@@ -51,7 +51,7 @@ class TestEntityTest < Minitest::Test
     test_ref01_data_up0_up[test_ref01_markdef_up0_name] = test_ref01_markdef_up0_value
 
     test_ref01_resdata_up0_result = test_ref01_ent.update(test_ref01_data_up0_up, nil)
-    test_ref01_resdata_up0 = Helpers.to_map(test_ref01_resdata_up0_result)
+    test_ref01_resdata_up0 = Helpers.to_map(test_ref01_resdata_up0_result.respond_to?(:data_get) ? test_ref01_resdata_up0_result.data_get : test_ref01_resdata_up0_result)
     assert !test_ref01_resdata_up0.nil?
     assert_equal test_ref01_resdata_up0["id"], test_ref01_data_up0_up["id"]
     assert_equal test_ref01_resdata_up0[test_ref01_markdef_up0_name], test_ref01_markdef_up0_value
@@ -61,7 +61,7 @@ class TestEntityTest < Minitest::Test
       "id" => test_ref01_data["id"],
     }
     test_ref01_data_dt0_loaded = test_ref01_ent.load(test_ref01_match_dt0, nil)
-    test_ref01_data_dt0_load_result = Helpers.to_map(test_ref01_data_dt0_loaded)
+    test_ref01_data_dt0_load_result = Helpers.to_map(test_ref01_data_dt0_loaded.respond_to?(:data_get) ? test_ref01_data_dt0_loaded.data_get : test_ref01_data_dt0_loaded)
     assert !test_ref01_data_dt0_load_result.nil?
     assert_equal test_ref01_data_dt0_load_result["id"], test_ref01_data["id"]
 

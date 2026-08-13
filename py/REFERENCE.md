@@ -155,10 +155,9 @@ test = client.Test()
 | `data` | `dict` | No |  |
 | `id` | `str` | No |  |
 | `message` | `str` | No |  |
-| `received` | `dict` | No |  |
 | `status` | `str` | No |  |
 | `timestamp` | `str` | No |  |
-| `update` | `dict` | No |  |
+| `updates` | `dict` | No |  |
 
 ### Operations
 
@@ -237,12 +236,15 @@ testing = client.Testing()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
+| `active_endpoints` | `int` | No |  |
 | `filename` | `str` | No |  |
+| `inactive_endpoints` | `int` | No |  |
 | `message` | `str` | No |  |
+| `period` | `str` | No |  |
 | `size` | `int` | No |  |
 | `status` | `str` | No |  |
 | `timestamp` | `str` | No |  |
+| `total_requests` | `int` | No |  |
 
 ### Operations
 

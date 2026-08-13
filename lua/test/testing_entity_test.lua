@@ -41,7 +41,7 @@ describe("TestingEntity", function()
 
     local testing_ref01_data_result, err = testing_ref01_ent:create(testing_ref01_data, nil)
     assert.is_nil(err)
-    testing_ref01_data = helpers.to_map(testing_ref01_data_result)
+    testing_ref01_data = helpers.to_map(type(testing_ref01_data_result) == 'table' and testing_ref01_data_result.data_get and testing_ref01_data_result:data_get() or testing_ref01_data_result)
     assert.is_not_nil(testing_ref01_data)
 
     -- LOAD

@@ -71,6 +71,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/chat",
                 ["parts"] = {
@@ -117,31 +118,24 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "received",
-            ["req"] = false,
-            ["type"] = "`$OBJECT`",
-            ["index$"] = 3,
-          },
-          {
-            ["active"] = true,
             ["name"] = "status",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
+            ["index$"] = 3,
           },
           {
             ["active"] = true,
             ["name"] = "timestamp",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 5,
+            ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "update",
+            ["name"] = "updates",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 6,
+            ["index$"] = 5,
           },
         },
         ["name"] = "test",
@@ -153,6 +147,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/test",
                 ["parts"] = {
@@ -162,7 +157,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.received`",
                 },
                 ["index$"] = 0,
               },
@@ -176,6 +171,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/test",
                 ["parts"] = {
@@ -199,6 +195,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/api/test",
                 ["parts"] = {
@@ -233,6 +230,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/api/test",
                 ["parts"] = {
@@ -260,6 +258,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/api/test",
                 ["parts"] = {
@@ -285,9 +284,9 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "data",
+            ["name"] = "active_endpoints",
             ["req"] = false,
-            ["type"] = "`$OBJECT`",
+            ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
@@ -299,31 +298,52 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "message",
+            ["name"] = "inactive_endpoints",
             ["req"] = false,
-            ["type"] = "`$STRING`",
+            ["type"] = "`$INTEGER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "size",
+            ["name"] = "message",
             ["req"] = false,
-            ["type"] = "`$INTEGER`",
+            ["type"] = "`$STRING`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "status",
+            ["name"] = "period",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
+            ["name"] = "size",
+            ["req"] = false,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 5,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "status",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["index$"] = 6,
+          },
+          {
+            ["active"] = true,
             ["name"] = "timestamp",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 5,
+            ["index$"] = 7,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "total_requests",
+            ["req"] = false,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 8,
           },
         },
         ["name"] = "testing",
@@ -335,6 +355,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/upload",
                 ["parts"] = {
@@ -370,6 +391,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/analytics",
                 ["parts"] = {
@@ -383,7 +405,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.data`",
                 },
                 ["index$"] = 0,
               },

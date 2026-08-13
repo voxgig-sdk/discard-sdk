@@ -159,10 +159,9 @@ local test = client:Test(nil)
 | `data` | `table` | No |  |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `received` | `table` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
-| `update` | `table` | No |  |
+| `updates` | `table` | No |  |
 
 ### Operations
 
@@ -242,12 +241,15 @@ local testing = client:Testing(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
+| `active_endpoints` | `number` | No |  |
 | `filename` | `string` | No |  |
+| `inactive_endpoints` | `number` | No |  |
 | `message` | `string` | No |  |
+| `period` | `string` | No |  |
 | `size` | `number` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |
+| `total_requests` | `number` | No |  |
 
 ### Operations
 

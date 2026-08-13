@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ DiscardUtility.registrar = ->(u) {
   u.prepare_params = DiscardUtilities::PrepareParams
   u.prepare_path = DiscardUtilities::PreparePath
   u.prepare_query = DiscardUtilities::PrepareQuery
+  u.graphql_body = DiscardUtilities::GraphqlBody
+  u.graphql_errors = DiscardUtilities::GraphqlErrors
   u.result_basic = DiscardUtilities::ResultBasic
   u.result_body = DiscardUtilities::ResultBody
   u.result_headers = DiscardUtilities::ResultHeaders

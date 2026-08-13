@@ -16,11 +16,11 @@
 import pytest
 
 from discard_sdk import DiscardSDK
-from core.error import DiscardError
-from core.result import DiscardResult
-from core.response import DiscardResponse
-from core.spec import DiscardSpec
-from feature.base_feature import DiscardBaseFeature
+from discard_sdk.core.error import DiscardError
+from discard_sdk.core.result import DiscardResult
+from discard_sdk.core.response import DiscardResponse
+from discard_sdk.core.spec import DiscardSpec
+from discard_sdk.feature.base_feature import DiscardBaseFeature
 
 
 def _client():

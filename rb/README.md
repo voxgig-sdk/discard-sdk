@@ -33,7 +33,7 @@ client = DiscardSDK.new
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created AiChat record.
+# create returns the ENTITY — call data_get for the created AiChat record.
 created = client.AiChat.create({ "message" => "example_message" })
 
 ```
@@ -116,7 +116,8 @@ client = DiscardSDK.test({
   "entity" => { "test" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 test = client.Test.load({ "id" => "test01" })
 puts test
 ```
@@ -255,10 +256,9 @@ API path: `/api/chat`
 | `data` |  |
 | `id` |  |
 | `message` |  |
-| `received` |  |
 | `status` |  |
 | `timestamp` |  |
-| `update` |  |
+| `updates` |  |
 
 Operations: Create, Load, Patch, Remove, Update.
 
@@ -268,12 +268,15 @@ API path: `/api/test`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `active_endpoints` |  |
 | `filename` |  |
+| `inactive_endpoints` |  |
 | `message` |  |
+| `period` |  |
 | `size` |  |
 | `status` |  |
 | `timestamp` |  |
+| `total_requests` |  |
 
 Operations: Create, Load.
 
@@ -333,15 +336,14 @@ Create an instance: `test = client.Test`
 | `data` | `Hash` |  |
 | `id` | `String` |  |
 | `message` | `String` |  |
-| `received` | `Hash` |  |
 | `status` | `String` |  |
 | `timestamp` | `String` |  |
-| `update` | `Hash` |  |
+| `updates` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Test record (raises on error).
+# load returns the ENTITY — call data_get for the Test record (raises on error).
 test = client.Test.load({ "id" => "test_id" })
 ```
 
@@ -368,17 +370,20 @@ Create an instance: `testing = client.Testing`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
+| `active_endpoints` | `Integer` |  |
 | `filename` | `String` |  |
+| `inactive_endpoints` | `Integer` |  |
 | `message` | `String` |  |
+| `period` | `String` |  |
 | `size` | `Integer` |  |
 | `status` | `String` |  |
 | `timestamp` | `String` |  |
+| `total_requests` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Testing record (raises on error).
+# load returns the ENTITY — call data_get for the Testing record (raises on error).
 testing = client.Testing.load()
 ```
 

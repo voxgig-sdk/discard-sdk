@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from discard_sdk.utility.voxgig_struct import voxgig_struct as vs
 from discard_sdk import DiscardSDK
-from core import helpers
+from discard_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -44,7 +44,7 @@ class TestTestingEntity:
         testing_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.testing"), "testing_ref01"))
 
-        testing_ref01_data = helpers.to_map(testing_ref01_ent.create(testing_ref01_data, None))
+        testing_ref01_data = helpers.to_map(runner.entity_data(testing_ref01_ent.create(testing_ref01_data, None)))
         assert testing_ref01_data is not None
 
         # LOAD
