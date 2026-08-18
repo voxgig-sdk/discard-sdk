@@ -40,7 +40,7 @@ class DiscardSDK
         $utility = new DiscardUtility();
         $this->_utility = $utility;
 
-        $config = DiscardConfig::make_config();
+        $config = DiscardConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -15,7 +15,7 @@ require_relative "../Discard_sdk"
 module DiscardFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = DiscardConfig.make_config["feature"]
+    f = DiscardConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

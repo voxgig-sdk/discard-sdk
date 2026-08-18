@@ -28,7 +28,7 @@ class DiscardSDK
     utility = DiscardUtility.new
     @_utility = utility
 
-    config = DiscardConfig.make_config
+    config = DiscardConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
