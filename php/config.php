@@ -33,6 +33,9 @@ class DiscardConfig
         return [
             "main" => [
                 "name" => "Discard",
+                "slug" => "discard",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -57,11 +60,13 @@ class DiscardConfig
           'fields' => [
             [
               'name' => 'context',
+              'short' => 'Optional conversation context',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'message',
               'req' => true,
+              'short' => 'The message to send to the AI',
               'type' => '`$STRING`',
             ],
             [

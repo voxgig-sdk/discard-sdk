@@ -95,8 +95,8 @@ ai_chat = client.AiChat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `list` | No |  |
-| `message` | `str` | Yes |  |
+| `context` | `list` | No | Optional conversation context |
+| `message` | `str` | Yes | The message to send to the AI |
 | `response` | `str` | No |  |
 | `status` | `str` | No |  |
 | `timestamp` | `str` | No |  |

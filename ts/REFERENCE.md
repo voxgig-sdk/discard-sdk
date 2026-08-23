@@ -140,8 +140,8 @@ const ai_chat = client.AiChat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `any[]` | No |  |
-| `message` | `string` | Yes |  |
+| `context` | `any[]` | No | Optional conversation context |
+| `message` | `string` | Yes | The message to send to the AI |
 | `response` | `string` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |

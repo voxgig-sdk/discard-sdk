@@ -239,8 +239,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `message` |  |
+| `context` | Optional conversation context |
+| `message` | The message to send to the AI |
 | `response` |  |
 | `status` |  |
 | `timestamp` |  |
@@ -301,8 +301,8 @@ Create an instance: `ai_chat = client.AiChat`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `Array` |  |
-| `message` | `String` |  |
+| `context` | `Array` | Optional conversation context |
+| `message` | `String` | The message to send to the AI |
 | `response` | `String` |  |
 | `status` | `String` |  |
 | `timestamp` | `String` |  |

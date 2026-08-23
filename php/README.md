@@ -249,8 +249,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `message` |  |
+| `context` | Optional conversation context |
+| `message` | The message to send to the AI |
 | `response` |  |
 | `status` |  |
 | `timestamp` |  |
@@ -311,8 +311,8 @@ Create an instance: `$ai_chat = $client->AiChat();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `array` |  |
-| `message` | `string` |  |
+| `context` | `array` | Optional conversation context |
+| `message` | `string` | The message to send to the AI |
 | `response` | `string` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |

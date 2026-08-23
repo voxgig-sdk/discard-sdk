@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Discard",
+      slug = "discard",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,11 +34,13 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "context",
+            ["short"] = "Optional conversation context",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "message",
             ["req"] = true,
+            ["short"] = "The message to send to the AI",
             ["type"] = "`$STRING`",
           },
           {

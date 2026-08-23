@@ -6,7 +6,7 @@ The Golang SDK for the Discard API — an entity-oriented client using standard 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.AiChat(nil)` — each with the same small set of operations (`Load`, `Create`, `Update`, `Remove`, `Patch`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,8 +263,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"context"` |  |
-| `"message"` |  |
+| `"context"` | Optional conversation context |
+| `"message"` | The message to send to the AI |
 | `"response"` |  |
 | `"status"` |  |
 | `"timestamp"` |  |
@@ -325,8 +325,8 @@ Create an instance: `aiChat := client.AiChat(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `[]any` |  |
-| `message` | `string` |  |
+| `context` | `[]any` | Optional conversation context |
+| `message` | `string` | The message to send to the AI |
 | `response` | `string` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |

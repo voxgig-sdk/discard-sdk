@@ -19,6 +19,9 @@ module DiscardConfig
     {
       "main" => {
         "name" => "Discard",
+        "slug" => "discard",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -43,11 +46,13 @@ module DiscardConfig
           "fields" => [
             {
               "name" => "context",
+              "short" => "Optional conversation context",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "message",
               "req" => true,
+              "short" => "The message to send to the AI",
               "type" => "`$STRING`",
             },
             {

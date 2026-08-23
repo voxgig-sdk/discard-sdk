@@ -242,8 +242,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `message` |  |
+| `context` | Optional conversation context |
+| `message` | The message to send to the AI |
 | `response` |  |
 | `status` |  |
 | `timestamp` |  |
@@ -304,8 +304,8 @@ Create an instance: `ai_chat = client.AiChat()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `list` |  |
-| `message` | `str` |  |
+| `context` | `list` | Optional conversation context |
+| `message` | `str` | The message to send to the AI |
 | `response` | `str` |  |
 | `status` | `str` |  |
 | `timestamp` | `str` |  |

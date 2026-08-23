@@ -36,12 +36,14 @@
               "active": true,
               "name": "context",
               "req": false,
+              "short": "Optional conversation context",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "message",
               "req": true,
+              "short": "The message to send to the AI",
               "type": "`$STRING`"
             },
             {

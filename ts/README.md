@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -288,8 +288,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `message` |  |
+| `context` | Optional conversation context |
+| `message` | The message to send to the AI |
 | `response` |  |
 | `status` |  |
 | `timestamp` |  |
@@ -350,8 +350,8 @@ Create an instance: `const ai_chat = client.AiChat()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `any[]` |  |
-| `message` | `string` |  |
+| `context` | `any[]` | Optional conversation context |
+| `message` | `string` | The message to send to the AI |
 | `response` | `string` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |

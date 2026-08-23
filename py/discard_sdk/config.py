@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Discard",
+            "slug": "discard",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -52,11 +55,13 @@ def make_config():
         "fields": [
           {
             "name": "context",
+            "short": "Optional conversation context",
             "type": "`$ARRAY`",
           },
           {
             "name": "message",
             "req": True,
+            "short": "The message to send to the AI",
             "type": "`$STRING`",
           },
           {

@@ -8,11 +8,13 @@ main: kit: entity: ai_chat: {
     {
       name: "context"
       req: false
+      short: "Optional conversation context"
       type: "`$ARRAY`"
     }
     {
       name: "message"
       req: true
+      short: "The message to send to the AI"
       type: "`$STRING`"
     }
     {

@@ -98,8 +98,8 @@ local ai_chat = client:AiChat(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `table` | No |  |
-| `message` | `string` | Yes |  |
+| `context` | `table` | No | Optional conversation context |
+| `message` | `string` | Yes | The message to send to the AI |
 | `response` | `string` | No |  |
 | `status` | `string` | No |  |
 | `timestamp` | `string` | No |  |

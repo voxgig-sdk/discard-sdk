@@ -231,8 +231,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `message` |  |
+| `context` | Optional conversation context |
+| `message` | The message to send to the AI |
 | `response` |  |
 | `status` |  |
 | `timestamp` |  |
@@ -293,8 +293,8 @@ Create an instance: `local ai_chat = client:AiChat(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `table` |  |
-| `message` | `string` |  |
+| `context` | `table` | Optional conversation context |
+| `message` | `string` | The message to send to the AI |
 | `response` | `string` |  |
 | `status` | `string` |  |
 | `timestamp` | `string` |  |
