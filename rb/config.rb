@@ -28,6 +28,7 @@ module DiscardConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
