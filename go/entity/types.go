@@ -72,12 +72,7 @@ type TestUpdateData struct {
 
 // TestRemoveMatch is the typed request payload for Test.RemoveTyped.
 type TestRemoveMatch struct {
-	Data *map[string]any `json:"data,omitempty"`
-	Id string `json:"id"`
-	Message *string `json:"message,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
-	Updates *map[string]any `json:"updates,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // Testing is the typed data model for the testing entity.
@@ -95,15 +90,7 @@ type Testing struct {
 
 // TestingLoadMatch is the typed request payload for Testing.LoadTyped.
 type TestingLoadMatch struct {
-	ActiveEndpoints *int `json:"active_endpoints,omitempty"`
-	Filename *string `json:"filename,omitempty"`
-	InactiveEndpoints *int `json:"inactive_endpoints,omitempty"`
-	Message *string `json:"message,omitempty"`
 	Period *string `json:"period,omitempty"`
-	Size *int `json:"size,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
-	TotalRequests *int `json:"total_requests,omitempty"`
 }
 
 // TestingCreateData is the typed request payload for Testing.CreateTyped.

@@ -53,12 +53,7 @@
 ---@field updates? table
 
 ---@class TestRemoveMatch
----@field data? table
----@field id string
----@field message? string
----@field status? string
----@field timestamp? string
----@field updates? table
+---@field id? string
 
 ---@class Testing
 ---@field active_endpoints? number
@@ -72,15 +67,7 @@
 ---@field total_requests? number
 
 ---@class TestingLoadMatch
----@field active_endpoints? number
----@field filename? string
----@field inactive_endpoints? number
----@field message? string
 ---@field period? string
----@field size? number
----@field status? string
----@field timestamp? string
----@field total_requests? number
 
 ---@class TestingCreateData
 ---@field active_endpoints? number

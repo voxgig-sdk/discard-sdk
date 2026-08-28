@@ -176,30 +176,10 @@ TestUpdateData = Struct.new(
 
 # Request payload for Test#remove.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
 # @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] message
 #   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] timestamp
-#   @return [String, nil]
-#
-# @!attribute [rw] updates
-#   @return [Hash, nil]
 TestRemoveMatch = Struct.new(
-  :data,
   :id,
-  :message,
-  :status,
-  :timestamp,
-  :updates,
   keyword_init: true
 )
 
@@ -246,42 +226,10 @@ Testing = Struct.new(
 
 # Request payload for Testing#load.
 #
-# @!attribute [rw] active_endpoints
-#   @return [Integer, nil]
-#
-# @!attribute [rw] filename
-#   @return [String, nil]
-#
-# @!attribute [rw] inactive_endpoints
-#   @return [Integer, nil]
-#
-# @!attribute [rw] message
-#   @return [String, nil]
-#
 # @!attribute [rw] period
 #   @return [String, nil]
-#
-# @!attribute [rw] size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] timestamp
-#   @return [String, nil]
-#
-# @!attribute [rw] total_requests
-#   @return [Integer, nil]
 TestingLoadMatch = Struct.new(
-  :active_endpoints,
-  :filename,
-  :inactive_endpoints,
-  :message,
   :period,
-  :size,
-  :status,
-  :timestamp,
-  :total_requests,
   keyword_init: true
 )
 

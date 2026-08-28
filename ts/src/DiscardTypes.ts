@@ -58,12 +58,7 @@ export interface TestUpdateData {
 }
 
 export interface TestRemoveMatch {
-  data?: Record<string, any>
-  id: string
-  message?: string
-  status?: string
-  timestamp?: string
-  updates?: Record<string, any>
+  id?: string
 }
 
 export interface Testing {
@@ -79,15 +74,7 @@ export interface Testing {
 }
 
 export interface TestingLoadMatch {
-  active_endpoints?: number
-  filename?: string
-  inactive_endpoints?: number
-  message?: string
   period?: string
-  size?: number
-  status?: string
-  timestamp?: string
-  total_requests?: number
 }
 
 export interface TestingCreateData {

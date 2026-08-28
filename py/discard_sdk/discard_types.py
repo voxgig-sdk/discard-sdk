@@ -77,16 +77,8 @@ class TestUpdateData(TypedDict, total=False):
     updates: dict
 
 
-class TestRemoveMatchRequired(TypedDict):
+class TestRemoveMatch(TypedDict, total=False):
     id: str
-
-
-class TestRemoveMatch(TestRemoveMatchRequired, total=False):
-    data: dict
-    message: str
-    status: str
-    timestamp: str
-    updates: dict
 
 
 class Testing(TypedDict, total=False):
@@ -102,15 +94,7 @@ class Testing(TypedDict, total=False):
 
 
 class TestingLoadMatch(TypedDict, total=False):
-    active_endpoints: int
-    filename: str
-    inactive_endpoints: int
-    message: str
     period: str
-    size: int
-    status: str
-    timestamp: str
-    total_requests: int
 
 
 class TestingCreateData(TypedDict, total=False):
