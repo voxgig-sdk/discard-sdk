@@ -41,6 +41,7 @@ main: kit: entity: testing: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       type: "`$STRING`"
@@ -60,9 +61,13 @@ main: kit: entity: testing: {
         {
           method: "POST"
           orig: "/api/upload"
-          parts: [
-            "api"
-            "upload"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "upload"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -89,9 +94,13 @@ main: kit: entity: testing: {
           }
           method: "GET"
           orig: "/api/analytics"
-          parts: [
-            "api"
-            "analytics"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "analytics"
+            }
           ]
           select: {
             exist: [

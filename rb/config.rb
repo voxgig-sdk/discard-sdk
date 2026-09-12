@@ -65,6 +65,7 @@ module DiscardConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "timestamp",
               "type" => "`$STRING`",
             },
@@ -80,15 +81,23 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/chat",
-                  "parts" => [
-                    "api",
-                    "chat",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "chat",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "chat",
+                  ],
                 },
               ],
             },
@@ -116,6 +125,7 @@ module DiscardConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "timestamp",
               "type" => "`$STRING`",
             },
@@ -124,6 +134,10 @@ module DiscardConfig
               "type" => "`$OBJECT`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "test",
           "op" => {
             "create" => {
@@ -135,15 +149,23 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/test",
-                  "parts" => [
-                    "api",
-                    "test",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "test",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.received`",
                   },
+                  "parts" => [
+                    "api",
+                    "test",
+                  ],
                 },
               ],
             },
@@ -156,15 +178,23 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/test",
-                  "parts" => [
-                    "api",
-                    "test",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "test",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "test",
+                  ],
                 },
               ],
             },
@@ -177,15 +207,23 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/api/test",
-                  "parts" => [
-                    "api",
-                    "test",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "test",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "test",
+                  ],
                 },
               ],
             },
@@ -207,9 +245,13 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/api/test",
-                  "parts" => [
-                    "api",
-                    "test",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "test",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -220,6 +262,10 @@ module DiscardConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "test",
+                  ],
                 },
               ],
             },
@@ -232,15 +278,23 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/api/test",
-                  "parts" => [
-                    "api",
-                    "test",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "test",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "test",
+                  ],
                 },
               ],
             },
@@ -280,6 +334,7 @@ module DiscardConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "timestamp",
               "type" => "`$STRING`",
             },
@@ -299,15 +354,23 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/upload",
-                  "parts" => [
-                    "api",
-                    "upload",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "upload",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "upload",
+                  ],
                 },
               ],
             },
@@ -330,9 +393,13 @@ module DiscardConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/analytics",
-                  "parts" => [
-                    "api",
-                    "analytics",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "analytics",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -343,6 +410,10 @@ module DiscardConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "api",
+                    "analytics",
+                  ],
                 },
               ],
             },

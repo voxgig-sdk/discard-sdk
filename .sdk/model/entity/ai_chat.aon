@@ -28,6 +28,7 @@ main: kit: entity: ai_chat: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       type: "`$STRING`"
@@ -42,9 +43,13 @@ main: kit: entity: ai_chat: {
         {
           method: "POST"
           orig: "/api/chat"
-          parts: [
-            "api"
-            "chat"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "chat"
+            }
           ]
           transform: {
             req: "`reqdata`"

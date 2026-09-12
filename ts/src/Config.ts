@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -92,6 +103,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "type": "`$STRING`"
         }
@@ -107,15 +119,23 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/chat",
-              "parts": [
-                "api",
-                "chat"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "chat"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "chat"
+              ]
             }
           ]
         }
@@ -143,6 +163,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "type": "`$STRING`"
         },
@@ -151,6 +172,10 @@ class Config {
           "type": "`$OBJECT`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "test",
       "op": {
         "create": {
@@ -162,15 +187,23 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/test",
-              "parts": [
-                "api",
-                "test"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "test"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.received`"
-              }
+              },
+              "parts": [
+                "api",
+                "test"
+              ]
             }
           ]
         },
@@ -183,15 +216,23 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/test",
-              "parts": [
-                "api",
-                "test"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "test"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "test"
+              ]
             }
           ]
         },
@@ -204,15 +245,23 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/api/test",
-              "parts": [
-                "api",
-                "test"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "test"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "test"
+              ]
             }
           ]
         },
@@ -234,9 +283,13 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/api/test",
-              "parts": [
-                "api",
-                "test"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "test"
+                }
               ],
               "select": {
                 "exist": [
@@ -246,7 +299,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "test"
+              ]
             }
           ]
         },
@@ -259,15 +316,23 @@ class Config {
               "kind": "http",
               "method": "PUT",
               "orig": "/api/test",
-              "parts": [
-                "api",
-                "test"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "test"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "test"
+              ]
             }
           ]
         }
@@ -307,6 +372,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "type": "`$STRING`"
         },
@@ -326,15 +392,23 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/upload",
-              "parts": [
-                "api",
-                "upload"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "upload"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "upload"
+              ]
             }
           ]
         },
@@ -357,9 +431,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/analytics",
-              "parts": [
-                "api",
-                "analytics"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "analytics"
+                }
               ],
               "select": {
                 "exist": [
@@ -369,7 +447,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "api",
+                "analytics"
+              ]
             }
           ]
         }
@@ -385,6 +467,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

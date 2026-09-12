@@ -26,6 +26,7 @@ main: kit: entity: test: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       type: "`$STRING`"
@@ -50,9 +51,13 @@ main: kit: entity: test: {
         {
           method: "POST"
           orig: "/api/test"
-          parts: [
-            "api"
-            "test"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -67,9 +72,13 @@ main: kit: entity: test: {
         {
           method: "GET"
           orig: "/api/test"
-          parts: [
-            "api"
-            "test"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -84,9 +93,13 @@ main: kit: entity: test: {
         {
           method: "PATCH"
           orig: "/api/test"
-          parts: [
-            "api"
-            "test"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -112,9 +125,13 @@ main: kit: entity: test: {
           }
           method: "DELETE"
           orig: "/api/test"
-          parts: [
-            "api"
-            "test"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
           ]
           select: {
             exist: [
@@ -134,9 +151,13 @@ main: kit: entity: test: {
         {
           method: "PUT"
           orig: "/api/test"
-          parts: [
-            "api"
-            "test"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
           ]
           transform: {
             req: "`reqdata`"
