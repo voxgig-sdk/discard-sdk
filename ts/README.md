@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { DiscardSDK } from '@voxgig-sdk/discard'
+import { DiscardSDK } from '@voxgig-sdk/discard-sdk'
 
 const client = new DiscardSDK()
 ```
@@ -524,7 +524,7 @@ discard/
 Import the SDK from the package root:
 
 ```ts
-import { DiscardSDK } from '@voxgig-sdk/discard'
+import { DiscardSDK } from '@voxgig-sdk/discard-sdk'
 ```
 
 ### Entity state

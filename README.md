@@ -107,7 +107,7 @@ local result, err = client:Test():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
+| TypeScript | `@voxgig-sdk/discard-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
 | Python | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
 | PHP | `voxgig-sdk/discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/discard-sdk/go` | `go get github.com/voxgig-sdk/discard-sdk/go@latest` |
@@ -121,7 +121,7 @@ local result, err = client:Test():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { DiscardSDK } from '@voxgig-sdk/discard'
+import { DiscardSDK } from '@voxgig-sdk/discard-sdk'
 
 const client = new DiscardSDK()
 
