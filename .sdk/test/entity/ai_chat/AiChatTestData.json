@@ -37,5 +37,142 @@
         "timestamp": "scc"
       }
     }
+  },
+  "requests": {
+    "POST /api/chat": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "aiChat",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "context": {
+                    "description": "Optional conversation context",
+                    "items": {
+                      "properties": {
+                        "content": {
+                          "example": "Previous message",
+                          "type": "string"
+                        },
+                        "role": {
+                          "enum": [
+                            "user",
+                            "assistant"
+                          ],
+                          "example": "user",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "message": {
+                    "description": "The message to send to the AI",
+                    "example": "Hello, how are you?",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "message"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "response": {
+                      "example": "I'm doing well, thank you for asking!",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful AI response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

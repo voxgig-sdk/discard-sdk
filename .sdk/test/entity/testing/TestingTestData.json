@@ -2,39 +2,39 @@
   "existing": {
     "testing": {
       "TESTING00": {
-        "active_endpoints": "s5a",
+        "active_endpoints": 90,
         "filename": "s5b",
-        "inactive_endpoints": "s5c",
+        "inactive_endpoints": 92,
         "message": "s5d",
         "period": "s5e",
-        "size": "s5f",
+        "size": 95,
         "status": "s60",
         "timestamp": "s61",
-        "total_requests": "s62",
+        "total_requests": 98,
         "id": "TESTING00"
       },
       "TESTING01": {
-        "active_endpoints": "sb4",
+        "active_endpoints": 180,
         "filename": "sb5",
-        "inactive_endpoints": "sb6",
+        "inactive_endpoints": 182,
         "message": "sb7",
         "period": "sb8",
-        "size": "sb9",
+        "size": 185,
         "status": "sba",
         "timestamp": "sbb",
-        "total_requests": "sbc",
+        "total_requests": 188,
         "id": "TESTING01"
       },
       "TESTING02": {
-        "active_endpoints": "s10e",
+        "active_endpoints": 270,
         "filename": "s10f",
-        "inactive_endpoints": "s110",
+        "inactive_endpoints": 272,
         "message": "s111",
         "period": "s112",
-        "size": "s113",
+        "size": 275,
         "status": "s114",
         "timestamp": "s115",
-        "total_requests": "s116",
+        "total_requests": 278,
         "id": "TESTING02"
       }
     }
@@ -42,15 +42,183 @@
   "new": {
     "testing": {
       "testing_ref01": {
-        "active_endpoints": "s168",
+        "active_endpoints": 360,
         "filename": "s169",
-        "inactive_endpoints": "s16a",
+        "inactive_endpoints": 362,
         "message": "s16b",
         "period": "s16c",
-        "size": "s16d",
+        "size": 365,
         "status": "s16e",
         "timestamp": "s16f",
-        "total_requests": "s170"
+        "total_requests": 368
+      }
+    }
+  },
+  "requests": {
+    "POST /api/upload": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "uploadFile",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "description": {
+                    "description": "Optional description of the file",
+                    "type": "string"
+                  },
+                  "file": {
+                    "description": "The file to upload",
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "filename": {
+                      "example": "example.txt",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "File uploaded successfully",
+                      "type": "string"
+                    },
+                    "size": {
+                      "example": 1024,
+                      "type": "integer"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "File uploaded successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid file"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/analytics": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAnalytics",
+        "parameters": [
+          {
+            "description": "Time period for analytics (day, week, month)",
+            "in": "query",
+            "name": "period",
+            "required": false,
+            "schema": {
+              "default": "day",
+              "enum": [
+                "day",
+                "week",
+                "month"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "active_endpoints": {
+                          "example": 5,
+                          "type": "integer"
+                        },
+                        "inactive_endpoints": {
+                          "example": 0,
+                          "type": "integer"
+                        },
+                        "period": {
+                          "example": "day",
+                          "type": "string"
+                        },
+                        "total_requests": {
+                          "example": 1250,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Analytics data retrieved successfully"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

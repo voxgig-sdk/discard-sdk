@@ -59,6 +59,12 @@ main: kit: entity: testing: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /api/upload"
+            json: "{\"operationId\":\"uploadFile\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"multipart/form-data\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Optional description of the file\",\"type\":\"string\"},\"file\":{\"description\":\"The file to upload\",\"format\":\"binary\",\"type\":\"string\"}},\"required\":[\"file\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"filename\":{\"example\":\"example.txt\",\"type\":\"string\"},\"message\":{\"example\":\"File uploaded successfully\",\"type\":\"string\"},\"size\":{\"example\":1024,\"type\":\"integer\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"File uploaded successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid file\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/api/upload"
           segments: [
@@ -91,6 +97,12 @@ main: kit: entity: testing: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/analytics"
+            json: "{\"operationId\":\"getAnalytics\",\"parameters\":[{\"description\":\"Time period for analytics (day, week, month)\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"default\":\"day\",\"enum\":[\"day\",\"week\",\"month\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_endpoints\":{\"example\":5,\"type\":\"integer\"},\"inactive_endpoints\":{\"example\":0,\"type\":\"integer\"},\"period\":{\"example\":\"day\",\"type\":\"string\"},\"total_requests\":{\"example\":1250,\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Analytics data retrieved successfully\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/analytics"

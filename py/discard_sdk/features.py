@@ -1,12 +1,18 @@
 # Discard SDK feature factory
 
 from discard_sdk.feature.base_feature import DiscardBaseFeature
+from discard_sdk.feature.ratelimit_feature import DiscardRatelimitFeature
+from discard_sdk.feature.retry_feature import DiscardRetryFeature
 from discard_sdk.feature.test_feature import DiscardTestFeature
+from discard_sdk.feature.timeout_feature import DiscardTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: DiscardBaseFeature(),
+    "ratelimit": lambda: DiscardRatelimitFeature(),
+    "retry": lambda: DiscardRetryFeature(),
     "test": lambda: DiscardTestFeature(),
+    "timeout": lambda: DiscardTimeoutFeature(),
 }
 
 

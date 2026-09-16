@@ -37,5 +37,438 @@
         "updates": {}
       }
     }
+  },
+  "requests": {
+    "POST /api/test": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "testPost",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  "message": {
+                    "example": "Test message",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "Request body for POST test",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "POST request successful",
+                      "type": "string"
+                    },
+                    "received": {
+                      "additionalProperties": true,
+                      "type": "object"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/test": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "testGet",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "GET request successful",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PATCH /api/test": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "testPatch",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "123",
+                    "type": "string"
+                  },
+                  "updates": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "Request body for PATCH test",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "PATCH request successful",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "DELETE /api/test": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "testDelete",
+        "parameters": [
+          {
+            "description": "ID of the resource to delete",
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "DELETE request successful",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Resource not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/test": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "testPut",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  "id": {
+                    "example": "123",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "Request body for PUT test",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "PUT request successful",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "message": {
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2006-01-02 15:04:05",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
