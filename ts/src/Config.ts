@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      ai_chat: {
-      },
-
-      test: {
-      },
-
-      testing: {
-      },
-
+        ai_chat: {
+        },
+  
+        test: {
+        },
+  
+        testing: {
+        },
+  
     }
   }
 

@@ -107,12 +107,12 @@ local result, err = client:Test():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/discard-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
-| Python | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
-| PHP | `voxgig-sdk/discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
+| TypeScript | `@voxgig-sdk/discard-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/tags) |
+| Python | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/tags) |
+| PHP | `voxgig-sdk/discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/discard-sdk/go` | `go get github.com/voxgig-sdk/discard-sdk/go@latest` |
-| Ruby | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
-| Lua | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/releases) |
+| Ruby | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/tags) |
+| Lua | `voxgig-sdk-discard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/discard-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/discard-sdk/go-cli` | `go install github.com/voxgig-sdk/discard-sdk/go-cli/cmd/discard@latest` |
 | Go MCP server | `github.com/voxgig-sdk/discard-sdk/go-mcp` | `go get github.com/voxgig-sdk/discard-sdk/go-mcp@latest` |
 
