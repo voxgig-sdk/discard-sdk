@@ -1,7 +1,7 @@
 // Typed models for the Discard SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // AiChat is the typed data model for the ai_chat entity.
 type AiChat struct {
-	Context *[]any `json:"context,omitempty"`
-	Message string `json:"message"`
-	Response *string `json:"response,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
 }
 
 // AiChatCreateData is the typed request payload for AiChat.CreateTyped.
@@ -32,12 +27,6 @@ type AiChatCreateData struct {
 
 // Test is the typed data model for the test entity.
 type Test struct {
-	Data *map[string]any `json:"data,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Message *string `json:"message,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
-	Updates *map[string]any `json:"updates,omitempty"`
 }
 
 // TestLoadMatch is the typed request payload for Test.LoadTyped.
@@ -77,15 +66,6 @@ type TestRemoveMatch struct {
 
 // Testing is the typed data model for the testing entity.
 type Testing struct {
-	ActiveEndpoints *int `json:"active_endpoints,omitempty"`
-	Filename *string `json:"filename,omitempty"`
-	InactiveEndpoints *int `json:"inactive_endpoints,omitempty"`
-	Message *string `json:"message,omitempty"`
-	Period *string `json:"period,omitempty"`
-	Size *int `json:"size,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
-	TotalRequests *int `json:"total_requests,omitempty"`
 }
 
 // TestingLoadMatch is the typed request payload for Testing.LoadTyped.

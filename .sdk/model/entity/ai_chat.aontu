@@ -1,0 +1,75 @@
+# Entity: ai_chat
+
+main: kit: entity: ai_chat: {
+
+  alias: field: {}
+
+  fields: {
+    context: {
+      h: "Context"
+      n: "context"
+      r: false
+      sh: "Optional conversation context"
+      t: "`$ARRAY`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: true
+      sh: "The message to send to the AI"
+      t: "`$STRING`"
+    }
+    response: {
+      h: "Response"
+      n: "response"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "ai_chat"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/chat"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/chat"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "chat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

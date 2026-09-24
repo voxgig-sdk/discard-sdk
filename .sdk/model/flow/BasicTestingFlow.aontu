@@ -1,0 +1,36 @@
+# BasicTestingFlow
+
+main: kit: flow: BasicTestingFlow:
+{
+  entity: "testing",
+  kind: "basic",
+  name: "BasicTestingFlow",
+  step: [
+    {
+      i: {
+        ref: "testing_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "testing_ref01",
+        srcdatavar: "testing_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-testing_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTestingFlow"
+}

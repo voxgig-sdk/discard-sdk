@@ -89,27 +89,32 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "context",
-            ["short"] = "Optional conversation context",
+            ["title"] = "Context",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Optional conversation context",
           },
           {
             ["name"] = "message",
+            ["title"] = "Message",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The message to send to the AI",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "response",
+            ["title"] = "Response",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "status",
+            ["title"] = "Status",
             ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "timestamp",
+            ["title"] = "Timestamp",
             ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
         },
         ["name"] = "ai_chat",
@@ -119,7 +124,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/chat",
@@ -131,15 +135,17 @@ local function make_config()
                     ["lit"] = "chat",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "chat",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -152,27 +158,33 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "data",
+            ["title"] = "Data",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "id",
+            ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "message",
+            ["title"] = "Message",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "status",
+            ["title"] = "Status",
             ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "timestamp",
+            ["title"] = "Timestamp",
             ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "updates",
+            ["title"] = "Updates",
             ["type"] = "`$OBJECT`",
           },
         },
@@ -187,7 +199,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/test",
@@ -199,15 +210,17 @@ local function make_config()
                     ["lit"] = "test",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.received`",
-                },
                 ["parts"] = {
                   "api",
                   "test",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.received`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -216,7 +229,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/test",
@@ -228,15 +240,17 @@ local function make_config()
                     ["lit"] = "test",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "test",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -245,7 +259,6 @@ local function make_config()
             ["name"] = "patch",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/api/test",
@@ -257,15 +270,17 @@ local function make_config()
                     ["lit"] = "test",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "test",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -274,16 +289,6 @@ local function make_config()
             ["name"] = "remove",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/api/test",
@@ -295,18 +300,29 @@ local function make_config()
                     ["lit"] = "test",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
-                  },
+                ["parts"] = {
+                  "api",
+                  "test",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "api",
-                  "test",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },
@@ -316,7 +332,6 @@ local function make_config()
             ["name"] = "update",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/api/test",
@@ -328,15 +343,17 @@ local function make_config()
                     ["lit"] = "test",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "test",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -349,39 +366,48 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "active_endpoints",
+            ["title"] = "Active Endpoints",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "filename",
+            ["title"] = "Filename",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "inactive_endpoints",
+            ["title"] = "Inactive Endpoints",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "message",
+            ["title"] = "Message",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "period",
+            ["title"] = "Period",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "size",
+            ["title"] = "Size",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "status",
+            ["title"] = "Status",
             ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "timestamp",
+            ["title"] = "Timestamp",
             ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "total_requests",
+            ["title"] = "Total Requests",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -392,7 +418,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/upload",
@@ -404,15 +429,17 @@ local function make_config()
                     ["lit"] = "upload",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "upload",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -421,17 +448,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "day",
-                      ["kind"] = "query",
-                      ["name"] = "period",
-                      ["orig"] = "period",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/analytics",
@@ -443,18 +459,30 @@ local function make_config()
                     ["lit"] = "analytics",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "period",
-                  },
+                ["parts"] = {
+                  "api",
+                  "analytics",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["parts"] = {
-                  "api",
-                  "analytics",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "period",
+                      ["orig"] = "period",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "day",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "period",
+                  },
                 },
               },
             },

@@ -1,0 +1,140 @@
+# Entity: testing
+
+main: kit: entity: testing: {
+
+  alias: field: {}
+
+  fields: {
+    active_endpoints: {
+      h: "Active Endpoints"
+      n: "active_endpoints"
+      r: false
+      t: "`$INTEGER`"
+    }
+    filename: {
+      h: "Filename"
+      n: "filename"
+      r: false
+      t: "`$STRING`"
+    }
+    inactive_endpoints: {
+      h: "Inactive Endpoints"
+      n: "inactive_endpoints"
+      r: false
+      t: "`$INTEGER`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    period: {
+      h: "Period"
+      n: "period"
+      r: false
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      t: "`$STRING`"
+    }
+    total_requests: {
+      h: "Total Requests"
+      n: "total_requests"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "testing"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/upload"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/upload"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "upload"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/analytics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "day"
+                k: "query"
+                n: "period"
+                or: "period"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/analytics"
+          q: {
+            exist: [
+              "period"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "analytics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

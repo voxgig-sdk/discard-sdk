@@ -93,27 +93,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "context",
-						"short": "Optional conversation context",
+						"title": "Context",
 						"type": "`$ARRAY`",
+						"short": "Optional conversation context",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The message to send to the AI",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "response",
+						"title": "Response",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 				},
 				"name": "ai_chat",
@@ -123,7 +128,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/chat",
@@ -135,15 +139,17 @@ func MakeConfig() map[string]any {
 										"lit": "chat",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"chat",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -156,27 +162,33 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "data",
+						"title": "Data",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "updates",
+						"title": "Updates",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -191,7 +203,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/test",
@@ -203,15 +214,17 @@ func MakeConfig() map[string]any {
 										"lit": "test",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.received`",
-								},
 								"parts": []any{
 									"api",
 									"test",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.received`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -220,7 +233,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/test",
@@ -232,15 +244,17 @@ func MakeConfig() map[string]any {
 										"lit": "test",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"test",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -249,7 +263,6 @@ func MakeConfig() map[string]any {
 						"name": "patch",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/api/test",
@@ -261,15 +274,17 @@ func MakeConfig() map[string]any {
 										"lit": "test",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"test",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -278,16 +293,6 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "id",
-											"orig": "id",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/api/test",
@@ -299,18 +304,29 @@ func MakeConfig() map[string]any {
 										"lit": "test",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"api",
+									"test",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"test",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -320,7 +336,6 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "PUT",
 								"orig": "/api/test",
@@ -332,15 +347,17 @@ func MakeConfig() map[string]any {
 										"lit": "test",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"test",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -353,39 +370,48 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active_endpoints",
+						"title": "Active Endpoints",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "filename",
+						"title": "Filename",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inactive_endpoints",
+						"title": "Inactive Endpoints",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "period",
+						"title": "Period",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "size",
+						"title": "Size",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "total_requests",
+						"title": "Total Requests",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -396,7 +422,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/upload",
@@ -408,15 +433,17 @@ func MakeConfig() map[string]any {
 										"lit": "upload",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"upload",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -425,17 +452,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "day",
-											"kind": "query",
-											"name": "period",
-											"orig": "period",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/analytics",
@@ -447,18 +463,30 @@ func MakeConfig() map[string]any {
 										"lit": "analytics",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"period",
-									},
+								"parts": []any{
+									"api",
+									"analytics",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.data`",
 								},
-								"parts": []any{
-									"api",
-									"analytics",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "period",
+											"orig": "period",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "day",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"period",
+									},
 								},
 							},
 						},

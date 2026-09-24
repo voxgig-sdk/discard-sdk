@@ -1,0 +1,204 @@
+# Entity: test
+
+main: kit: entity: test: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: false
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      t: "`$STRING`"
+    }
+    updates: {
+      h: "Updates"
+      n: "updates"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "test"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/test"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/test"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.received`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/test"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/test"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /api/test"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/api/test"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/test"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "id"
+                or: "id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/test"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/test"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/api/test"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

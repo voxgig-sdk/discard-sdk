@@ -24,47 +24,118 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "ai_chat": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "context",
-              "req": false,
-              "short": "Optional conversation context",
-              "type": "`$ARRAY`"
+          "fields": {
+            "context": {
+              "a": true,
+              "h": "Context",
+              "n": "context",
+              "r": false,
+              "sh": "Optional conversation context",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "message",
-              "req": true,
-              "short": "The message to send to the AI",
-              "type": "`$STRING`"
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": true,
+              "sh": "The message to send to the AI",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "response",
-              "req": false,
-              "type": "`$STRING`"
+            "response": {
+              "a": true,
+              "h": "Response",
+              "n": "response",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "ai_chat",
           "op": {
             "create": {
@@ -72,18 +143,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/chat",
-                    "json": "{\"operationId\":\"aiChat\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"context\":{\"description\":\"Optional conversation context\",\"items\":{\"properties\":{\"content\":{\"example\":\"Previous message\",\"type\":\"string\"},\"role\":{\"enum\":[\"user\",\"assistant\"],\"example\":\"user\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"message\":{\"description\":\"The message to send to the AI\",\"example\":\"Hello, how are you?\",\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"response\":{\"example\":\"I'm doing well, thank you for asking!\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful AI response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/chat",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/chat",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -91,8 +163,7 @@
                       "lit": "chat"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -109,45 +180,51 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "data",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "message",
-              "req": false,
-              "type": "`$STRING`"
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "updates",
-              "req": false,
-              "type": "`$OBJECT`"
+            "updates": {
+              "a": true,
+              "h": "Updates",
+              "n": "updates",
+              "r": false,
+              "t": "`$OBJECT`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -159,18 +236,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/test",
-                    "json": "{\"operationId\":\"testPost\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"additionalProperties\":true,\"type\":\"object\"},\"message\":{\"example\":\"Test message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Request body for POST test\",\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"POST request successful\",\"type\":\"string\"},\"received\":{\"additionalProperties\":true,\"type\":\"object\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/test",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/test",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -178,8 +256,7 @@
                       "lit": "test"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.received`"
                   }
@@ -191,18 +268,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/test",
-                    "json": "{\"operationId\":\"testGet\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"GET request successful\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/test",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/test",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -210,8 +288,7 @@
                       "lit": "test"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -223,18 +300,19 @@
               "name": "patch",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "PATCH /api/test",
-                    "json": "{\"operationId\":\"testPatch\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"example\":\"123\",\"type\":\"string\"},\"updates\":{\"additionalProperties\":true,\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Request body for PATCH test\",\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"PATCH request successful\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "PATCH",
-                  "orig": "/api/test",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/api/test",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -242,8 +320,7 @@
                       "lit": "test"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -255,29 +332,34 @@
               "name": "remove",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /api/test",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "id",
+                        "or": "id",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "DELETE /api/test",
-                    "json": "{\"operationId\":\"testDelete\",\"parameters\":[{\"description\":\"ID of the resource to delete\",\"in\":\"query\",\"name\":\"id\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"DELETE request successful\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Resource not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/api/test",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "DELETE",
-                  "orig": "/api/test",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -285,12 +367,7 @@
                       "lit": "test"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -302,18 +379,19 @@
               "name": "update",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "PUT /api/test",
-                    "json": "{\"operationId\":\"testPut\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"additionalProperties\":true,\"type\":\"object\"},\"id\":{\"example\":\"123\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Request body for PUT test\",\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"PUT request successful\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "PUT",
-                  "orig": "/api/test",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/api/test",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -321,8 +399,7 @@
                       "lit": "test"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -339,63 +416,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "active_endpoints",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "active_endpoints": {
+              "a": true,
+              "h": "Active Endpoints",
+              "n": "active_endpoints",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "filename",
-              "req": false,
-              "type": "`$STRING`"
+            "filename": {
+              "a": true,
+              "h": "Filename",
+              "n": "filename",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "inactive_endpoints",
-              "req": false,
-              "type": "`$INTEGER`"
+            "inactive_endpoints": {
+              "a": true,
+              "h": "Inactive Endpoints",
+              "n": "inactive_endpoints",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "message",
-              "req": false,
-              "type": "`$STRING`"
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "period",
-              "req": false,
-              "type": "`$STRING`"
+            "period": {
+              "a": true,
+              "h": "Period",
+              "n": "period",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "size",
-              "req": false,
-              "type": "`$INTEGER`"
+            "size": {
+              "a": true,
+              "h": "Size",
+              "n": "size",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "total_requests",
-              "req": false,
-              "type": "`$INTEGER`"
+            "total_requests": {
+              "a": true,
+              "h": "Total Requests",
+              "n": "total_requests",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "testing",
           "op": {
             "create": {
@@ -403,18 +489,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/upload",
-                    "json": "{\"operationId\":\"uploadFile\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"multipart/form-data\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Optional description of the file\",\"type\":\"string\"},\"file\":{\"description\":\"The file to upload\",\"format\":\"binary\",\"type\":\"string\"}},\"required\":[\"file\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"filename\":{\"example\":\"example.txt\",\"type\":\"string\"},\"message\":{\"example\":\"File uploaded successfully\",\"type\":\"string\"},\"size\":{\"example\":1024,\"type\":\"integer\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"File uploaded successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"example\":400,\"type\":\"integer\"},\"message\":{\"example\":\"An error occurred\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid file\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/upload",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/upload",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -422,8 +509,7 @@
                       "lit": "upload"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -435,30 +521,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/analytics",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "day",
-                        "kind": "query",
-                        "name": "period",
-                        "orig": "period",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "day",
+                        "k": "query",
+                        "n": "period",
+                        "or": "period",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/analytics",
-                    "json": "{\"operationId\":\"getAnalytics\",\"parameters\":[{\"description\":\"Time period for analytics (day, week, month)\",\"in\":\"query\",\"name\":\"period\",\"required\":false,\"schema\":{\"default\":\"day\",\"enum\":[\"day\",\"week\",\"month\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"active_endpoints\":{\"example\":5,\"type\":\"integer\"},\"inactive_endpoints\":{\"example\":0,\"type\":\"integer\"},\"period\":{\"example\":\"day\",\"type\":\"string\"},\"total_requests\":{\"example\":1250,\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"example\":\"2006-01-02 15:04:05\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Analytics data retrieved successfully\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/analytics",
+                  "q": {
+                    "exist": [
+                      "period"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/analytics",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -466,12 +557,7 @@
                       "lit": "analytics"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "period"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -900,15 +986,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "ai_chat_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -921,28 +1007,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "test_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "test_ref01",
                 "srcdatavar": "test_ref01_data",
                 "suffix": "_up0",
                 "textfield": "message"
               },
-              "match": {},
-              "op": "update",
-              "spec": [
+              "m": {},
+              "o": "update",
+              "s": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -950,20 +1036,20 @@
                   }
                 }
               ],
-              "valid": []
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "test_ref01",
                 "srcdatavar": "test_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -973,16 +1059,16 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "test_ref01",
                 "suffix": "_rm0"
               },
-              "match": {},
-              "op": "remove",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "remove",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -995,28 +1081,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "testing_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "testing_ref01",
                 "srcdatavar": "testing_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
